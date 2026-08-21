@@ -245,6 +245,36 @@ Full safety-boundary writeup: `docs/ai-architecture.md`. Summary:
   is the natural-language query panel; Exception Detail gained an
   "Explain with AI" button using the same component.
 
+## Held-Out Evaluation (Phase 7, implemented)
+Full methodology writeup: `docs/evaluation.md`. Summary:
+- `backend/app/evaluation/loader.py` — reads the committed
+  `data/eval/n250` payments/settlements and
+  `data/ground_truth/eval/n250/ground_truth.json` from disk (never
+  regenerates them), so scoring is always against the exact fixed,
+  held-out records.
+- `backend/app/evaluation/service.py` — persists that dataset
+  (idempotently, same pattern as demo datasets) and calls
+  `app.services.reconciliation_service.run_reconciliation` **unmodified**
+  against a fixed reconciliation `run_id` — the evaluator is not a
+  second matching algorithm; it scores what the real pipeline actually
+  produced (DECISIONS.md D019).
+- `backend/app/evaluation/scoring.py` — pure functions computing
+  reconciliation (match rate/precision/recall/F1), exception detection
+  (precision/recall/F1, per-class type accuracy), auto-resolution
+  (eligible/resolved/correct/unsafe), and financial metrics from the
+  persisted results/exceptions plus ground truth. No DB, no I/O, no
+  randomness — same inputs always produce identical output.
+- `backend/app/api/routers/evaluation.py` — `POST /evaluation/run`,
+  `GET /evaluation/latest`, `GET /evaluation/{id}`. Routes only call
+  `app.evaluation.service`.
+- The D009 boundary case (amount_mismatch vs. partial_settlement) is
+  scored as one equivalence class, never hidden or merged into the
+  ground truth itself — see DECISIONS.md D020 and docs/evaluation.md.
+- Frontend: the former Evaluation placeholder is now a real page,
+  always labeled "Held-out synthetic evaluation," showing the same
+  four metric groups the API returns plus a methodology/limitations
+  section and the D009 disclosure inline.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions

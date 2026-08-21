@@ -1,7 +1,7 @@
 # PROJECT_STATE.md
 
 ## Current Phase
-Phase 6A — AI-assisted explanation and natural-language finance controller (COMPLETE)
+Phase 7 — Held-out ground-truth evaluation (COMPLETE)
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -197,9 +197,53 @@ Phase 6A — AI-assisted explanation and natural-language finance controller (CO
     ANTHROPIC_API_KEY exists in this environment — no live provider
     call was made or claimed anywhere in this phase.
 
+- **Held-out ground-truth evaluation** (Phase 7) —
+  `backend/app/evaluation/`, methodology in `docs/evaluation.md`.
+  - `loader.py` — reads `data/eval/n250` + `data/ground_truth/eval/n250`
+    from disk (never regenerates), so scoring is always against the
+    exact fixed 250-record held-out set (seed 1337, disjoint from the
+    seed-42 demo data).
+  - `service.py` — persists the eval dataset idempotently, then calls
+    `reconciliation_service.run_reconciliation` **unmodified** against
+    a fixed `run_id` (`eval-recon-n250`) — the same production
+    pipeline, not a second matching algorithm (DECISIONS.md D019).
+    Repeated `POST /evaluation/run` calls replay the same underlying
+    reconciliation run and produce byte-identical metrics.
+  - `scoring.py` — pure functions: reconciliation match
+    rate/precision/recall/F1, exception detection
+    precision/recall/F1 + per-class type accuracy, auto-resolution
+    eligible/resolved/correct/unsafe + precision/recall, and financial
+    totals (processed/reconciled/at-risk/unresolved). The D009
+    amount_mismatch/partial_settlement boundary is scored as one
+    equivalence class (exact boundary-case count and agreement rate
+    always reported, never hidden) — DECISIONS.md D020.
+  - Endpoints: `POST /evaluation/run`, `GET /evaluation/latest`,
+    `GET /evaluation/{id}`; new `EvaluationRunORM` table + Alembic
+    migration `25181f4e201c`.
+  - Frontend: the Evaluation placeholder is now a real page — Summary,
+    Exception Detection (with a prominent D009 callout), Auto
+    Resolution, Financial Impact, and a methodology/limitations
+    section — always labeled **"Held-out synthetic evaluation,"** never
+    presented as production/customer performance.
+  - 19 new tests (`test_evaluation.py`): a hand-computed 4-record
+    dataset independently verifying every formula (match rate,
+    precision/recall/F1, the D009 equivalence-class handling,
+    unsafe-auto-resolution detection, financial totals, determinism),
+    loader tests against the real 250-record set, and API tests
+    (real run, repeated-run identical metrics, latest/get-by-id/404s).
+  - Verified against the real held-out dataset: 250 records, match
+    rate 80.8%, match precision/recall/F1 all 1.0 (the reconciliation
+    engine's own matching decisions agree perfectly with ground truth
+    on this set), exception detection precision/recall/F1 all 1.0,
+    45 auto-resolution-eligible exceptions with 44 correctly
+    auto-resolved and 0 unsafe, 40 D009 boundary cases with 100%
+    agreement rate in this run. Re-run twice via the API and confirmed
+    byte-identical `metrics`. Manually verified via headless Chrome:
+    Evaluation page runs an evaluation and renders all four sections
+    plus the D009 callout with zero console errors.
+
 ## Current Work
-- None. Phase 6A closed, awaiting the next phase (evaluation
-  implementation was explicitly out of scope for this phase).
+- None. Phase 7 closed, awaiting the next phase.
 
 ## Known Issues
 - D006's original constraint (no `pip install` in the Phase 1 sandbox)
@@ -274,35 +318,48 @@ Phase 6A — AI-assisted explanation and natural-language finance controller (CO
   correct number formatted differently than in the facts (e.g. `1,234`
   vs `1234.00`) could in principle be falsely flagged, though the
   provider is explicitly instructed to copy values verbatim.
+- The evaluation's per-payment aggregation counts a payment as
+  "clean-matched" using only `match_status`/attached-exception
+  presence, not settlement amount tolerance directly — this mirrors
+  the reconciliation engine's own definitions exactly (by design,
+  since the evaluator scores the engine's real decisions), but means
+  the metrics can't diverge from whatever `dashboard_service`/
+  `reconciliation_service` already consider "matched".
+- `EvaluationRunORM.reconciliation_run_id` is a fixed value per
+  dataset name (`eval-recon-{name}`), not per evaluation call — this
+  is intentional (D019) but means the eval history table accumulates
+  one row per `POST /evaluation/run` call while all of them reference
+  the same underlying reconciliation run after the first.
 
 ## Tests
 - Unit (no DB): `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
-- API/integration (`test_api.py`, `test_ai.py`; needs `razorrecon_test`
-  DB migrated — see docs/api.md): included in the same discover command
-- Result: **103/103 passed**, 0 failures, 0 errors (run locally, this
-  session, against real PostgreSQL 18; 84 from Phase 4/5 + 19 new
-  `test_ai.py` tests, all with a mocked `AIProvider` — no live LLM call
-  anywhere in the suite)
+- API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`;
+  needs `razorrecon_test` DB migrated — see docs/api.md): included in
+  the same discover command
+- Result: **122/122 passed**, 0 failures, 0 errors (run locally, this
+  session, against real PostgreSQL 18; 103 from Phase 4/5/6A + 19 new
+  `test_evaluation.py` tests)
 - Frontend: `cd frontend && npm run build` passes cleanly
-- Frontend manual/E2E verification (headless Chrome via Playwright):
-  AI Controller page asks each example question and renders
-  facts+answer (verified against a temporary mocked-provider backend
-  instance — local-only, not committed); the same flow re-verified
-  against the real, keyless backend to confirm the AI-unavailable
-  banner renders correctly; Exception Detail's "Explain with AI" button
-  verified the same way. Zero browser console/page errors in either
-  case. Dashboard/Transactions/Exceptions/Review Queue re-confirmed
-  unaffected by the AI layer's presence.
+- Frontend manual/E2E verification (headless Chrome via Playwright,
+  real backend + real held-out dataset, no mocking needed since
+  evaluation has no AI dependency): Evaluation page runs an evaluation
+  and renders Evaluation Summary, Exception Detection (with the D009
+  callout), Auto Resolution, and Financial Impact sections with real
+  numbers, plus the methodology section. Zero browser console/page
+  errors.
+- Manual verification against a small, hand-computed 4-record dataset
+  (`ScoringUnitTests`) independently confirms the match/exception/
+  auto-resolution/financial formulas, separately from the real
+  250-record run.
+- Re-ran `POST /evaluation/run` twice via both the test suite and a
+  live curl/API call — `metrics` byte-identical both times.
 - Ground-truth verification from Phase 2.5 (D008/D009) is unchanged —
   no reconciliation logic was modified in this phase.
 
 ## Latest Commit
-- `0234f11` — feat: build React finance operations dashboard
-  (pre-Phase-6A HEAD)
+- `52ef09f` — feat: add AI finance controller (pre-Phase-7 HEAD)
 
 ## Next Task
-- Evaluation implementation (explicitly deferred out of this phase):
-  scoring reconciliation output against `data/ground_truth/eval` and
-  wiring real numbers into the existing Evaluation page placeholder.
-  Docker/docker-compose for the full stack remains a separate,
-  still-pending item from Phase 5.
+- Docker/docker-compose for the full stack (Postgres + backend +
+  frontend) remains the main pending item, deferred from Phase 5 and
+  explicitly out of scope for Phase 7 too.

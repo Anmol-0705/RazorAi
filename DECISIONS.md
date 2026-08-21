@@ -265,3 +265,35 @@ to reliably signal a fabricated figure, whereas a fabricated financial
 amount is almost always 3+ digits. This is a heuristic, not a proof —
 documented as a known limitation in PROJECT_STATE.md rather than
 oversold as complete hallucination prevention.
+
+## D019 — Evaluation scores against a reused production reconciliation run, not a copy
+Phase 7's evaluator (`backend/app/evaluation/`) had to decide whether
+to call the production reconciliation pipeline directly or reimplement
+matching for scoring purposes. It calls
+`app.services.reconciliation_service.run_reconciliation` unmodified,
+against a fixed `run_id` (`eval-recon-n250`) so repeated evaluations
+replay the same persisted run instead of accumulating a new one on
+every call — the same idempotency mechanism already used by demo
+reconciliation runs (D013), applied here for a different reason (score
+stability, not accidental duplicate submission). This guarantees "the
+evaluator must use the same reconciliation implementation used in
+production" is true by construction, not by convention — there is
+no second matching algorithm to keep in sync.
+
+## D020 — D009 scored as an equivalence class, not merged in ground truth or split as two strict classes
+Continuing D009's boundary-case finding (an `amount_mismatch` and a
+`partial_settlement` record can be genuinely indistinguishable from
+observable fields alone): the evaluator scores
+`{amount_mismatch, partial_settlement}` as one equivalence class for
+per-class exception-type correctness, reporting the exact
+"boundary cases" count and agreement rate separately rather than either
+(a) editing `ground_truth.json` to remove the ambiguity — which would
+misrepresent what the generator actually produced — or (b) scoring them
+as strict, separate classes — which would report a "classification
+error" for a case with no available feature that could have avoided it,
+overstating a defect. `invalid_reference`'s expected exception type is
+similarly mapped to `missing_settlement` (D008's already-documented
+behavior) rather than scored as a mystery mismatch. Both mappings live
+in one place, `scoring.EXPECTED_EXCEPTION_TYPES`, so the exact
+concessions being made are auditable in one small table rather than
+scattered through ad-hoc score-adjustment logic.

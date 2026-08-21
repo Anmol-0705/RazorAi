@@ -155,3 +155,25 @@ class ReviewAuditORM(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
     exception: Mapped[ExceptionCaseORM] = relationship(back_populates="review_audits")
+
+
+class EvaluationRunORM(Base):
+    """One held-out ground-truth evaluation run (Phase 7). References
+    the underlying `ReconciliationRunORM` it scored so the exact
+    persisted results/exceptions behind the metrics remain inspectable —
+    evaluation never computes matching itself, only scores what the
+    real reconciliation run produced."""
+
+    __tablename__ = "evaluation_runs"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    dataset_name: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    reconciliation_run_id: Mapped[str] = mapped_column(
+        String, ForeignKey("reconciliation_runs.id"), nullable=False
+    )
+    record_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(20), index=True, nullable=False, default="running")
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=_now)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    metrics: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)

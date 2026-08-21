@@ -96,6 +96,11 @@ export const api = {
 
   summarizeRunWithAI: (runId) =>
     request({ method: "POST", url: `/ai/runs/${runId}/summary` }),
+
+  runEvaluation: ({ datasetName = "n250" } = {}) =>
+    request({ method: "POST", url: "/evaluation/run", data: { dataset_name: datasetName } }),
+
+  getLatestEvaluation: () => request({ method: "GET", url: "/evaluation/latest" }),
 };
 
 export default api;
