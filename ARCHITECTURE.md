@@ -139,6 +139,44 @@ financial values from AI).
   duplicate settlement is only a candidate in the classifier, but only
   auto-resolved when its amount is an exact match).
 
+## Persistence and API (Phase 4, implemented)
+- `backend/app/db/models.py` — SQLAlchemy ORM models: `PaymentORM`,
+  `SettlementORM`, `ReconciliationRunORM`, `ReconciliationResultORM`,
+  `ExceptionCaseORM`, `AutoResolutionRecordORM`, `ReviewAuditORM`. Kept
+  as a separate persistence layer rather than converting the Phase 1-3
+  frozen dataclasses into ORM classes: the reconciliation/
+  auto-resolution/review engines stay pure Python and DB-agnostic
+  (still testable with zero DB dependency, per the 62 Phase 1-3 unit
+  tests that still run without a database). `backend/app/services/*`
+  converts dataclass <-> ORM row at the boundary.
+- `backend/alembic/` — schema migrations; `env.py` builds
+  `target_metadata` from `Base.metadata` and reads the connection
+  string from `DATABASE_URL` (see docs/api.md), so there's no
+  hand-maintained CREATE TABLE path.
+- `backend/app/services/` is the orchestration layer requested by this
+  phase: `dataset_service`, `reconciliation_service`,
+  `review_service`, `dashboard_service`, `exception_service`. Each
+  service function loads/persists rows and calls straight into the
+  Phase 2/3 engines (`app.reconciliation.engine.reconcile`,
+  `app.auto_resolution.engine.auto_resolve`,
+  `app.review.workflow.*`) — none of that logic is duplicated or
+  reimplemented here.
+- `backend/app/api/` — FastAPI routers. A router function's body is
+  only ever: parse request -> call one service function -> map
+  service errors (`NotFoundError`/`ConflictError`) to HTTP status
+  codes -> return a Pydantic response model. No matching, resolution,
+  or review logic lives in a route handler.
+- Layering: `api/routers` -> `services` -> `reconciliation` /
+  `auto_resolution` / `review` (domain) -> `db` (persistence). Each
+  layer only calls the one below it.
+- Row IDs for reconciliation results/exceptions/auto-resolution
+  records are the Phase 2/3 engines' deterministic IDs (derived from
+  payment/settlement identifiers), scoped per-run as
+  `f"{run_id}:{domain_id}"` at persistence time — this is the only
+  place Phase 4 had to adapt Phase 2/3 output, because those IDs were
+  designed for in-memory reproducibility within one run, not
+  uniqueness across many persisted runs of the same dataset.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions

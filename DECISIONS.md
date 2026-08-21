@@ -151,3 +151,49 @@ because the task requires fields `ReviewAudit` doesn't carry
 (resolution type, financial impact, previous/new status) and conflating
 "a human reviewed this" with "the system auto-resolved this" into one
 schema would make the audit trail harder to query later.
+
+## D012 — ORM models are a separate persistence layer, not a Phase 1-3 rewrite
+Phase 4 needed real SQLAlchemy/PostgreSQL persistence. Rather than
+converting the Phase 1-3 frozen dataclasses (`app.models.*`) into
+SQLAlchemy declarative classes — which would mean rewriting working,
+fully-tested domain models and coupling `app.reconciliation`/
+`app.auto_resolution`/`app.review` to a database — Phase 4 adds a
+parallel ORM layer (`backend/app/db/models.py`) with the same field
+names/shapes, and thin converter functions in `app.services.*` at the
+boundary. This keeps the 62 Phase 1-3 unit tests passing unmodified
+with zero database dependency, and matches this phase's explicit "do
+not rebuild Phase 1-3 functionality" instruction. The cost is a small
+amount of duplication between dataclass fields and ORM columns; this
+was judged acceptable given the schemas are meant to be stable
+contracts (per PROJECT_STATE.md's original Phase 1 framing) and rarely
+change independently.
+
+## D013 — Reconciliation/exception IDs are scoped per-run at persistence time
+`app.reconciliation.engine` and `app.auto_resolution.engine` assign IDs
+deterministically (uuid5 over payment/settlement/exception identifiers)
+so that re-running the *same* in-memory reconciliation twice produces
+byte-identical output — this was a deliberate Phase 2/3 property for
+reproducibility and testing. Persisting two different runs of the same
+dataset would otherwise try to insert the same primary key twice
+(discovered via `test_api.py`'s repeated-reconciliation tests: the
+first version of this phase's persistence code hit a
+`UniqueViolation`/`ForeignKeyViolation` on a second run over an
+unchanged dataset). Fixed by scoping every persisted row's id (and its
+FK references) to `f"{run_id}:{domain_id}"` in
+`reconciliation_service.py`, leaving the Phase 2/3 engines themselves
+unchanged. `db.flush()` is also called between inserting
+`reconciliation_results`, `exception_cases`, and
+`auto_resolution_records` within one run's transaction, since there is
+no ORM `relationship()` between those tables to give SQLAlchemy's
+unit-of-work automatic FK-aware insert ordering.
+
+## D014 — Local PostgreSQL used directly; no Docker Compose added
+This environment already has PostgreSQL 18 running as a local Windows
+service (confirmed via `pg_hba.conf`/process list), so Phase 4 did not
+add Docker/docker-compose for Postgres — task step 15 said to add
+Docker only if "necessary for local testing." Connection details live
+in `.env` (gitignored) with `.env.example` committed as a template. A
+second database, `razorrecon_test`, was created for `test_api.py` so
+integration tests never touch dev data. A docker-compose file remains
+a reasonable addition for portability to environments without a local
+Postgres install, but wasn't needed here.
