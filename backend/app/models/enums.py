@@ -44,6 +44,8 @@ class MatchStatus(str, Enum):
 
 class MatchStrategy(str, Enum):
     EXACT_REFERENCE = "exact_reference"
+    REFERENCE_AMOUNT = "reference_amount"
+    TIMESTAMP_TOLERANCE = "timestamp_tolerance"
     AMOUNT_DATE_HEURISTIC = "amount_date_heuristic"
     MANUAL = "manual"
     AI_ASSISTED = "ai_assisted"

@@ -76,6 +76,39 @@ financial values from AI).
   tree holding the true condition per transaction, for evaluation
   scripts only — never a valid input to the reconciliation engine.
 
+## Reconciliation Engine (Phase 2, implemented)
+- `backend/app/reconciliation/engine.py` — pure function
+  `reconcile(payments, settlements, config=None, now=None) ->
+  ReconciliationReport`. No FastAPI imports, no LLM imports, no I/O;
+  callable from a route, a script, or a test identically.
+- Matching hierarchy, applied per payment against settlements sharing
+  its `transaction_id` via `Settlement.transaction_reference`:
+  1. **Exact reference match** — reference, amount (within tolerance),
+     and timestamp (within the delayed-settlement window) all agree →
+     `MatchStatus.MATCHED` / `MatchStrategy.EXACT_REFERENCE`.
+  2. **Reference + amount** — reference agrees, amount does not →
+     `MatchStrategy.REFERENCE_AMOUNT`, further split into
+     `amount_mismatch` / `partial_settlement` / `fee_mismatch` exceptions
+     by comparing the settlement's reported fee/settled amount against
+     the standard fee schedule in `reconciliation/config.py`.
+  3. **Reference + configurable timestamp tolerance** — reference and
+     amount agree, but `settled_at` falls outside
+     `ReconciliationConfig.delayed_settlement_threshold` →
+     `MatchStrategy.TIMESTAMP_TOLERANCE` + `delayed_settlement` exception.
+  4. **Unresolved** — no reference match on either side: a payment with
+     no settlement → `missing_settlement`; a settlement whose reference
+     matches no payment → `invalid_reference`. Both are
+     `MatchStatus.UNMATCHED` with `match_strategy=None`.
+  Extra settlements sharing a reference beyond the earliest one are
+  reported separately as `MatchStatus.DUPLICATE` / `duplicate_settlement`.
+- `backend/app/reconciliation/classifier.py` — a fixed table mapping
+  each `ExceptionType` to `Severity` / `RecommendedAction` /
+  `auto_resolvable`. Phase 2 only classifies; nothing reads
+  `auto_resolvable` to actually act — that execution is Phase 3's job.
+- The engine never imports `app.data_generation.ground_truth` or
+  `GroundTruthCondition`; it only ever sees `Payment`/`Settlement`
+  records, keeping it usable on real production data later.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions

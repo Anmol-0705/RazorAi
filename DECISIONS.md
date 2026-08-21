@@ -55,3 +55,22 @@ independently at random. This guarantees every configured anomaly
 type actually appears at the requested dataset sizes (100/250/500),
 which pure random sampling could fail to do at small n, while
 remaining fully deterministic under a fixed seed.
+
+## D008 — Reconciliation thresholds are business rules, not ground truth
+The reconciliation engine (Phase 2) needs a standard fee schedule
+(2% fee, 18% tax on fee) and thresholds (amount/fee tolerance, the
+90%-of-expected-net partial-settlement cutoff, the delayed-settlement
+timestamp window) to classify amount and timing discrepancies. These
+constants happen to match the synthetic generator's defaults, but they
+are checked in as `ReconciliationConfig` business rules the engine
+would need against real data too — the engine never imports or reads
+`app.data_generation.ground_truth` or `GroundTruthCondition`. Verified
+against the seeded demo datasets: `duplicate_settlement`,
+`fee_mismatch`, `delayed_settlement`, `partial_settlement`, and
+`invalid_reference` exception counts match ground truth exactly at
+n=100/250, and within 1 at n=500 (one small-amount case where the
+90% fraction threshold and the generator's own amount-mismatch delta
+range overlap — an accepted heuristic edge case, not a bug). The
+engine's `missing_settlement` count is ground-truth `missing_settlement`
++ `invalid_reference`, because a payment whose settlement was
+misdirected is correctly flagged missing on the payment side too.
