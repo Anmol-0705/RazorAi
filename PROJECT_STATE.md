@@ -243,7 +243,82 @@ Phase 7 — Held-out ground-truth evaluation (COMPLETE)
     plus the D009 callout with zero console errors.
 
 ## Current Work
-- None. Phase 7 closed, awaiting the next phase.
+- None. Phase 7 closed. Deployment-prep pass complete (below);
+  awaiting the next phase or an actual deploy.
+
+## Deployment Readiness (prep pass, no live deployment performed)
+- **Security fix, found during this pass:** `.env.example` (tracked in
+  git, committed in `52ef09f`) contained a live-looking
+  `ANTHROPIC_API_KEY` value, publicly visible on `origin/main`. Scrubbed
+  to an empty placeholder in this pass; the local `.env` (gitignored,
+  never pushed) had the same key and was also cleared locally. **The
+  key must be revoked/rotated in the Anthropic console — git scrubbing
+  alone does not un-expose a key that was ever pushed.** Not otherwise
+  redesigned or history-rewritten (destructive, needs separate explicit
+  authorization).
+- Backend: binds via the ASGI server invocation, not hard-coded
+  (`uvicorn ... --host 0.0.0.0 --port $PORT`, see docs/deployment.md);
+  `DATABASE_URL` already read from environment
+  (`backend/app/db/base.py`), now also normalizes a plain
+  `postgres://`/`postgresql://` prefix (e.g. Render's raw connection
+  string) to `postgresql+psycopg://` so it works with this project's
+  pinned psycopg3 driver without manual editing. CORS is now
+  configurable via `CORS_ALLOWED_ORIGINS` (comma-separated,
+  `backend/app/api/main.py`), falling back to the original local Vite
+  dev origins when unset — local dev unaffected. `GET /health` already
+  worked without any AI key and already reported DB connectivity; no
+  change needed.
+- Frontend: already fully env-driven (`VITE_API_BASE_URL` in
+  `frontend/src/api/client.js`, `frontend/.env.example` already
+  present) — no hard-coded `localhost:8000` found anywhere in `src/`.
+  Added `frontend/vercel.json` (SPA catch-all rewrite), required
+  because the app uses `react-router-dom`'s `BrowserRouter` and would
+  404 on deep links/refresh on Vercel's static file server otherwise.
+- Evaluation: reviewed `GET /evaluation/*` for ground-truth exposure —
+  responses only ever carry aggregate `EvaluationMetrics` (counts,
+  rates, precision/recall/F1); no endpoint returns raw
+  `ground_truth.json` contents. No exposure issue found. No
+  regeneration or modification of the committed held-out dataset.
+- AI: no architecture change. Confirmed (existing behavior, re-verified
+  this pass) the app is fully functional with no `ANTHROPIC_API_KEY` —
+  dashboard, reconciliation, evaluation, and review all work; `/ai/*`
+  degrades to a structured "unavailable" response.
+- New files: `render.yaml` (backend web service only — deliberately
+  does not auto-wire a Render-managed Postgres database, since Render's
+  auto-injected connection string would need the same driver-prefix fix
+  described above and a Blueprint-level `fromDatabase` wire-up bypasses
+  that normalization path; documented as a manual `DATABASE_URL` step
+  instead), `docs/deployment.md` (exact Render/Vercel/CORS/AI steps).
+- Verified this pass: 122/122 backend tests pass (`unittest discover`,
+  local `razorrecon_test` DB — one failure before the `.env` key
+  cleanup was a pre-existing local-environment leak side-effect, not a
+  regression: `ProviderUnavailableTests` picked up the real key from
+  `.env` instead of finding none); `npm run build` passes; local
+  backend start on `0.0.0.0:8000` verified (`GET /health` → `200`, DB
+  `connected`); `CORS_ALLOWED_ORIGINS` override verified via curl
+  (configured origin allowed, default dev origin excluded once
+  overridden; unset falls back to dev origins, confirmed separately);
+  local frontend dev server verified (`200` on `/`).
+- **Not done in this pass (explicitly out of scope per instructions):**
+  no Docker, no auth, no CI/CD, no bundle optimization, no business
+  logic or reconciliation/evaluation/AI-architecture changes.
+
+## Remaining Manual Deployment Steps
+1. **Revoke/rotate the leaked Anthropic key** in the Anthropic console
+   — required regardless of the git-side fix in this pass.
+2. Create a Render PostgreSQL instance; copy its connection string.
+3. Create the Render web service from this repo (root dir `backend`;
+   build/start commands and env vars are all in `render.yaml` /
+   `docs/deployment.md`) and set `DATABASE_URL` (from step 2),
+   optionally a new `ANTHROPIC_API_KEY`, and `AI_MODEL`.
+4. Deploy the frontend to Vercel (root dir `frontend`) and set
+   `VITE_API_BASE_URL` to the Render backend's public URL.
+5. Set `CORS_ALLOWED_ORIGINS` on the Render backend to the Vercel
+   deployment's actual domain, then redeploy the backend.
+6. Confirm `GET /health` on the live backend and a full click-through
+   of the live frontend (dataset generate → reconciliation run →
+   dashboard/exceptions/review → evaluation run) — not yet done from
+   this session; no public deployment has actually been tested.
 
 ## Known Issues
 - D006's original constraint (no `pip install` in the Phase 1 sandbox)
