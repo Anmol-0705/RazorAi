@@ -80,7 +80,10 @@ def _classify_amount(payment: Payment, settlement: Settlement, config: Reconcili
         fraction_settled = (
             settlement.settled_amount / expected_net if expected_net != 0 else Decimal("0")
         )
-        if fraction_settled < config.partial_settlement_threshold:
+        if (
+            fraction_settled < config.partial_settlement_threshold
+            and net_diff >= config.partial_settlement_min_absolute_diff
+        ):
             return "partial_settlement", _q2(net_diff)
         return "amount_mismatch", _q2(net_diff)
 
@@ -141,15 +144,22 @@ def _reconcile_matched_payment(
         match_status = MatchStatus.PARTIAL
         strategy = MatchStrategy.REFERENCE_AMOUNT
         confidence = 0.7
-        reason = "reference matched but only part of the expected amount was settled"
+        _, _, expected_net = _expected_net(payment, config)
+        fraction_settled = primary.settled_amount / expected_net if expected_net != 0 else Decimal("0")
+        reason = (
+            f"reference matched but only {(_q2(fraction_settled * 100))}% of the expected "
+            f"payout (shortfall of {amount_diff}) was settled — below the "
+            f"{config.partial_settlement_threshold * 100:.0f}% partial-settlement threshold"
+        )
     elif amount_category in ("amount_mismatch", "fee_mismatch"):
         match_status = MatchStatus.MATCHED
         strategy = MatchStrategy.REFERENCE_AMOUNT
         confidence = 0.8 if amount_category == "fee_mismatch" else 0.75
         reason = (
-            "reference matched but settled amount does not match the standard fee schedule"
+            f"reference matched but settlement fee does not match the standard fee "
+            f"schedule (payout differs by {amount_diff})"
             if amount_category == "fee_mismatch"
-            else "reference matched but settled amount differs from the expected payout"
+            else f"reference matched but settled amount differs from the expected payout by {amount_diff}"
         )
     else:  # amount ok, but delayed
         match_status = MatchStatus.MATCHED
@@ -210,8 +220,20 @@ def _reconcile_matched_payment(
     return results, exceptions
 
 
-def _reconcile_missing_payment(payment: Payment, now: datetime) -> tuple:
+def _reconcile_missing_payment(payment: Payment, orphan_settlement_count: int, now: datetime) -> tuple:
     result_id = _deterministic_id("result", payment.transaction_id, "missing")
+    reason = "no settlement found for this payment"
+    if orphan_settlement_count:
+        # Cannot causally link a specific orphan settlement back to this
+        # payment (that's exactly what an invalid reference prevents),
+        # but flagging that unresolved settlements exist in the same
+        # batch lets a later evaluation/review layer treat this as a
+        # possible invalid-reference case rather than an unambiguous
+        # true loss, without the engine claiming a link it can't prove.
+        reason += (
+            f" ({orphan_settlement_count} settlement(s) with references that match no known "
+            "payment also exist in this batch — one may be this payment's misdirected settlement)"
+        )
     result = ReconciliationResult(
         id=result_id,
         payment_reference=payment.transaction_id,
@@ -220,7 +242,7 @@ def _reconcile_missing_payment(payment: Payment, now: datetime) -> tuple:
         match_strategy=None,
         confidence=0.0,
         amount_difference=payment.amount,
-        reason="no settlement found for this payment",
+        reason=reason,
         created_at=now,
     )
     exception = _make_exception(result_id, ExceptionType.MISSING_SETTLEMENT, 0.0, payment.amount, now, 0)
@@ -267,6 +289,9 @@ def reconcile(
         settlements_by_reference.setdefault(settlement.transaction_reference, []).append(settlement)
 
     payment_txn_ids = {payment.transaction_id for payment in payments}
+    orphan_settlement_count = sum(
+        len(matched) for reference, matched in settlements_by_reference.items() if reference not in payment_txn_ids
+    )
 
     report = ReconciliationReport()
 
@@ -275,7 +300,7 @@ def reconcile(
         if matches:
             results, exceptions = _reconcile_matched_payment(payment, matches, config, now)
         else:
-            results, exceptions = _reconcile_missing_payment(payment, now)
+            results, exceptions = _reconcile_missing_payment(payment, orphan_settlement_count, now)
         report.results.extend(results)
         report.exceptions.extend(exceptions)
 

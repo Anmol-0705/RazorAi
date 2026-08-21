@@ -169,6 +169,81 @@ class InvalidReferenceTests(unittest.TestCase):
         self.assertIn(ExceptionType.MISSING_SETTLEMENT, exception_types)
 
 
+class SmallAmountRegressionTests(unittest.TestCase):
+    """Phase 2.5: fraction-of-expected-net classification is unstable at
+    very small transaction amounts (a few paise of noise can look like a
+    huge percentage). These lock in the partial_settlement_min_absolute_diff
+    floor that keeps classification consistent across amounts."""
+
+    def test_tiny_amount_small_absolute_diff_is_mismatch_not_partial(self):
+        # amount=1.00 -> fee=0.02, tax=0.00, expected net=0.98.
+        # settled=0.50 is only 51% of net (fraction < 0.90) but the
+        # absolute shortfall (0.48) is noise-scale, not a materially
+        # incomplete payout.
+        payment = _payment(amount="1.00")
+        settlement = _settlement("STL-1", "TXN-1", "0.50", fee="0.02", tax="0.00")
+        report = reconcile([payment], [settlement], now=NOW)
+
+        result = report.results[0]
+        self.assertEqual(result.match_status, MatchStatus.MATCHED)
+        self.assertEqual(report.exceptions[0].exception_type, ExceptionType.AMOUNT_MISMATCH)
+
+    def test_tiny_amount_large_absolute_diff_is_still_partial(self):
+        # amount=100.00 -> fee=2.00, tax=0.36, expected net=97.64.
+        # settled=40.00 is a materially incomplete payout (diff=57.64,
+        # well above the absolute floor) regardless of the small base amount.
+        payment = _payment(amount="100.00")
+        settlement = _settlement("STL-1", "TXN-1", "40.00", fee="2.00", tax="0.36")
+        report = reconcile([payment], [settlement], now=NOW)
+
+        result = report.results[0]
+        self.assertEqual(result.match_status, MatchStatus.PARTIAL)
+        self.assertEqual(report.exceptions[0].exception_type, ExceptionType.PARTIAL_SETTLEMENT)
+
+    def test_absolute_floor_is_configurable(self):
+        payment = _payment(amount="1.00")
+        settlement = _settlement("STL-1", "TXN-1", "0.50", fee="0.02", tax="0.00")
+
+        lenient_config = ReconciliationConfig(partial_settlement_min_absolute_diff=Decimal("0.10"))
+        report = reconcile([payment], [settlement], config=lenient_config, now=NOW)
+
+        self.assertEqual(report.results[0].match_status, MatchStatus.PARTIAL)
+        self.assertEqual(report.exceptions[0].exception_type, ExceptionType.PARTIAL_SETTLEMENT)
+
+    def test_classification_consistent_across_amount_scales(self):
+        # Same relative shortfall (~50%) at very different absolute
+        # amounts should land on the same exception type once the
+        # shortfall clears the noise floor.
+        for amount, settled, fee, tax in [
+            ("10.00", "4.90", "0.20", "0.04"),
+            ("1000.00", "490.00", "20.00", "3.60"),
+            ("5000.00", "2450.00", "100.00", "18.00"),
+        ]:
+            with self.subTest(amount=amount):
+                payment = _payment(amount=amount)
+                settlement = _settlement("STL-1", "TXN-1", settled, fee=fee, tax=tax)
+                report = reconcile([payment], [settlement], now=NOW)
+                self.assertEqual(report.results[0].match_status, MatchStatus.PARTIAL)
+                self.assertEqual(report.exceptions[0].exception_type, ExceptionType.PARTIAL_SETTLEMENT)
+
+
+class InvalidReferenceMetadataTests(unittest.TestCase):
+    def test_missing_settlement_reason_flags_orphan_settlements_in_batch(self):
+        missing_payment = _payment(txn_id="TXN-1")
+        orphan = _settlement("STL-9", "TXN-DOES-NOT-EXIST", "500.00")
+        report = reconcile([missing_payment], [orphan], now=NOW)
+
+        missing_result = next(r for r in report.results if r.payment_reference == "TXN-1")
+        self.assertIn("1 settlement(s)", missing_result.reason)
+
+    def test_missing_settlement_reason_unflagged_when_no_orphans_exist(self):
+        missing_payment = _payment(txn_id="TXN-1")
+        report = reconcile([missing_payment], [], now=NOW)
+
+        missing_result = report.results[0]
+        self.assertNotIn("settlement(s)", missing_result.reason)
+
+
 class UnresolvedTests(unittest.TestCase):
     def test_unresolved_transaction_has_no_strategy(self):
         payment = _payment()

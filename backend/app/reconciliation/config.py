@@ -30,6 +30,13 @@ class ReconciliationConfig:
     # amount mismatch.
     partial_settlement_threshold: Decimal = Decimal("0.90")
 
+    # A shortfall must also clear this absolute floor to count as a
+    # partial settlement. Without it, tiny-value transactions (a few
+    # rupees or less) can fall below the fraction threshold from a
+    # few paise of rounding noise alone, which is a mismatch, not a
+    # materially incomplete payout. See DECISIONS.md D009.
+    partial_settlement_min_absolute_diff: Decimal = Decimal("1.00")
+
     # Settlements arriving later than this after payment.created_at are
     # flagged as delayed (still matched via reference + timestamp
     # tolerance, tier 3 of the matching hierarchy).

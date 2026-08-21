@@ -74,3 +74,49 @@ range overlap — an accepted heuristic edge case, not a bug). The
 engine's `missing_settlement` count is ground-truth `missing_settlement`
 + `invalid_reference`, because a payment whose settlement was
 misdirected is correctly flagged missing on the payment side too.
+
+## D009 — Phase 2.5: amount-mismatch/partial-settlement boundary is a
+## documented, accepted limit — not a bug
+Investigated the n=500 edge case from D008 (one `amount_mismatch` case
+reclassified as `partial_settlement`) before starting Phase 3.
+Findings, computed directly from the seeded datasets:
+- Added `ReconciliationConfig.partial_settlement_min_absolute_diff`
+  (default 1.00): a shortfall must clear this absolute floor, not just
+  the 90%-of-expected-net fraction, to count as `partial_settlement`.
+  This is a real fix for small-value transactions, where a few paise
+  of rounding noise could otherwise cross the 90% fraction line and
+  get mislabeled partial. Regression tests cover this directly
+  (`SmallAmountRegressionTests` in `test_reconciliation.py`).
+- The specific n=500 case (payment amount 100.48, shortfall 44.08) is
+  provably **not fixable** by any monotonic rule over
+  (fraction-of-net-settled, absolute shortfall) without breaking a
+  different, legitimately-labeled `partial_settlement` case in the same
+  dataset (shortfall 25.78, a *smaller* absolute number than the
+  mismatch case, but with fraction/absolute values that look identical
+  in shape). This isn't a classifier weakness: `Settlement.fee` and
+  `Settlement.tax` are identical (both "standard") in both the
+  generator's `amount_mismatch` and `partial_settlement` code paths, so
+  no observable field distinguishes them at this boundary. Ground
+  truth's label for this one record is an artifact of which code path
+  the generator happened to take, not a recoverable property of the
+  data. Read another way, this record is legitimately ambiguous by
+  real-world standards too: 45% of an expected payout going missing on
+  a ₹100 transaction reads as a partial payout, not simple rounding
+  noise — the engine's classification is defensible independent of the
+  generator's label.
+- Decision: keep the fraction-based rule (unchanged 90% threshold) as
+  the primary signal, add the absolute floor as a secondary safeguard
+  for small amounts, and treat this one boundary case as an accepted,
+  explained limitation rather than force-fitting a threshold that would
+  only move the error onto a different record. Re-verified after the
+  fix: `duplicate_settlement`, `fee_mismatch`, `delayed_settlement`
+  counts still match ground truth exactly at n=100/250/500;
+  `amount_mismatch`/`partial_settlement` unchanged from D008 (exact at
+  n=100/250, off by the same single case at n=500).
+- Also added (Phase 2.5): when a payment is missing its settlement,
+  `ReconciliationResult.reason` now notes if any orphan (invalid-
+  reference) settlements exist in the same batch, so a later evaluation
+  layer can flag the ambiguity between "genuinely missing" and
+  "settlement was misdirected elsewhere" without the engine claiming a
+  causal link it cannot prove (references in the invalid-reference
+  anomaly are uncorrelated with any real payment by construction).
