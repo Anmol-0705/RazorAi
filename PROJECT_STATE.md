@@ -44,8 +44,7 @@ Phase 1 — Data model + synthetic data generator (COMPLETE)
   the ID, so they can't collide by construction).
 
 ## Latest Commit
-- `66f9a59` (Phase 0 memory files) — Phase 1 commit hash recorded below
-  once committed this turn.
+- `8542ded` — feat: add finance data model and synthetic generator
 
 ## Next Task
 - Phase 2 candidate: deterministic reconciliation engine (pure Python,
