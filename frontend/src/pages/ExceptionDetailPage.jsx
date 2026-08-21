@@ -4,6 +4,7 @@ import api from "../api/client";
 import { useAsync } from "../hooks/useAsync";
 import StatusBadge from "../components/StatusBadge";
 import ConfirmDialog from "../components/ConfirmDialog";
+import AIResultCard from "../components/AIResultCard";
 import { LoadingState, ErrorState } from "../components/States";
 import { formatMoney, formatPercent, formatDateTime, titleCase } from "../lib/format";
 
@@ -22,6 +23,8 @@ export default function ExceptionDetailPage() {
   const [submitting, setSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const [reviewer, setReviewer] = useState("reviewer@razorpay.com");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResponse, setAiResponse] = useState(null);
 
   if (loading) return <LoadingState label="Loading exception…" />;
   if (error) return <ErrorState error={error} onRetry={refetch} />;
@@ -59,6 +62,18 @@ export default function ExceptionDetailPage() {
       setFeedback({ tone: "error", text: err.message });
     } finally {
       setSubmitting(false);
+    }
+  }
+
+  async function handleExplainWithAI() {
+    setAiLoading(true);
+    try {
+      const response = await api.explainExceptionWithAI(exc.id);
+      setAiResponse(response);
+    } catch (err) {
+      setAiResponse({ ai_available: false, error: err.message });
+    } finally {
+      setAiLoading(false);
     }
   }
 
@@ -143,6 +158,48 @@ export default function ExceptionDetailPage() {
           </dl>
         </section>
       </div>
+
+      <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-slate-900">AI explanation</h2>
+          <button
+            type="button"
+            onClick={handleExplainWithAI}
+            disabled={aiLoading}
+            className="rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50 disabled:opacity-50"
+          >
+            {aiLoading ? "Asking AI…" : "Explain with AI"}
+          </button>
+        </div>
+        <p className="mt-1 text-xs text-slate-500">
+          Uses only the system facts shown above and below — the AI never invents transaction data.
+        </p>
+        {(aiLoading || aiResponse) && (
+          <div className="mt-3">
+            <AIResultCard loading={aiLoading} response={aiResponse} aiLabel="AI Explanation">
+              {aiResponse?.explanation && (
+                <>
+                  <p>{aiResponse.explanation}</p>
+                  {aiResponse.likely_cause && (
+                    <p>
+                      <span className="font-medium">Likely cause:</span> {aiResponse.likely_cause}
+                    </p>
+                  )}
+                  {aiResponse.recommended_next_action && (
+                    <p>
+                      <span className="font-medium">Recommended next action:</span>{" "}
+                      {aiResponse.recommended_next_action}
+                    </p>
+                  )}
+                  {aiResponse.uncertainty_note && (
+                    <p className="text-xs text-violet-700">Uncertainty: {aiResponse.uncertainty_note}</p>
+                  )}
+                </>
+              )}
+            </AIResultCard>
+          </div>
+        )}
+      </section>
 
       <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <h2 className="text-sm font-semibold text-slate-900">Human review</h2>

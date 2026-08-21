@@ -229,3 +229,39 @@ was scoped narrowly — `allow_origins` lists only
 `http://localhost:5173` and `http://127.0.0.1:5173` (`allow_credentials=False`)
 rather than `"*"` or any non-local origin, so it doesn't quietly widen
 the backend's exposure while auth is still absent.
+
+## D017 — Deterministic regex router, not LLM tool-use, for controller questions
+Phase 6A's natural-language finance controller needed a "constrained
+query/data-retrieval approach" per its own safety requirement — the
+backend must decide what data a question needs before any model call.
+Two ways to do that: (a) let Claude pick from a small tool list via
+tool-use, or (b) a plain-Python router. Chose (b)
+(`backend/app/ai/query_router.py`, regex pattern matching against the
+question text) because: the task's example questions map cleanly onto
+a handful of fixed categories, a regex router has zero risk of the
+model selecting an unintended backend operation (there is no operation
+selection for it to influence at all), and it avoids adding an
+agentic tool-use loop the task explicitly said to keep out of scope
+("do not build an autonomous agent framework"). Tradeoff, accepted and
+documented in PROJECT_STATE.md: coverage is only as good as the regex
+categories — an oddly-phrased question may fall through to a generic
+`dashboard_overview` fact set, or occasionally to "unsupported," rather
+than the most specific category. This can be revisited with an
+LLM-driven tool-use router later if question coverage becomes a real
+problem in practice; the facts allowlist (`app.ai.facts`) is
+unaffected either way — it's already the same, small, fixed set.
+
+## D018 — Hallucination guardrail: reject unknown numbers, don't just prompt against them
+The safety preamble instructs the model to copy numbers verbatim from
+the given facts, but a prompt instruction alone is not enforcement.
+`backend/app/ai/service.py._check_for_fabricated_numbers` adds a
+structural check: after a successful AI call, every 3+ digit number in
+the model's free-text fields is required to appear as a substring
+somewhere in the JSON-serialized facts payload it was given; if not,
+the whole response is discarded and replaced with a structured error,
+never shown as a trustworthy figure. Numbers under 3 digits are
+exempt — they're too common in ordinary prose (rankings, small counts)
+to reliably signal a fabricated figure, whereas a fabricated financial
+amount is almost always 3+ digits. This is a heuristic, not a proof —
+documented as a known limitation in PROJECT_STATE.md rather than
+oversold as complete hallucination prevention.

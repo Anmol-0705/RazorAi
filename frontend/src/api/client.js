@@ -84,6 +84,18 @@ export const api = {
       url: `/exceptions/${exceptionId}/${action}`,
       data: { reviewer, note },
     }),
+
+  explainExceptionWithAI: (exceptionId) =>
+    request({ method: "POST", url: `/ai/exceptions/${exceptionId}/explain` }),
+
+  recommendResolutionWithAI: (exceptionId) =>
+    request({ method: "POST", url: `/ai/exceptions/${exceptionId}/recommend` }),
+
+  askAIController: ({ question, runId }) =>
+    request({ method: "POST", url: "/ai/query", data: { question, ...(runId ? { run_id: runId } : {}) } }),
+
+  summarizeRunWithAI: (runId) =>
+    request({ method: "POST", url: `/ai/runs/${runId}/summary` }),
 };
 
 export default api;

@@ -215,9 +215,44 @@ financial values from AI).
   only ever returns one run's metrics (see DECISIONS.md D014's
   reasoning, unchanged in Phase 5).
 
+## AI-Assisted Layer (Phase 6A, implemented)
+Full safety-boundary writeup: `docs/ai-architecture.md`. Summary:
+- `backend/app/ai/provider.py` — abstract `AIProvider`/`AIResult`.
+  `backend/app/ai/anthropic_provider.py` is the only concrete
+  provider and the only file importing the `anthropic` SDK; every
+  method catches every SDK failure mode and returns
+  `AIResult(available=False, error=...)` instead of raising, so an AI
+  outage never produces a 500.
+- `backend/app/ai/facts.py` is the fixed allowlist of deterministic
+  data-retrieval functions (thin wrappers over `app.services.*`) the
+  AI is ever allowed to see. `backend/app/ai/query_router.py` maps a
+  natural-language question to one of those functions using plain
+  Python regex matching — not an LLM tool-use loop — so the model
+  never picks which backend operation runs and never sees more than
+  the small facts payload the router already decided to fetch.
+- `backend/app/ai/service.py` orchestrates facts → provider → response
+  for all four capabilities (explain exception, recommend resolution,
+  answer controller query, summarize a run), and runs a hallucination
+  guardrail: any 3+ digit number in the AI's free-text output that
+  doesn't appear in the facts payload it was given causes the response
+  to be discarded in favor of a structured error.
+- `backend/app/api/routers/ai.py` — `POST /ai/exceptions/{id}/explain`,
+  `POST /ai/exceptions/{id}/recommend`, `POST /ai/query`,
+  `POST /ai/runs/{run_id}/summary`. Routes only call `app.ai.service`.
+- Frontend: `AIResultCard` renders every response with SYSTEM FACTS
+  (raw, backend-derived) visually separate from AI EXPLANATION/AI
+  ANSWER (labeled "AI-generated interpretation"); `AIControllerPage`
+  is the natural-language query panel; Exception Detail gained an
+  "Explain with AI" button using the same component.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions
 - Determining reconciliation outcomes
 - Any write path that changes money-affecting state without a
   deterministic rule or human approval
+- Executing a review action (approve/reject/mark-resolved) — the AI
+  layer (Phase 6A) is read/explain-only, never a write path
+- Choosing which backend data-retrieval function runs for a given
+  question — that's `query_router.py`'s job, deterministically, never
+  the model's

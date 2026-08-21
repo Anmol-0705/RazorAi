@@ -10,7 +10,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routers import dashboard, datasets, exceptions, health, reconciliation, review
+from app.api.routers import ai, dashboard, datasets, exceptions, health, reconciliation, review
 
 # Local dev origins only (Vite's default port plus a couple of common
 # alternates). No auth exists yet (intentionally, per project scope),
@@ -38,6 +38,7 @@ def create_app() -> FastAPI:
     app.include_router(exceptions.router)
     app.include_router(review.router)
     app.include_router(dashboard.router)
+    app.include_router(ai.router)
 
     return app
 

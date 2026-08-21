@@ -7,6 +7,7 @@ import TransactionsPage from "./pages/TransactionsPage";
 import ExceptionsPage from "./pages/ExceptionsPage";
 import ExceptionDetailPage from "./pages/ExceptionDetailPage";
 import ReviewQueuePage from "./pages/ReviewQueuePage";
+import AIControllerPage from "./pages/AIControllerPage";
 import EvaluationPage from "./pages/EvaluationPage";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
                 <Route path="/exceptions" element={<ExceptionsPage />} />
                 <Route path="/exceptions/:id" element={<ExceptionDetailPage />} />
                 <Route path="/review" element={<ReviewQueuePage />} />
+                <Route path="/ai-controller" element={<AIControllerPage />} />
                 <Route path="/evaluation" element={<EvaluationPage />} />
               </Routes>
             </main>

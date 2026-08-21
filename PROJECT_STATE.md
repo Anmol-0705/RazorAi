@@ -1,7 +1,7 @@
 # PROJECT_STATE.md
 
 ## Current Phase
-Phase 5 — React finance operations frontend (COMPLETE)
+Phase 6A — AI-assisted explanation and natural-language finance controller (COMPLETE)
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -144,9 +144,62 @@ Phase 5 — React finance operations frontend (COMPLETE)
     persisted data → start-review → approve → change persists across a
     reload → audit history shows both actions. Zero browser console/
     page errors across all six views. `npm run build` passes.
+- **AI-assisted layer** (Phase 6A) — `backend/app/ai/`, safety-boundary
+  details in `docs/ai-architecture.md`. The rule: the LLM only phrases
+  facts the backend already computed — it never calculates a total,
+  balance, match status, or exposure number, never invents transaction
+  data, never mutates a financial record, and never executes a review
+  action or picks which backend function runs.
+  - `provider.py` — abstract `AIProvider`/`AIResult`; `anthropic_provider.py`
+    — the only concrete provider and the only file importing the
+    `anthropic` SDK. Reads `ANTHROPIC_API_KEY`/`AI_MODEL` from the
+    environment (default model `claude-opus-5`); every method catches
+    every SDK exception (auth, rate limit, timeout, connection, status,
+    unexpected) and returns `AIResult(available=False, error=...)` —
+    an AI failure is always a return value, never a raised exception.
+  - `facts.py` — the fixed allowlist of deterministic data-retrieval
+    functions (thin wrappers over the existing `app.services.*` layer)
+    the AI is ever allowed to see; `query_router.py` — plain Python
+    regex matching (no LLM tool-use, no agent framework) that maps a
+    controller question to one of those functions; an unmatched,
+    off-topic question gets a canned "unsupported" response without
+    ever calling the provider.
+  - `service.py` — orchestrates facts → provider → response, and runs
+    a hallucination guardrail (`_check_for_fabricated_numbers`): any
+    3+ digit number in the AI's free-text output that doesn't appear
+    in the facts payload it was given causes the whole response to be
+    discarded in favor of a structured error, rather than shown as a
+    trustworthy number.
+  - Endpoints: `POST /ai/exceptions/{id}/explain`,
+    `POST /ai/exceptions/{id}/recommend`, `POST /ai/query`,
+    `POST /ai/runs/{run_id}/summary` — routes only call `app.ai.service`,
+    no business logic in the router.
+  - Frontend: `AIResultCard` component renders every response with
+    **SYSTEM FACTS** (raw facts JSON) visually separated from **AI
+    EXPLANATION**/**AI ANSWER** (labeled "AI-generated interpretation").
+    New `AIControllerPage` (prompt box + the task's example questions
+    as one-click buttons + running history); Exception Detail page
+    gained an "Explain with AI" button using the same component.
+  - 19 new tests (`backend/app/tests/test_ai.py`, all mocked — no live
+    LLM call anywhere in the suite): provider-unavailable/missing-key,
+    exception explanation using backend-derived facts, a numerical
+    controller query asserted to echo the backend's own computed
+    value, an unsupported question proven to never call the provider
+    (`NeverCalledProvider`), recommend-resolution, reconciliation
+    summary, direct unit tests on the `facts.py` allowlist, and two
+    hallucination-guardrail tests (a fabricated number is discarded; a
+    real one is not falsely flagged).
+  - Manually verified end-to-end with headless Chrome: AI Controller
+    page asks a question and renders facts+answer via a temporary
+    mocked-provider backend instance (not committed, local-only); the
+    same flow re-verified against the real, keyless backend to confirm
+    the "AI unavailable" banner renders correctly instead. No live
+    ANTHROPIC_API_KEY exists in this environment — no live provider
+    call was made or claimed anywhere in this phase.
 
 ## Current Work
-- None. Phase 5 closed, awaiting Phase 6 instruction.
+- None. Phase 6A closed, awaiting the next phase (evaluation
+  implementation was explicitly out of scope for this phase).
 
 ## Known Issues
 - D006's original constraint (no `pip install` in the Phase 1 sandbox)
@@ -201,32 +254,55 @@ Phase 5 — React finance operations frontend (COMPLETE)
   verification aids (hardcode a Chrome path found on this machine via
   `playwright-core`) — not part of `npm test`/CI, and not meant to be
   portable as-is.
+- No live `ANTHROPIC_API_KEY` exists in this environment. Every AI
+  code path is exercised via a mocked `AIProvider` (unit tests) or a
+  temporary local mock-provider process (manual UI verification, not
+  committed) — the real Anthropic API has never actually been called
+  from this project. The provider/prompt/JSON-parsing code is written
+  against the documented API shape but is unverified against a live
+  response.
+- `query_router.py`'s regex categories are necessarily approximate —
+  a question using unexpected phrasing may route to `dashboard_overview`
+  (a generic but real, non-fabricated fact set) rather than the most
+  specific category, or occasionally to "unsupported" when it
+  shouldn't. This is a deliberate simplicity/safety tradeoff (see
+  DECISIONS.md D017), not a bug, but it means the controller's
+  question coverage is narrower than a true NLU system's.
+- The hallucination guardrail (`_check_for_fabricated_numbers`) is a
+  heuristic (3+ digit numbers only, exact-substring match against the
+  facts JSON) — it can't catch a fabricated 1-2 digit figure, and a
+  correct number formatted differently than in the facts (e.g. `1,234`
+  vs `1234.00`) could in principle be falsely flagged, though the
+  provider is explicitly instructed to copy values verbatim.
 
 ## Tests
 - Unit (no DB): `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
-- API/integration (`test_api.py`, needs `razorrecon_test` DB migrated —
-  see docs/api.md): included in the same discover command
-- Result: **84/84 passed**, 0 failures, 0 errors (run locally, this
-  session, against real PostgreSQL 18)
-- Frontend: `cd frontend && npm run build` passes cleanly (Vite +
-  Tailwind v4 + Rollup, one chunk-size warning only, no errors)
-- Frontend manual/E2E verification (headless Chrome via Playwright,
-  `frontend/scripts/verify.mjs` / `verify_review.mjs` / `verify_pages.mjs`,
-  against the real FastAPI + PostgreSQL backend, not mocked): all six
-  views (Dashboard, Transactions, Exceptions, Exception Detail, Review
-  Queue, Evaluation) render real persisted data with zero browser
-  console/page errors; full generate-dataset → run-reconciliation →
-  start-review → approve flow confirmed to persist across a page
-  reload, with both actions correctly appearing in audit history.
+- API/integration (`test_api.py`, `test_ai.py`; needs `razorrecon_test`
+  DB migrated — see docs/api.md): included in the same discover command
+- Result: **103/103 passed**, 0 failures, 0 errors (run locally, this
+  session, against real PostgreSQL 18; 84 from Phase 4/5 + 19 new
+  `test_ai.py` tests, all with a mocked `AIProvider` — no live LLM call
+  anywhere in the suite)
+- Frontend: `cd frontend && npm run build` passes cleanly
+- Frontend manual/E2E verification (headless Chrome via Playwright):
+  AI Controller page asks each example question and renders
+  facts+answer (verified against a temporary mocked-provider backend
+  instance — local-only, not committed); the same flow re-verified
+  against the real, keyless backend to confirm the AI-unavailable
+  banner renders correctly; Exception Detail's "Explain with AI" button
+  verified the same way. Zero browser console/page errors in either
+  case. Dashboard/Transactions/Exceptions/Review Queue re-confirmed
+  unaffected by the AI layer's presence.
 - Ground-truth verification from Phase 2.5 (D008/D009) is unchanged —
   no reconciliation logic was modified in this phase.
 
 ## Latest Commit
-- `5c1daa7` — feat: add persistent FastAPI reconciliation backend
-  (pre-Phase-5 HEAD)
+- `0234f11` — feat: build React finance operations dashboard
+  (pre-Phase-6A HEAD)
 
 ## Next Task
-- Phase 6 candidate: Docker/docker-compose for the full stack
-  (Postgres + backend + frontend), or AI-assisted explanation/NL-query
-  endpoints behind the `ai/` provider abstraction described in
-  ARCHITECTURE.md — whichever the user prioritizes next.
+- Evaluation implementation (explicitly deferred out of this phase):
+  scoring reconciliation output against `data/ground_truth/eval` and
+  wiring real numbers into the existing Evaluation page placeholder.
+  Docker/docker-compose for the full stack remains a separate,
+  still-pending item from Phase 5.

@@ -5,6 +5,7 @@ const LINKS = [
   { to: "/transactions", label: "Transactions" },
   { to: "/exceptions", label: "Exceptions" },
   { to: "/review", label: "Review Queue" },
+  { to: "/ai-controller", label: "AI Controller" },
   { to: "/evaluation", label: "Evaluation" },
 ];
 
