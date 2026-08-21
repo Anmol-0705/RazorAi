@@ -1,7 +1,7 @@
 # PROJECT_STATE.md
 
 ## Current Phase
-Phase 4 — Persistent FastAPI + PostgreSQL backend (COMPLETE)
+Phase 5 — React finance operations frontend (COMPLETE)
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -90,11 +90,63 @@ Phase 4 — Persistent FastAPI + PostgreSQL backend (COMPLETE)
     `FailureHandlingTests`, which injects a mid-run exception and
     asserts zero partial rows), then the run row is marked `failed`
     with the error message in its own follow-up transaction.
-  - 82 unittest tests total (62 unit + 20 in `test_api.py`, run against
+  - 84 unittest tests total (62 unit + 22 in `test_api.py`, run against
     a dedicated `razorrecon_test` PostgreSQL database, never dev data).
+  - Phase 5 additive backend enrichments (discovered while wiring the
+    UI — no matching/persistence logic touched): `ReconciliationResultResponse`
+    now also carries denormalized payment/settlement fields (order_id,
+    payment_amount, currency, payment_method, payment_status,
+    settlement_status, settled_amount, fee, tax) and the linked
+    exception's type/status, joined in
+    `reconciliation_service._enrich_results`; `ExceptionDetailResponse`
+    gained a `result` field (the same enriched result) so the exception
+    detail view has payment/settlement context without a second
+    endpoint; `GET /exceptions` gained an optional `run_id` filter (the
+    column already existed) so exception views can be scoped to one
+    run. `CORSMiddleware` added to the FastAPI app, restricted to the
+    Vite dev origins (`http://localhost:5173` / `127.0.0.1:5173`) —
+    there is still no authentication (intentional, per project scope).
+- **React finance operations frontend** (Phase 5) — `frontend/`
+  (Vite + React + Tailwind v4 + Recharts + Axios + React Router)
+  - `src/api/client.js` — single Axios instance + one function per
+    endpoint; all requests go through it, no raw Axios calls in
+    components; base URL from `VITE_API_BASE_URL` (`.env`/`.env.example`).
+  - `src/context/RunContext.jsx` — the only shared state: current
+    `datasetId`/`runId` (persisted to localStorage) plus a
+    `refreshKey`/`bumpRefresh()` used to re-trigger data fetches after a
+    write. Bootstraps from `GET /dashboard/summary` on first load so a
+    page refresh doesn't lose context. No Redux/other store — plain
+    `useState`/`useContext` plus a tiny `useAsync` hook was enough.
+  - Pages: Dashboard (run control + real summary metrics + 3 charts
+    derived from `/dashboard/summary` and `/exceptions`), Transactions
+    (enriched `/reconciliation/runs/{id}/results`, status filter),
+    Exceptions (list + type/severity/status filters), Exception Detail
+    (financial discrepancy panel, payment/settlement/reconciliation
+    detail, the full review workflow, audit history), Review Queue
+    (pending/in-review exceptions sorted by severity then financial
+    impact), Evaluation (explicit placeholder — no ground-truth
+    scoring endpoint exists yet, so it says so instead of showing
+    invented numbers).
+  - UX: loading/empty/error states with retry on every data view,
+    disabled buttons + a confirm dialog on approve/reject/mark-resolved
+    (start-review and add-note are non-destructive, no confirm),
+    reviewer note field, success/error feedback banners.
+  - Dashboard explicitly labels which run its numbers describe and
+    states the backend doesn't aggregate across runs; a note next to
+    the charts states the settlement-trend chart is omitted because no
+    multi-run time series endpoint exists yet, and that a documented
+    exception-classification boundary case exists (D009) — no accuracy
+    claim is made anywhere in the UI.
+  - Verified with a headless Chrome (Playwright, driving the system
+    Chrome install — `frontend/scripts/verify*.mjs`, local dev aids,
+    not part of the test suite): generate dataset → run reconciliation
+    → dashboard/transactions/exceptions/review-queue all show real
+    persisted data → start-review → approve → change persists across a
+    reload → audit history shows both actions. Zero browser console/
+    page errors across all six views. `npm run build` passes.
 
 ## Current Work
-- None. Phase 4 closed, awaiting Phase 5 instruction.
+- None. Phase 5 closed, awaiting Phase 6 instruction.
 
 ## Known Issues
 - D006's original constraint (no `pip install` in the Phase 1 sandbox)
@@ -124,39 +176,57 @@ Phase 4 — Persistent FastAPI + PostgreSQL backend (COMPLETE)
   identical in both the generator's `amount_mismatch` and
   `partial_settlement` code paths, so there's no recoverable
   distinguishing signal. Accepted and documented in DECISIONS.md D009.
-- React review UI, AI integration, authentication: not started
-  (correctly out of scope for Phase 4).
+- AI integration, authentication: not started (correctly out of scope
+  for Phase 5).
 - No Docker/docker-compose for PostgreSQL — this environment has a
   local PostgreSQL 18 Windows service already running, so none was
-  added (`# 15` said add Docker only if necessary). A docker-compose
-  for Postgres is a reasonable Phase 5 addition for portability.
+  added. Still pending, deferred to a later phase per this phase's
+  instructions.
 - `dashboard_service.compute_summary()` defaults to the most recently
   *completed* run when no `run_id` is given; it does not aggregate
   across all historical runs (re-reconciling the same dataset would
-  otherwise double-count transactions across runs).
+  otherwise double-count transactions across runs). The frontend
+  mirrors this: Dashboard/Transactions/Exceptions/Review Queue are all
+  scoped to one run at a time, never an aggregate.
 - Alembic's autogenerate was only exercised once (the initial
-  schema) — not yet tested through a real schema-change migration.
+  schema) — not yet tested through a real schema-change migration
+  (Phase 5's response-shape changes didn't touch the DB schema, only
+  Pydantic response models, so no new migration was needed).
+- Evaluation page is an intentional placeholder: no backend endpoint
+  scores reconciliation output against `data/ground_truth/eval` yet.
+- The Recharts/Recharts+Vite production bundle is ~700KB (single
+  chunk, no code-splitting) — fine for a demo, worth revisiting with
+  route-based `lazy()` splitting if the app grows.
+- `frontend/scripts/verify*.mjs` are local, environment-specific
+  verification aids (hardcode a Chrome path found on this machine via
+  `playwright-core`) — not part of `npm test`/CI, and not meant to be
+  portable as-is.
 
 ## Tests
 - Unit (no DB): `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
 - API/integration (`test_api.py`, needs `razorrecon_test` DB migrated —
   see docs/api.md): included in the same discover command
-- Result: **82/82 passed**, 0 failures, 0 errors (run locally, this
+- Result: **84/84 passed**, 0 failures, 0 errors (run locally, this
   session, against real PostgreSQL 18)
-- Manual end-to-end verification against the dev `razorrecon` database
-  (see docs/api.md for the flow): health check, demo dataset
-  generation, reconciliation run, persisted results, dashboard
-  summary, exception detail, and a review approval, all confirmed via
-  direct HTTP calls through FastAPI's `TestClient`.
+- Frontend: `cd frontend && npm run build` passes cleanly (Vite +
+  Tailwind v4 + Rollup, one chunk-size warning only, no errors)
+- Frontend manual/E2E verification (headless Chrome via Playwright,
+  `frontend/scripts/verify.mjs` / `verify_review.mjs` / `verify_pages.mjs`,
+  against the real FastAPI + PostgreSQL backend, not mocked): all six
+  views (Dashboard, Transactions, Exceptions, Exception Detail, Review
+  Queue, Evaluation) render real persisted data with zero browser
+  console/page errors; full generate-dataset → run-reconciliation →
+  start-review → approve flow confirmed to persist across a page
+  reload, with both actions correctly appearing in audit history.
 - Ground-truth verification from Phase 2.5 (D008/D009) is unchanged —
   no reconciliation logic was modified in this phase.
 
 ## Latest Commit
-- `c8a6fe1` — feat: add bounded auto resolution and review audit
-  (pre-Phase-4 HEAD)
+- `5c1daa7` — feat: add persistent FastAPI reconciliation backend
+  (pre-Phase-5 HEAD)
 
 ## Next Task
-- Phase 5 candidate: React review UI consuming this API (exception
-  queue, review actions, dashboard charts), or AI-assisted
-  explanation/NL-query endpoints behind the `ai/` provider abstraction
-  described in ARCHITECTURE.md — whichever the user prioritizes next.
+- Phase 6 candidate: Docker/docker-compose for the full stack
+  (Postgres + backend + frontend), or AI-assisted explanation/NL-query
+  endpoints behind the `ai/` provider abstraction described in
+  ARCHITECTURE.md — whichever the user prioritizes next.

@@ -138,6 +138,17 @@ class ReconciliationRunTests(ApiTestCase):
         self.assertTrue(all(r["match_status"] == "matched" for r in results))
         self.assertGreater(len(results), 0)
 
+    def test_results_are_enriched_with_payment_and_settlement_fields(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        run_id = self._run_reconciliation(dataset_id).json()["run_id"]
+
+        results = client.get(f"/reconciliation/runs/{run_id}/results", params={"status": "matched"}).json()
+        sample = results[0]
+        self.assertIsNotNone(sample["order_id"])
+        self.assertIsNotNone(sample["payment_amount"])
+        self.assertIsNotNone(sample["payment_method"])
+        self.assertIsNotNone(sample["settlement_status"])
+
     def test_get_run_not_found(self):
         resp = client.get("/reconciliation/runs/does-not-exist")
         self.assertEqual(resp.status_code, 404)
@@ -247,6 +258,20 @@ class ExceptionListingTests(ApiTestCase):
         self.assertEqual(body["exception"]["id"], exc_id)
         self.assertIn("auto_resolutions", body)
         self.assertIn("review_audits", body)
+
+    def test_get_exception_detail_includes_enriched_payment_and_settlement_fields(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        self._run_reconciliation(dataset_id)
+
+        exc = client.get("/exceptions", params={"exception_type": "amount_mismatch"}).json()[0]
+        detail = client.get(f"/exceptions/{exc['id']}").json()
+
+        result = detail["result"]
+        self.assertIsNotNone(result)
+        self.assertEqual(result["match_strategy"], "reference_amount")
+        self.assertIsNotNone(result["payment_amount"])
+        self.assertIsNotNone(result["settled_amount"])
+        self.assertIsNotNone(result["order_id"])
 
     def test_get_exception_not_found(self):
         resp = client.get("/exceptions/does-not-exist")

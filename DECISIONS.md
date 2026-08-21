@@ -197,3 +197,35 @@ second database, `razorrecon_test`, was created for `test_api.py` so
 integration tests never touch dev data. A docker-compose file remains
 a reasonable addition for portability to environments without a local
 Postgres install, but wasn't needed here.
+
+## D015 — Enriched read responses instead of new endpoints for the UI
+Building the Transactions and Exception Detail views surfaced a real
+integration gap: `GET /reconciliation/runs/{id}/results` and
+`GET /exceptions/{id}` only returned reconciliation-engine fields
+(match status, strategy, confidence, amount difference) with no
+payment/settlement detail (order id, gross amount, payment method,
+settlement status, settled amount, fee, tax) and no exception-type/
+review-status for a result row — because `PaymentORM`/`SettlementORM`
+were never joined against `ReconciliationResultORM`/`ExceptionCaseORM`
+in Phase 4. Rather than add new endpoints, `reconciliation_service.py`
+gained `_enrich_results()`, which batch-joins the payment/settlement/
+exception rows by reference and is reused by both
+`list_results()` (Transactions) and `exception_service.get_exception_detail()`
+(Exception Detail, via a `result` field on `ExceptionDetailResponse`).
+The new response fields are all optional (`None` when a payment,
+settlement, or exception doesn't exist for that row — e.g. an orphaned
+settlement has no payment), so this is additive, not a breaking schema
+change; no existing response field changed shape. Caught one real bug
+in this pass: the `/exceptions/{id}` route built `ExceptionDetailResponse`
+without passing the `result` field through at all — fixed and covered
+by a new `test_api.py` test.
+
+## D016 — CORS restricted to the Vite dev origins, not opened broadly
+The frontend (Vite on `:5173`) and backend (FastAPI on `:8000`) are
+different origins, so the browser blocked every request until
+`CORSMiddleware` was added to `app.api.main.create_app()`. Given
+D014/PROJECT_STATE.md's explicit "no authentication yet" stance, this
+was scoped narrowly — `allow_origins` lists only
+`http://localhost:5173` and `http://127.0.0.1:5173` (`allow_credentials=False`)
+rather than `"*"` or any non-local origin, so it doesn't quietly widen
+the backend's exposure while auth is still absent.

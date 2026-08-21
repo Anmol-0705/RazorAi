@@ -62,6 +62,24 @@ class ReconciliationResultResponse(BaseModel):
     reason: str
     created_at: datetime
 
+    # Denormalized payment/settlement/exception fields, joined in
+    # app.services.reconciliation_service for the transaction-list and
+    # exception-detail views. Optional because a row's payment or
+    # settlement side (or associated exception) may not exist — e.g. an
+    # orphaned settlement has no payment.
+    order_id: Optional[str] = None
+    payment_amount: Optional[MoneyStr] = None
+    currency: Optional[str] = None
+    payment_method: Optional[str] = None
+    payment_status: Optional[str] = None
+    settlement_status: Optional[str] = None
+    settled_amount: Optional[MoneyStr] = None
+    fee: Optional[MoneyStr] = None
+    tax: Optional[MoneyStr] = None
+    exception_type: Optional[str] = None
+    exception_review_status: Optional[str] = None
+    exception_id: Optional[str] = None
+
     model_config = {"from_attributes": True}
 
 
@@ -112,6 +130,7 @@ class ReviewAuditResponse(BaseModel):
 
 class ExceptionDetailResponse(BaseModel):
     exception: ExceptionCaseResponse
+    result: Optional[ReconciliationResultResponse] = None
     auto_resolutions: list[AutoResolutionRecordResponse]
     review_audits: list[ReviewAuditResponse]
 

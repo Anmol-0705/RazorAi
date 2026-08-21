@@ -16,11 +16,12 @@ def get_exceptions(
     status: Optional[str] = Query(default=None),
     severity: Optional[str] = Query(default=None),
     exception_type: Optional[str] = Query(default=None),
+    run_id: Optional[str] = Query(default=None),
     limit: int = Query(default=100, gt=0, le=1000),
     db: Session = Depends(get_db),
 ):
     return exception_service.list_exceptions(
-        db, status=status, severity=severity, exception_type=exception_type, limit=limit
+        db, status=status, severity=severity, exception_type=exception_type, run_id=run_id, limit=limit
     )
 
 
@@ -32,6 +33,7 @@ def get_exception(exception_id: str, db: Session = Depends(get_db)) -> Exception
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     return ExceptionDetailResponse(
         exception=detail["exception"],
+        result=detail["result"],
         auto_resolutions=detail["auto_resolutions"],
         review_audits=detail["review_audits"],
     )

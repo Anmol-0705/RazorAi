@@ -219,13 +219,87 @@ def list_runs(db: Session, limit: int = 50) -> list[ReconciliationRunORM]:
     )
 
 
+def _enrich_result(
+    result: ReconciliationResultORM,
+    payment_by_txn: dict[str, PaymentORM],
+    settlement_by_id: dict[str, SettlementORM],
+    exception_by_result_id: dict[str, ExceptionCaseORM],
+) -> dict:
+    payment = payment_by_txn.get(result.payment_reference)
+    settlement = settlement_by_id.get(result.settlement_reference) if result.settlement_reference else None
+    exc = exception_by_result_id.get(result.id)
+    return {
+        "id": result.id,
+        "run_id": result.run_id,
+        "payment_reference": result.payment_reference,
+        "settlement_reference": result.settlement_reference,
+        "match_status": result.match_status,
+        "match_strategy": result.match_strategy,
+        "confidence": result.confidence,
+        "amount_difference": result.amount_difference,
+        "reason": result.reason,
+        "created_at": result.created_at,
+        "order_id": payment.order_id if payment else None,
+        "payment_amount": payment.amount if payment else None,
+        "currency": payment.currency if payment else None,
+        "payment_method": payment.payment_method if payment else None,
+        "payment_status": payment.payment_status if payment else None,
+        "settlement_status": settlement.settlement_status if settlement else None,
+        "settled_amount": settlement.settled_amount if settlement else None,
+        "fee": settlement.fee if settlement else None,
+        "tax": settlement.tax if settlement else None,
+        "exception_type": exc.exception_type if exc else None,
+        "exception_review_status": exc.review_status if exc else None,
+        "exception_id": exc.id if exc else None,
+    }
+
+
 def list_results(
     db: Session,
     run_id: str,
     match_status: str | None = None,
-) -> list[ReconciliationResultORM]:
+) -> list[dict]:
     get_run(db, run_id)  # 404 if the run doesn't exist
     stmt = select(ReconciliationResultORM).where(ReconciliationResultORM.run_id == run_id)
     if match_status:
         stmt = stmt.where(ReconciliationResultORM.match_status == match_status)
-    return list(db.execute(stmt.order_by(ReconciliationResultORM.payment_reference)).scalars().all())
+    results = list(db.execute(stmt.order_by(ReconciliationResultORM.payment_reference)).scalars().all())
+    return _enrich_results(db, run_id, results)
+
+
+def _enrich_results(db: Session, run_id: str, results: list[ReconciliationResultORM]) -> list[dict]:
+    if not results:
+        return []
+    payment_refs = {r.payment_reference for r in results}
+    settlement_refs = {r.settlement_reference for r in results if r.settlement_reference}
+
+    payment_by_txn = {
+        p.transaction_id: p
+        for p in db.execute(
+            select(PaymentORM).where(PaymentORM.transaction_id.in_(payment_refs))
+        ).scalars()
+    }
+    settlement_by_id = {
+        s.settlement_id: s
+        for s in db.execute(
+            select(SettlementORM).where(SettlementORM.settlement_id.in_(settlement_refs))
+        ).scalars()
+    } if settlement_refs else {}
+    exception_by_result_id = {
+        e.reconciliation_result_id: e
+        for e in db.execute(
+            select(ExceptionCaseORM).where(ExceptionCaseORM.run_id == run_id)
+        ).scalars()
+    }
+
+    return [
+        _enrich_result(result, payment_by_txn, settlement_by_id, exception_by_result_id)
+        for result in results
+    ]
+
+
+def get_result_by_id(db: Session, run_id: str, result_id: str) -> dict:
+    result = db.get(ReconciliationResultORM, result_id)
+    if result is None or result.run_id != run_id:
+        raise NotFoundError(f"no reconciliation result found with id '{result_id}' in run '{run_id}'")
+    return _enrich_results(db, run_id, [result])[0]

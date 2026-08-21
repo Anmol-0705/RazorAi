@@ -177,6 +177,44 @@ financial values from AI).
   designed for in-memory reproducibility within one run, not
   uniqueness across many persisted runs of the same dataset.
 
+## Frontend (Phase 5, implemented)
+- `frontend/` — Vite + React + Tailwind CSS v4 + Recharts + Axios +
+  React Router. No Redux/other state library — a single
+  `RunContext` (React context + `useState`, `frontend/src/context/RunContext.jsx`)
+  tracks the current dataset/run and a `refreshKey` used to
+  re-trigger fetches after a write; a small `useAsync` hook
+  (`frontend/src/hooks/useAsync.js`) is the only data-fetching
+  abstraction. This was enough for six views with no cross-cutting
+  data needs beyond "what run are we looking at."
+- `frontend/src/api/client.js` is the single Axios boundary: one
+  function per backend endpoint, centralized base URL
+  (`VITE_API_BASE_URL`) and error normalization. No component calls
+  Axios directly.
+- Layering mirrors the backend's: `pages/*` (one per view) call
+  `api/client.js` functions directly (there was no orchestration
+  complex enough to warrant a separate frontend "service" layer);
+  shared presentation lives in `components/*` (`StatusBadge`,
+  `StatCard`, loading/empty/error states, `ConfirmDialog`, the
+  dataset/run control widget, the app shell).
+- The backend was extended additively (no matching/persistence logic
+  touched) to support the UI once a real integration gap was found:
+  `ReconciliationResultResponse` and `ExceptionDetailResponse` now
+  carry denormalized payment/settlement/exception fields (see
+  DECISIONS.md D015), `GET /exceptions` gained an optional `run_id`
+  filter, and `CORSMiddleware` was added (restricted to the Vite dev
+  origins — see DECISIONS.md D016).
+- Dashboard charts are built only from fields the API actually
+  returns: reconciliation-status and exception-type distributions and
+  amount-at-risk-by-category are derived client-side from
+  `GET /exceptions` (a real, not fabricated, derivation); a
+  settlement/reconciliation trend chart was left out entirely because
+  it would need a multi-run time series the API doesn't expose.
+- Every run-scoped view (Dashboard, Transactions, Exceptions, Review
+  Queue) is explicitly labeled with which run its numbers belong to
+  and never aggregates across runs, since `dashboard_service` itself
+  only ever returns one run's metrics (see DECISIONS.md D014's
+  reasoning, unchanged in Phase 5).
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions
