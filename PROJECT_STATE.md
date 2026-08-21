@@ -21,7 +21,8 @@ Phase 0 — Project initialization (memory files + repo scaffold only)
 - None written yet. No test run performed.
 
 ## Latest Commit
-- (none yet — memory files not committed until this task is confirmed)
+- `63725d5` — chore: initialize project memory files (PROJECT_STATE,
+  ARCHITECTURE, DECISIONS)
 
 ## Next Task
 - TBD — awaiting Phase 1 instruction from project owner.
