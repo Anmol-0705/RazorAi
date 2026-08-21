@@ -303,6 +303,30 @@ Phase 7 — Held-out ground-truth evaluation (COMPLETE)
   no Docker, no auth, no CI/CD, no bundle optimization, no business
   logic or reconciliation/evaluation/AI-architecture changes.
 
+## Deployment Fix — migrations not applied on live Render service
+Live symptom: `GET /health` returned `200` but every DB-backed route
+500'd with `relation "reconciliation_runs" does not exist` — the
+hosted schema was never migrated, and Render's Free plan has no
+shell access to run `alembic upgrade head` by hand.
+- Root cause: `render.yaml`'s `startCommand` already chained
+  `alembic upgrade head && uvicorn ...` (set in the previous
+  deployment-prep pass), but `render.yaml` only takes effect for a
+  service created via Render's "Blueprint" flow — a plain "Web
+  Service" pointed at this repo ignores it, and keeps whatever Start
+  Command was set by hand in the dashboard.
+- Fix (this pass): no repo code change was needed for the command
+  itself (it was already correct); `docs/deployment.md` now has an
+  explicit, unmissable callout under "Backend on Render" documenting
+  the Blueprint-vs-manual-Web-Service distinction, the exact Start
+  Command to paste into Settings → Start Command on an existing
+  manually-created service, and the `/health`-200-but-500-elsewhere
+  symptom that identifies this specific failure mode.
+- **Manual step still required, outside repo scope:** open the live
+  Render service → Settings → Start Command → paste
+  `alembic upgrade head && uvicorn app.api.main:app --host 0.0.0.0 --port $PORT`
+  → trigger a manual deploy (or push any commit, which redeploys and
+  re-runs it).
+
 ## Remaining Manual Deployment Steps
 1. **Revoke/rotate the leaked Anthropic key** in the Anthropic console
    — required regardless of the git-side fix in this pass.

@@ -20,7 +20,23 @@ see PROJECT_STATE.md for the exact remaining manual steps.
     `FastAPI` app; the ASGI server invocation controls host/port).
   - Running `alembic upgrade head` before `uvicorn` on every deploy
     keeps the hosted schema in sync with `backend/alembic/versions/`
-    without a separate manual migration step.
+    without a separate manual migration step — required on Render's
+    Free plan, which has no shell/SSH access to run `alembic upgrade
+    head` by hand.
+  - **`render.yaml` only applies automatically if the service was
+    created via Render's "Blueprint" flow** (New → Blueprint, pointing
+    at this repo). A service created via "New → Web Service" and
+    pointed at this repo instead ignores `render.yaml` entirely — its
+    Start Command lives only in the Render dashboard
+    (Settings → Start Command) and must be pasted in by hand:
+    ```
+    alembic upgrade head && uvicorn app.api.main:app --host 0.0.0.0 --port $PORT
+    ```
+    Symptom of a stale/missing Start Command: `/health` returns `200`
+    (it doesn't touch any table) but every other route 500s with
+    `relation "..." does not exist` because the schema was never
+    migrated. Fix: update the Start Command in the dashboard as above,
+    then trigger a manual deploy (or push any commit) to re-run it.
 - **Environment variables:**
   - `DATABASE_URL` (required) — see PostgreSQL section below for the
     exact format. The app reads it via `app.db.base.DATABASE_URL`; if
