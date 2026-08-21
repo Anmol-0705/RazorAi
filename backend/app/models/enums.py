@@ -82,3 +82,9 @@ class RecommendedAction(str, Enum):
     ESCALATE = "escalate"
     IGNORE = "ignore"
     REQUEST_INFO = "request_info"
+
+
+class ResolutionType(str, Enum):
+    FEE_ADJUSTMENT_ACCEPTED = "fee_adjustment_accepted"
+    DELAY_ACCEPTED = "delay_accepted"
+    DUPLICATE_SUPPRESSED = "duplicate_suppressed"

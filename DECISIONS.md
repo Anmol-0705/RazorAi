@@ -120,3 +120,34 @@ Findings, computed directly from the seeded datasets:
   "settlement was misdirected elsewhere" without the engine claiming a
   causal link it cannot prove (references in the invalid-reference
   anomaly are uncorrelated with any real payment by construction).
+
+## D010 — Auto-resolution is a separate, stricter gate than the classifier
+Phase 3 adds `backend/app/auto_resolution/`, kept deliberately separate
+from `backend/app/reconciliation/`: the reconciliation engine decides
+what happened; auto-resolution decides whether it's safe to close
+automatically. The reconciliation classifier's `auto_resolvable` flag
+(D008/D009 context) is only a first-pass candidate signal — the
+auto-resolution engine re-checks each candidate against its own bounded
+caps (`AutoResolutionConfig`) before acting, and a case failing that
+stricter check falls through to human review even if the classifier
+marked it a candidate. Concretely: `duplicate_settlement` is now a
+classifier candidate too (previously `REQUEST_INFO`/not auto-resolvable
+in Phase 2), but is only actually auto-resolved when the duplicate's
+amount exactly matches the primary settlement — a mismatched-amount
+"duplicate" could be a real second transaction and is never
+auto-resolved. Auto-resolution is idempotent by construction: an
+exception whose `review_status` is no longer `PENDING` is left alone on
+a repeat run, so replays never double-apply or double-log a resolution.
+
+## D011 — ReviewAudit reused as-is for both human and automated actors
+`ReviewAudit` (Phase 1 schema-only) is populated for the first time in
+Phase 3 for human review actions (`approve`/`reject`/`mark_resolved`/
+`add_note`/`start_review` in `backend/app/review/workflow.py`) and was
+generic enough to need no changes: `reviewer` holds either a human
+identifier or a system actor string, `decision` reuses `ReviewStatus`.
+Auto-resolution actions get their own richer, dedicated
+`AutoResolutionRecord` type instead of overloading `ReviewAudit`,
+because the task requires fields `ReviewAudit` doesn't carry
+(resolution type, financial impact, previous/new status) and conflating
+"a human reviewed this" with "the system auto-resolved this" into one
+schema would make the audit trail harder to query later.

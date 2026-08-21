@@ -22,7 +22,11 @@ class ExceptionPolicy:
 
 _POLICY: dict[ExceptionType, ExceptionPolicy] = {
     ExceptionType.MISSING_SETTLEMENT: ExceptionPolicy(Severity.HIGH, RecommendedAction.ESCALATE, False),
-    ExceptionType.DUPLICATE_SETTLEMENT: ExceptionPolicy(Severity.MEDIUM, RecommendedAction.REQUEST_INFO, False),
+    # A duplicate settlement is only a *candidate* for auto-resolution
+    # here; the auto-resolution engine (backend/app/auto_resolution/)
+    # applies its own stricter check (financial_impact == 0, i.e. an
+    # unambiguous exact-amount duplicate) before actually acting.
+    ExceptionType.DUPLICATE_SETTLEMENT: ExceptionPolicy(Severity.MEDIUM, RecommendedAction.AUTO_RESOLVE, True),
     ExceptionType.AMOUNT_MISMATCH: ExceptionPolicy(Severity.MEDIUM, RecommendedAction.REQUEST_INFO, False),
     ExceptionType.PARTIAL_SETTLEMENT: ExceptionPolicy(Severity.HIGH, RecommendedAction.ESCALATE, False),
     ExceptionType.FEE_MISMATCH: ExceptionPolicy(Severity.LOW, RecommendedAction.AUTO_RESOLVE, True),

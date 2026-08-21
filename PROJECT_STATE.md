@@ -1,7 +1,7 @@
 # PROJECT_STATE.md
 
 ## Current Phase
-Phase 2 — Deterministic reconciliation engine (COMPLETE)
+Phase 3 — Bounded auto-resolution + human review (COMPLETE)
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -27,11 +27,35 @@ Phase 2 — Deterministic reconciliation engine (COMPLETE)
   - `classifier.py` — deterministic severity/recommended-action/
     auto_resolvable table per `ExceptionType`, laid out so Phase 3 can
     add bounded auto-resolution without touching matching logic
-- 37 unittest tests across 4 files — `backend/app/tests/` (24 Phase 1
-  + 13 new reconciliation tests)
+- **Phase 2.5 correctness fix** — `backend/app/reconciliation/config.py`
+  adds `partial_settlement_min_absolute_diff` (default 1.00): a
+  shortfall must clear this absolute floor, not just the 90%-fraction
+  threshold, to count as `partial_settlement`. Fixes real instability
+  at small transaction amounts; the one remaining n=500 boundary case
+  is a proven, documented, irreducible ambiguity (DECISIONS.md D009).
+  Missing-settlement `reason` text now flags when orphan
+  (invalid-reference) settlements exist in the same batch.
+- **Bounded auto-resolution** — `backend/app/auto_resolution/`
+  - `config.py` — rupee caps gating which exceptions are safe to
+    auto-resolve (`AutoResolutionConfig`)
+  - `engine.py` — pure `auto_resolve(exceptions, config, now) ->
+    AutoResolutionReport`; only auto-resolves `fee_mismatch` (below
+    cap), `delayed_settlement` (no financial impact), and
+    `duplicate_settlement` (exact-amount match only); idempotent on
+    re-runs over already-resolved exceptions
+  - `backend/app/models/auto_resolution.py` — `AutoResolutionRecord`
+    audit schema (exception id, resolution type, reason, actor,
+    timestamp, financial impact, previous/new status)
+- **Human review workflow** — `backend/app/review/workflow.py`:
+  `approve`/`reject`/`mark_resolved`/`add_note`/`start_review`, each
+  producing an updated `ExceptionCase` + a `ReviewAudit` entry
+  (`backend/app/models/audit.py`, populated for the first time).
+  Domain/backend logic only — no FastAPI routes, no React UI.
+- 62 unittest tests across 6 files — `backend/app/tests/` (24 Phase 1
+  + 19 reconciliation + 12 auto-resolution + 7 review-workflow)
 
 ## Current Work
-- None. Phase 2 closed, awaiting Phase 3 instruction.
+- None. Phase 3 closed, awaiting Phase 4 instruction.
 
 ## Known Issues
 - Sandbox has no network access: cannot `pip install`, so Phase 1/2 are
@@ -47,31 +71,41 @@ Phase 2 — Deterministic reconciliation engine (COMPLETE)
   without reading ground truth. Verified: engine `missing_settlement`
   count == seeded `missing_settlement` + seeded `invalid_reference` at
   n=100/250/500 (see DECISIONS.md D008).
-- At the smallest payment amounts, the fixed-fraction partial-vs-amount-
-  mismatch threshold (settled < 90% of expected net ⇒ partial) can
-  disagree with the generator's ground truth in rare edge cases
-  (observed: 1 of 40 `amount_mismatch` cases reclassified as `partial`
-  at n=500). Documented in DECISIONS.md D008; not fixed by reading
-  ground truth, since the engine must remain ground-truth-blind.
-- Reconciliation API, frontend, AI integration, auto-resolution
-  execution: not started (correctly out of scope for Phase 2).
+- One n=500 boundary case (1 of 40 `amount_mismatch`) still classifies
+  as `partial_settlement`. Phase 2.5 fixed the general small-amount
+  instability (see `partial_settlement_min_absolute_diff`), but proved
+  this specific record is not separable from a legitimately-labeled
+  `partial_settlement` record in the same dataset using any monotonic
+  rule over the observable fields — `Settlement.fee`/`.tax` are
+  identical in both the generator's `amount_mismatch` and
+  `partial_settlement` code paths, so there's no recoverable
+  distinguishing signal. Accepted and documented in DECISIONS.md D009.
+- FastAPI routes, React review UI, AI integration: not started
+  (correctly out of scope for Phase 3).
+- No persistence layer yet (no DB/ORM) — reconciliation results,
+  exceptions, auto-resolution records, and review audits are all
+  produced in-memory by pure functions; nothing is written to disk or
+  a database in this phase.
 
 ## Tests
 - `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
-- Result: **37/37 passed**, 0 failures, 0 errors (run locally, this session)
-- Verified against seeded demo datasets (`data/demo/n100`, `n250`,
-  `n500`): engine's `duplicate_settlement`, `amount_mismatch` (n100/
-  n250 exact; n500 off by 1, see Known Issues), `partial_settlement`,
-  `fee_mismatch`, `delayed_settlement`, and `invalid_reference` exception
-  counts match the seeded ground-truth counts exactly at n=100/250 and
-  match within 1 at n=500.
+- Result: **62/62 passed**, 0 failures, 0 errors (run locally, this session)
+- Re-verified against seeded demo datasets (`data/demo/n100`, `n250`,
+  `n500`) after the Phase 2.5 fix: `duplicate_settlement`,
+  `fee_mismatch`, `delayed_settlement`, and `invalid_reference`
+  exception counts match ground truth exactly at n=100/250/500;
+  `amount_mismatch`/`partial_settlement` exact at n=100/250, off by the
+  same single documented case at n=500 (see Known Issues, D009).
 
 ## Latest Commit
-- `98979a3` — docs: record Phase 1 commit hash (pre-Phase-2 HEAD)
+- `61ca40f` — fix: improve reconciliation exception classification
+  (pre-Phase-3 HEAD)
 
 ## Next Task
-- Phase 3 candidate: bounded auto-resolution built on top of
-  `backend/app/reconciliation/classifier.py`'s `auto_resolvable` flag
-  (currently data-only, not executed) — deterministic execution of
-  low-risk auto-resolutions (fee_mismatch, delayed_settlement),
-  ReviewAudit persistence, and routing everything else to human review.
+- Phase 4 candidate: FastAPI routes exposing the reconciliation run,
+  exception list, auto-resolution report, and review actions
+  (approve/reject/mark_resolved/add_note) as HTTP endpoints, plus a
+  real persistence layer (SQLAlchemy/PostgreSQL per DECISIONS.md D004)
+  so results, exceptions, and audit trails survive past a single
+  process. React review UI and AI-assisted endpoints stay out of scope
+  until their own phases.
