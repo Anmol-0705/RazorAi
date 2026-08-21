@@ -1,0 +1,13 @@
+# Phase 1 (data model + generator) uses only the Python standard library
+# and is tested with unittest - no entries below are required to run
+# backend/app/data_generation or backend/app/tests yet.
+#
+# Listed here for the FastAPI/Postgres backend work starting in a later
+# phase, to be installed inside the Docker build (this sandbox has no
+# network access to install them now - see DECISIONS.md D006).
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+pydantic
+pytest

@@ -1,0 +1,4462 @@
+[
+  {
+    "payment_transaction_id": "TXN-42-000000",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6111349421"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000001",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-4642197907"
+    ],
+    "expected_amount_difference": "1788.48",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000002",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9333798503"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000003",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6679017210"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000004",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2439622619"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000005",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5607762160"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000006",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-2825989011",
+      "STL-2995226582"
+    ],
+    "expected_amount_difference": "4633.89",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000007",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9123612497"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000008",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6322520473"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000009",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-3980491761",
+      "STL-7296096954"
+    ],
+    "expected_amount_difference": "494.29",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000010",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-6805759868"
+    ],
+    "expected_amount_difference": "277.55",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000011",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5419627962"
+    ],
+    "expected_amount_difference": "607.27",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000012",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3847562279"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000013",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9072992279"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000014",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-3792347639"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000015",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3875303857"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000016",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9410288290"
+    ],
+    "expected_amount_difference": "14.38",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000017",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4459716271"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000018",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3105400301"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000019",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7371573279"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000020",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-6922713963"
+    ],
+    "expected_amount_difference": "52.27",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000021",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-9074999565",
+      "STL-1367704871"
+    ],
+    "expected_amount_difference": "2628.06",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000022",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2230.85",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000023",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-6771394050"
+    ],
+    "expected_amount_difference": "550.14",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000024",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1795212538"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000025",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-2272368870"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000026",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3108307952"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000027",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5575615203"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000028",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8578226896"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000029",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3667292043"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000030",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1672302490"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000031",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6144594354"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000032",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6534540349"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000033",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2075321966"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000034",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1300.22",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000035",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7048809022"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000036",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2953462417"
+    ],
+    "expected_amount_difference": "42.64",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000037",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2774884818"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000038",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9279291478"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000039",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9648665968"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000040",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8880079328"
+    ],
+    "expected_amount_difference": "45.82",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000041",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5594799319"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000042",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5933179746"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000043",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2644847276"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000044",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5948254671"
+    ],
+    "expected_amount_difference": "1464.39",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000045",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5165932723"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000046",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8556573246"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000047",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-4747699292",
+      "STL-1124327519"
+    ],
+    "expected_amount_difference": "281.41",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000048",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1773338452"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000049",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7268807553"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000050",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9426850694"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000051",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7763765757"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000052",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-9173043235"
+    ],
+    "expected_amount_difference": "19.44",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000053",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4288.32",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000054",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1564409423"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000055",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4566852761"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000056",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4892.24",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000057",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3304560537"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000058",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3620283102"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000059",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3308745090"
+    ],
+    "expected_amount_difference": "29.93",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000060",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7939173425"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000061",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-2540492440"
+    ],
+    "expected_amount_difference": "13.13",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000062",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5170814022"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000063",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4735313433"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000064",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4721365350"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000065",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5567946981"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000066",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4179.04",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000067",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5758659815"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000068",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8353640266"
+    ],
+    "expected_amount_difference": "15.33",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000069",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6218484323"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000070",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8151583833"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000071",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-5819946657"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000072",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4680.21",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000073",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8761956684"
+    ],
+    "expected_amount_difference": "35.11",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000074",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-9252940807"
+    ],
+    "expected_amount_difference": "1454.96",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000075",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3278405793"
+    ],
+    "expected_amount_difference": "25.78",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000076",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1668210614"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000077",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-5783809766",
+      "STL-7842459488"
+    ],
+    "expected_amount_difference": "3260.44",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000078",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4295741120"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000079",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2521136431"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000080",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7088949191"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000081",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4627032705"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000082",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-3190227431"
+    ],
+    "expected_amount_difference": "28.13",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000083",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3815389788"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000084",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2357806226"
+    ],
+    "expected_amount_difference": "972.95",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000085",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2940955281"
+    ],
+    "expected_amount_difference": "5.40",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000086",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4847761430"
+    ],
+    "expected_amount_difference": "46.53",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000087",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8891474909"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000088",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-9237475801"
+    ],
+    "expected_amount_difference": "12.79",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000089",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6955247915"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000090",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8138816152"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000091",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3260842187"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000092",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1824656200"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000093",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9752058817"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000094",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2879792991"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000095",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8663811838"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000096",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3597009738"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000097",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-6466597005"
+    ],
+    "expected_amount_difference": "193.32",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000098",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2606152369"
+    ],
+    "expected_amount_difference": "502.64",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000099",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1590985753"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000100",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2817865363"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000101",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9660523876"
+    ],
+    "expected_amount_difference": "42.44",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000102",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3869961166"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000103",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-6898288854"
+    ],
+    "expected_amount_difference": "6.66",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000104",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2428156550"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000105",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-1579187439",
+      "STL-2260326267"
+    ],
+    "expected_amount_difference": "1901.11",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000106",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3778416511"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000107",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5182110973"
+    ],
+    "expected_amount_difference": "616.01",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000108",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4531928910"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000109",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-8257484586",
+      "STL-9210290540"
+    ],
+    "expected_amount_difference": "1601.48",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000110",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5092199300"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000111",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3598862507"
+    ],
+    "expected_amount_difference": "1643.58",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000112",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2196963451"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000113",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7922959795"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000114",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9532273208"
+    ],
+    "expected_amount_difference": "41.46",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000115",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-1963110410"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000116",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-4797809576"
+    ],
+    "expected_amount_difference": "50.18",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000117",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3758823240"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000118",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5952163720"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000119",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7660813178"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000120",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7894019119"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000121",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7752277876"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000122",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-7039121410"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000123",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8380312396"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000124",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6443749394"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000125",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-8788828039"
+    ],
+    "expected_amount_difference": "368.46",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000126",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3880.78",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000127",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2515672889"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000128",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2850820685"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000129",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-5610783750",
+      "STL-3624410325"
+    ],
+    "expected_amount_difference": "3821.86",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000130",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-7481631841",
+      "STL-8359820939"
+    ],
+    "expected_amount_difference": "592.55",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000131",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8913915028"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000132",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7801948900"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000133",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-3063511828"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000134",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6642266247"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000135",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3227727430"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000136",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8272725281"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000137",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-7395219544",
+      "STL-6469458472"
+    ],
+    "expected_amount_difference": "2576.22",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000138",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3057629778"
+    ],
+    "expected_amount_difference": "28.79",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000139",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-2000025413"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000140",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7338081696"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000141",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-5022964382"
+    ],
+    "expected_amount_difference": "27.04",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000142",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4765583254"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000143",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7305101214"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000144",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8691288568"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000145",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3874432021"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000146",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5344083406"
+    ],
+    "expected_amount_difference": "261.59",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000147",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1985.08",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000148",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3053775623"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000149",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-4381731378"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000150",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3304937838"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000151",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5533921266"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000152",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-9602885936"
+    ],
+    "expected_amount_difference": "65.87",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000153",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3132.01",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000154",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9189503254"
+    ],
+    "expected_amount_difference": "39.43",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000155",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6576426590"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000156",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-4287754238",
+      "STL-1067198189"
+    ],
+    "expected_amount_difference": "3778.79",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000157",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2885330933"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000158",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2377246195"
+    ],
+    "expected_amount_difference": "29.24",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000159",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4915196257"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000160",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7083067988"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000161",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8755749566"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000162",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3048.52",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000163",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1831.52",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000164",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-3058982440",
+      "STL-4184611760"
+    ],
+    "expected_amount_difference": "1471.93",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000165",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4054.86",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000166",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3001472250"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000167",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1626733282"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000168",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-8236361108"
+    ],
+    "expected_amount_difference": "1318.55",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000169",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-9842186844"
+    ],
+    "expected_amount_difference": "2082.80",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000170",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1039262289"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000171",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2766685440"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000172",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1639509845"
+    ],
+    "expected_amount_difference": "926.58",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000173",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3994607170"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000174",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1736086849"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000175",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7729286656"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000176",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "344.11",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000177",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3422182038"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000178",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1230624431"
+    ],
+    "expected_amount_difference": "2403.69",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000179",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-9558091177"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000180",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7951902330"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000181",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2549195708"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000182",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2752536389"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000183",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-9953716239"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000184",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-1271730355"
+    ],
+    "expected_amount_difference": "57.18",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000185",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3648572296"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000186",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7185710340"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000187",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6665653122"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000188",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8418324922"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000189",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2300656317"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000190",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-8265834251",
+      "STL-4927323476"
+    ],
+    "expected_amount_difference": "3469.43",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000191",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4131.53",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000192",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-3470617247",
+      "STL-5942411853"
+    ],
+    "expected_amount_difference": "3408.40",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000193",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-4368413994"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000194",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4052772528"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000195",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5982744929"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000196",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4792874364"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000197",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6097953682"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000198",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5785590330"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000199",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2345122542"
+    ],
+    "expected_amount_difference": "106.98",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000200",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2816937739"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000201",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9012356988"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000202",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-7201296029"
+    ],
+    "expected_amount_difference": "747.74",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000203",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-3193894984"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000204",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2826025489"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000205",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-2017675569"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000206",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7743417981"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000207",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4501175349"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000208",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4558302256"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000209",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4302332663"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000210",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4651178503"
+    ],
+    "expected_amount_difference": "12.63",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000211",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3482206102"
+    ],
+    "expected_amount_difference": "1133.37",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000212",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-4683585586"
+    ],
+    "expected_amount_difference": "107.83",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000213",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2493.46",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000214",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-6300607425"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000215",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4509456565"
+    ],
+    "expected_amount_difference": "47.55",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000216",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2285291868"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000217",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-8243746556"
+    ],
+    "expected_amount_difference": "49.03",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000218",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-1361845490"
+    ],
+    "expected_amount_difference": "6.55",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000219",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8506931282"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000220",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5199176431"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000221",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-4308701294"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000222",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7079234115"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000223",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-6698349136"
+    ],
+    "expected_amount_difference": "11.47",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000224",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2866092821"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000225",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-5998623100"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000226",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4865030023"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000227",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4331.56",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000228",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4321422584"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000229",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-4952342924"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000230",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-8388580360"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000231",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2721959126"
+    ],
+    "expected_amount_difference": "2119.76",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000232",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3674551397"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000233",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-4767539382"
+    ],
+    "expected_amount_difference": "1011.27",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000234",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5281907480"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000235",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8816681105"
+    ],
+    "expected_amount_difference": "35.51",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000236",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6696207128"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000237",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-7296658772"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000238",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3591164476"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000239",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5254923696"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000240",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1954720281"
+    ],
+    "expected_amount_difference": "1127.25",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000241",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1322067505"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000242",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1217487269"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000243",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6496933442"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000244",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2800599868"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000245",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7376649850"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000246",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2206596621"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000247",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-8719734235"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000248",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5073211715"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000249",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7556046460"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000250",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5606488160"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000251",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-9420979586"
+    ],
+    "expected_amount_difference": "84.28",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000252",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-6920114673"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000253",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-3437319900"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000254",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-2372322277"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000255",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1005502537"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000256",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2397.53",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000257",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-4632522232"
+    ],
+    "expected_amount_difference": "24.40",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000258",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5200656353"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000259",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6110943464"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000260",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5529063864"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000261",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5646880148"
+    ],
+    "expected_amount_difference": "1234.77",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000262",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6933261892"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000263",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1415334610"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000264",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4786674545"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000265",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3664052763"
+    ],
+    "expected_amount_difference": "439.42",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000266",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-8228968839"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000267",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8974140139"
+    ],
+    "expected_amount_difference": "12.12",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000268",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-5035765954"
+    ],
+    "expected_amount_difference": "1245.94",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000269",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3031719772"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000270",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3965734008"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000271",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3941417062"
+    ],
+    "expected_amount_difference": "30.47",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000272",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2897158366"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000273",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3442428958"
+    ],
+    "expected_amount_difference": "10.37",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000274",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8831899893"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000275",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7662927609"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000276",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6182870116"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000277",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9345142789"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000278",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-7973335079",
+      "STL-7910817577"
+    ],
+    "expected_amount_difference": "3729.00",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000279",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8092994480"
+    ],
+    "expected_amount_difference": "27.68",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000280",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4097887746"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000281",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4504756453"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000282",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-3397657114",
+      "STL-1383539822"
+    ],
+    "expected_amount_difference": "3816.96",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000283",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-5600836559"
+    ],
+    "expected_amount_difference": "29.08",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000284",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9532593594"
+    ],
+    "expected_amount_difference": "16.25",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000285",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-2174793230",
+      "STL-4349011298"
+    ],
+    "expected_amount_difference": "1717.25",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000286",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9126105576"
+    ],
+    "expected_amount_difference": "8.09",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000287",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1553753599"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000288",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2738.93",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000289",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2732553940"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000290",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5455441991"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000291",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7203282627"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000292",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7529678452"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000293",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-3137772998"
+    ],
+    "expected_amount_difference": "38.64",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000294",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4909951947"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000295",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3197757742"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000296",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-6542943838"
+    ],
+    "expected_amount_difference": "1672.76",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000297",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-7965608188"
+    ],
+    "expected_amount_difference": "5.79",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000298",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8948573913"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000299",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2881894932"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000300",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9248046539"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000301",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3426709025"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000302",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-2653032484"
+    ],
+    "expected_amount_difference": "25.36",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000303",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-7406579219",
+      "STL-3177244907"
+    ],
+    "expected_amount_difference": "4328.29",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000304",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7215110267"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000305",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8033172680"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000306",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7871737874"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000307",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3545.44",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000308",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2757546829"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000309",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2451413560"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000310",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2273.01",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000311",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3484872186"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000312",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4274374218"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000313",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-1933479178"
+    ],
+    "expected_amount_difference": "46.96",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000314",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-8934097788"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000315",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2076151332"
+    ],
+    "expected_amount_difference": "70.09",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000316",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-4714465905",
+      "STL-8284816444"
+    ],
+    "expected_amount_difference": "415.20",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000317",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9645619869"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000318",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3591527330"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000319",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5807588013"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000320",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5026508020"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000321",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7657887271"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000322",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-5689870435"
+    ],
+    "expected_amount_difference": "49.68",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000323",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1037811610"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000324",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-5058691146"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000325",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5483308751"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000326",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8238760130"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000327",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-3946534590"
+    ],
+    "expected_amount_difference": "15.22",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000328",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-9207624837"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000329",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-9785427977"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000330",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-7174772035",
+      "STL-1944316108"
+    ],
+    "expected_amount_difference": "469.23",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000331",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1607196157"
+    ],
+    "expected_amount_difference": "776.70",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000332",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-3201397080"
+    ],
+    "expected_amount_difference": "2.98",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000333",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3360791536"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000334",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2007310926"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000335",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3348.04",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000336",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4374384508"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000337",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6606958660"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000338",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3691307645"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000339",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-7612862866"
+    ],
+    "expected_amount_difference": "111.23",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000340",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5683893864"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000341",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2916502228"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000342",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2005102559"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000343",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1184.09",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000344",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-8102481401"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000345",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-3595066420"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000346",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-4508795329"
+    ],
+    "expected_amount_difference": "55.74",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000347",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8874242713"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000348",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1240140248"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000349",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1368287033"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000350",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2136107759"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000351",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8234304760"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000352",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4554178984"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000353",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8596386996"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000354",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2107263953"
+    ],
+    "expected_amount_difference": "1307.48",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000355",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2555936898"
+    ],
+    "expected_amount_difference": "45.05",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000356",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4242579642"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000357",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2994.61",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000358",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1694904767"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000359",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2765.18",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000360",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6247463262"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000361",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3293.06",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000362",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-5449848690"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000363",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9655933303"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000364",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-5136298935"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000365",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-5067400473"
+    ],
+    "expected_amount_difference": "117.40",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000366",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4306983924"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000367",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4011528431"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000368",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-8821456242",
+      "STL-6643040635"
+    ],
+    "expected_amount_difference": "1713.90",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000369",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4158643786"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000370",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9927036153"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000371",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-6474936701",
+      "STL-6498703287"
+    ],
+    "expected_amount_difference": "2619.66",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000372",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-6045729129"
+    ],
+    "expected_amount_difference": "7.66",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000373",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-8996550604"
+    ],
+    "expected_amount_difference": "844.57",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000374",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8525623511"
+    ],
+    "expected_amount_difference": "20.06",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000375",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4579.12",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000376",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4172013806"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000377",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8667946580"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000378",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6732306182"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000379",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8646369354"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000380",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6744039057"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000381",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-8063693463"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000382",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4220107677"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000383",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5277846424"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000384",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3690714075"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000385",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-2910594463"
+    ],
+    "expected_amount_difference": "44.00",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000386",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6786043791"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000387",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1290.80",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000388",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-9620935604"
+    ],
+    "expected_amount_difference": "44.08",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000389",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-2129491690"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000390",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8768773991"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000391",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6101516825"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000392",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1035236295"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000393",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2418407139"
+    ],
+    "expected_amount_difference": "321.53",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000394",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-8805032417"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000395",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-9993491029"
+    ],
+    "expected_amount_difference": "1.96",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000396",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3237361243"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000397",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7159677390"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000398",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3560712271"
+    ],
+    "expected_amount_difference": "219.51",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000399",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-3684922912",
+      "STL-1461243650"
+    ],
+    "expected_amount_difference": "4043.46",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000400",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6917472535"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000401",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-6788175717",
+      "STL-1688669716"
+    ],
+    "expected_amount_difference": "787.35",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000402",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3663727197"
+    ],
+    "expected_amount_difference": "46.44",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000403",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-2383082793"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000404",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1424143426"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000405",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-5638379165"
+    ],
+    "expected_amount_difference": "35.01",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000406",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7944675764"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000407",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2654984428"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000408",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8152161448"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000409",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6891490448"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000410",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6386271785"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000411",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-2296400037",
+      "STL-2352505293"
+    ],
+    "expected_amount_difference": "2388.45",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000412",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1670474924"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000413",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-8402722005"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000414",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2638728074"
+    ],
+    "expected_amount_difference": "62.07",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000415",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9639044885"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000416",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-1657978181"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000417",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-5862714930"
+    ],
+    "expected_amount_difference": "46.44",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000418",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5874232824"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000419",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-8631177201"
+    ],
+    "expected_amount_difference": "300.18",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000420",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2309186996"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000421",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-4662594124",
+      "STL-2235598059"
+    ],
+    "expected_amount_difference": "3252.16",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000422",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5373945362"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000423",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1035795037"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000424",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4048090198"
+    ],
+    "expected_amount_difference": "36.66",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000425",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7568788980"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000426",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "2668.65",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000427",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1968870326"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000428",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-6271763012",
+      "STL-7895006867"
+    ],
+    "expected_amount_difference": "4690.41",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000429",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-5875872347",
+      "STL-5973777930"
+    ],
+    "expected_amount_difference": "2873.41",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000430",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-7061280172"
+    ],
+    "expected_amount_difference": "35.66",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000431",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1997216402"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000432",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "236.75",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000433",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2774010584"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000434",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6354895816"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000435",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4379795093"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000436",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4157531471"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000437",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9824210727"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000438",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-5876105046"
+    ],
+    "expected_amount_difference": "14.27",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000439",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4149337748"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000440",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2634694666"
+    ],
+    "expected_amount_difference": "143.23",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000441",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7097056942"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000442",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "3928.15",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000443",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8127372046"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000444",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-4544432520"
+    ],
+    "expected_amount_difference": "26.56",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000445",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6576763981"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000446",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7781608576"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000447",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-3022142957"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000448",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-5671505977"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000449",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-7711463369"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000450",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1507695800"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000451",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1911984483"
+    ],
+    "expected_amount_difference": "1286.79",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000452",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8240609570"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000453",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9742656117"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000454",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-7532959755"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000455",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2518681304"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000456",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-8979273911"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000457",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-5692698971"
+    ],
+    "expected_amount_difference": "29.79",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000458",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2405905813"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000459",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-1497511785"
+    ],
+    "expected_amount_difference": "1413.76",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000460",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-2342094845"
+    ],
+    "expected_amount_difference": "2630.02",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000461",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5800273809"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000462",
+    "condition": "fee_mismatch",
+    "settlement_ids": [
+      "STL-2164159934"
+    ],
+    "expected_amount_difference": "10.91",
+    "notes": "fee applied does not match the standard fee schedule"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000463",
+    "condition": "partial_settlement",
+    "settlement_ids": [
+      "STL-3901232981"
+    ],
+    "expected_amount_difference": "1095.49",
+    "notes": "only part of the expected amount was settled"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000464",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6822362090"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000465",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4385.75",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000466",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5069259334"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000467",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7241803245"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000468",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5737057771"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000469",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-3666637135"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000470",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-3981279224"
+    ],
+    "expected_amount_difference": "40.31",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000471",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-2912189154",
+      "STL-6922377726"
+    ],
+    "expected_amount_difference": "3489.64",
+    "notes": "settlement processed twice for the same transaction"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000472",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-6546964238"
+    ],
+    "expected_amount_difference": "5.01",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000473",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9317962158"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000474",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4897.85",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000475",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2542943951"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000476",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "4638.65",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000477",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2792012815"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000478",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-1583152392"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000479",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8817147252"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000480",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2576124271"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000481",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8640187694"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000482",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-9925293862"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000483",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-8446676790"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000484",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "1950.28",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000485",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-5412211686"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000486",
+    "condition": "missing_settlement",
+    "settlement_ids": [],
+    "expected_amount_difference": "532.59",
+    "notes": "settlement never generated"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000487",
+    "condition": "delayed_settlement",
+    "settlement_ids": [
+      "STL-6048301832"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement arrived well outside the normal window"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000488",
+    "condition": "invalid_reference",
+    "settlement_ids": [
+      "STL-4529276727"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "settlement reference does not correspond to any known payment"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000489",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4519858899"
+    ],
+    "expected_amount_difference": "22.27",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000490",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6970307272"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000491",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-8920947409"
+    ],
+    "expected_amount_difference": "30.86",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000492",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4309260670"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000493",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-7210274473"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000494",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-4588269668"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000495",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-6086370835"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000496",
+    "condition": "amount_mismatch",
+    "settlement_ids": [
+      "STL-4337644657"
+    ],
+    "expected_amount_difference": "31.49",
+    "notes": "settled amount does not match expected payout"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000497",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2686352103"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000498",
+    "condition": "normal_match",
+    "settlement_ids": [
+      "STL-2112380464"
+    ],
+    "expected_amount_difference": "0.00",
+    "notes": "normal matched settlement"
+  },
+  {
+    "payment_transaction_id": "TXN-42-000499",
+    "condition": "duplicate_settlement",
+    "settlement_ids": [
+      "STL-5006748052",
+      "STL-9605842084"
+    ],
+    "expected_amount_difference": "470.91",
+    "notes": "settlement processed twice for the same transaction"
+  }
+]

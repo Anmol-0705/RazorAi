@@ -1,0 +1,4952 @@
+[
+  {
+    "id": "939b462d-e645-f129-629c-2ae31d9af659",
+    "settlement_id": "STL-6111349421",
+    "transaction_reference": "TXN-42-000000",
+    "settled_amount": "652.56",
+    "fee": "13.37",
+    "tax": "2.41",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T16:31:00"
+  },
+  {
+    "id": "f2e9702d-11e9-cdaa-6e69-81a35d3d9e56",
+    "settlement_id": "STL-4642197907",
+    "transaction_reference": "TXN-42-000001",
+    "settled_amount": "1937.53",
+    "fee": "76.32",
+    "tax": "13.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T06:46:00"
+  },
+  {
+    "id": "311c6eb6-2095-eef6-8ded-f9fb4bb00f20",
+    "settlement_id": "STL-9333798503",
+    "transaction_reference": "TXN-42-000002",
+    "settled_amount": "4705.10",
+    "fee": "96.38",
+    "tax": "17.35",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-31T00:38:00"
+  },
+  {
+    "id": "6e0d2648-35ce-8841-4973-2d6c4dcabfb7",
+    "settlement_id": "STL-6679017210",
+    "transaction_reference": "TXN-42-000003",
+    "settled_amount": "3927.44",
+    "fee": "80.45",
+    "tax": "14.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T20:13:00"
+  },
+  {
+    "id": "48a639d0-15b5-2908-a8aa-71582b70e525",
+    "settlement_id": "STL-2439622619",
+    "transaction_reference": "TXN-42-000004",
+    "settled_amount": "2361.13",
+    "fee": "48.36",
+    "tax": "8.70",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T01:41:00"
+  },
+  {
+    "id": "9c7c7377-79a2-8903-fbe3-3b243eae0032",
+    "settlement_id": "STL-5607762160",
+    "transaction_reference": "TXN-42-000005",
+    "settled_amount": "3942.82",
+    "fee": "80.76",
+    "tax": "14.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-21T13:44:00"
+  },
+  {
+    "id": "dc45d539-c03f-3538-e485-5aa1016b6287",
+    "settlement_id": "STL-2825989011",
+    "transaction_reference": "TXN-42-000006",
+    "settled_amount": "4633.89",
+    "fee": "94.92",
+    "tax": "17.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-16T20:59:00"
+  },
+  {
+    "id": "8498e113-b227-462c-f53d-4330cdda24ba",
+    "settlement_id": "STL-2995226582",
+    "transaction_reference": "TXN-42-000006",
+    "settled_amount": "4633.89",
+    "fee": "94.92",
+    "tax": "17.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-16T22:59:00"
+  },
+  {
+    "id": "c1581092-f335-cba3-513a-7052986f9025",
+    "settlement_id": "STL-9123612497",
+    "transaction_reference": "TXN-42-000007",
+    "settled_amount": "1373.32",
+    "fee": "28.13",
+    "tax": "5.06",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-14T15:17:00"
+  },
+  {
+    "id": "3f4b1a70-c074-718e-425a-609f7337c599",
+    "settlement_id": "STL-6322520473",
+    "transaction_reference": "TXN-42-000008",
+    "settled_amount": "4269.78",
+    "fee": "87.46",
+    "tax": "15.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T21:06:00"
+  },
+  {
+    "id": "620e99d3-3b33-f3d8-269c-d696236c7b87",
+    "settlement_id": "STL-3980491761",
+    "transaction_reference": "TXN-42-000009",
+    "settled_amount": "494.29",
+    "fee": "10.12",
+    "tax": "1.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-25T23:34:00"
+  },
+  {
+    "id": "68586eba-6a34-c854-1071-4d5136c59dac",
+    "settlement_id": "STL-7296096954",
+    "transaction_reference": "TXN-42-000009",
+    "settled_amount": "494.29",
+    "fee": "10.12",
+    "tax": "1.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T05:34:00"
+  },
+  {
+    "id": "f1578470-0182-67c4-7a1b-58066160a6b4",
+    "settlement_id": "STL-6805759868",
+    "transaction_reference": "TXN-42-000010",
+    "settled_amount": "878.90",
+    "fee": "23.69",
+    "tax": "4.26",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T10:38:00"
+  },
+  {
+    "id": "7c5308bf-6f92-f25e-45df-16b6382c043f",
+    "settlement_id": "STL-5419627962",
+    "transaction_reference": "TXN-42-000011",
+    "settled_amount": "1486.77",
+    "fee": "42.89",
+    "tax": "7.72",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-10T15:58:00"
+  },
+  {
+    "id": "64de82e6-e82c-7d7b-06e7-45f988bc539c",
+    "settlement_id": "STL-3847562279",
+    "transaction_reference": "TXN-42-000012",
+    "settled_amount": "3521.69",
+    "fee": "72.14",
+    "tax": "12.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T04:06:00"
+  },
+  {
+    "id": "53ac2ab9-7467-2cd9-362f-5e5c53cd6268",
+    "settlement_id": "STL-9072992279",
+    "transaction_reference": "TXN-42-000013",
+    "settled_amount": "3387.96",
+    "fee": "69.40",
+    "tax": "12.49",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T22:39:00"
+  },
+  {
+    "id": "39669fa7-5997-0043-f3b1-025bfff9f585",
+    "settlement_id": "STL-3792347639",
+    "transaction_reference": "TXN-42-000014",
+    "settled_amount": "3947.29",
+    "fee": "80.85",
+    "tax": "14.55",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-28T23:53:00"
+  },
+  {
+    "id": "793b4c32-2050-0494-3d11-48022702878b",
+    "settlement_id": "STL-3875303857",
+    "transaction_reference": "TXN-42-000015",
+    "settled_amount": "3434.07",
+    "fee": "70.34",
+    "tax": "12.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T02:27:00"
+  },
+  {
+    "id": "9424aed5-1bac-5c15-4fa0-3f26f6f7f0cc",
+    "settlement_id": "STL-9410288290",
+    "transaction_reference": "TXN-42-000016",
+    "settled_amount": "1227.81",
+    "fee": "24.86",
+    "tax": "4.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-13T19:18:00"
+  },
+  {
+    "id": "d9acd158-4d34-85c5-c5c1-4eb4b27b3d90",
+    "settlement_id": "STL-4459716271",
+    "transaction_reference": "TXN-42-000017",
+    "settled_amount": "3757.91",
+    "fee": "76.97",
+    "tax": "13.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-24T04:27:00"
+  },
+  {
+    "id": "d97dc9cd-033d-2bce-575a-ed2ca5c5650c",
+    "settlement_id": "STL-3105400301",
+    "transaction_reference": "TXN-42-000018",
+    "settled_amount": "2994.73",
+    "fee": "61.34",
+    "tax": "11.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T20:47:00"
+  },
+  {
+    "id": "eb6c1016-cee6-24d0-9dac-6e8345241ea6",
+    "settlement_id": "STL-7371573279",
+    "transaction_reference": "TXN-42-000019",
+    "settled_amount": "1951.72",
+    "fee": "39.98",
+    "tax": "7.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T09:20:00"
+  },
+  {
+    "id": "91e1aa96-76f7-2255-c01f-36bf3e6dd58b",
+    "settlement_id": "STL-6922713963",
+    "transaction_reference": "TXN-42-000020",
+    "settled_amount": "4272.43",
+    "fee": "132.87",
+    "tax": "23.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T06:35:00"
+  },
+  {
+    "id": "b380c73a-989d-9d4a-e15c-a6664797b2c9",
+    "settlement_id": "STL-9074999565",
+    "transaction_reference": "TXN-42-000021",
+    "settled_amount": "2628.06",
+    "fee": "53.83",
+    "tax": "9.69",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T07:04:00"
+  },
+  {
+    "id": "30e912f2-f2b4-3abf-8441-aefd0299436a",
+    "settlement_id": "STL-1367704871",
+    "transaction_reference": "TXN-42-000021",
+    "settled_amount": "2628.06",
+    "fee": "53.83",
+    "tax": "9.69",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T12:04:00"
+  },
+  {
+    "id": "87ea7ff5-8db0-6746-7927-99735e781fd7",
+    "settlement_id": "STL-6771394050",
+    "transaction_reference": "TXN-42-000023",
+    "settled_amount": "1841.77",
+    "fee": "48.99",
+    "tax": "8.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T14:46:00"
+  },
+  {
+    "id": "50c7c006-314d-3441-b8a6-171f1ee34dc4",
+    "settlement_id": "STL-1795212538",
+    "transaction_reference": "TXN-42-000024",
+    "settled_amount": "2915.16",
+    "fee": "59.71",
+    "tax": "10.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-06T14:24:00"
+  },
+  {
+    "id": "31b1b099-d527-21e7-19bc-143efb02bebb",
+    "settlement_id": "STL-2272368870",
+    "transaction_reference": "TXN-42-000025",
+    "settled_amount": "3878.66",
+    "fee": "79.45",
+    "tax": "14.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T22:52:00"
+  },
+  {
+    "id": "f1afdb65-b289-f224-4ac9-778d8da8eee4",
+    "settlement_id": "STL-3108307952",
+    "transaction_reference": "TXN-42-000026",
+    "settled_amount": "1016.22",
+    "fee": "20.82",
+    "tax": "3.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-06T14:41:00"
+  },
+  {
+    "id": "7a4c75d4-dc99-e04c-f0e9-8b3b40a26c60",
+    "settlement_id": "STL-5575615203",
+    "transaction_reference": "TXN-42-000027",
+    "settled_amount": "3036.36",
+    "fee": "62.19",
+    "tax": "11.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-13T17:46:00"
+  },
+  {
+    "id": "8edddfcd-1e52-d770-3f89-7142fe716b14",
+    "settlement_id": "STL-8578226896",
+    "transaction_reference": "TXN-42-000028",
+    "settled_amount": "476.87",
+    "fee": "9.77",
+    "tax": "1.76",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-14T19:55:00"
+  },
+  {
+    "id": "9191b363-4e2d-6645-6dc7-cac7fd72b050",
+    "settlement_id": "STL-3667292043",
+    "transaction_reference": "TXN-42-000029",
+    "settled_amount": "3149.30",
+    "fee": "64.51",
+    "tax": "11.61",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T04:56:00"
+  },
+  {
+    "id": "1337739e-8d4f-5d27-2c7f-0b793d67cde9",
+    "settlement_id": "STL-1672302490",
+    "transaction_reference": "TXN-42-000030",
+    "settled_amount": "3886.26",
+    "fee": "79.60",
+    "tax": "14.33",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T09:27:00"
+  },
+  {
+    "id": "aff8754d-1238-d630-743b-65a2dc0f2fcf",
+    "settlement_id": "STL-6144594354",
+    "transaction_reference": "TXN-42-000031",
+    "settled_amount": "2403.83",
+    "fee": "49.24",
+    "tax": "8.86",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T20:18:00"
+  },
+  {
+    "id": "9854ce4e-4ebf-a5c3-cae9-b4a72a79ea68",
+    "settlement_id": "STL-6534540349",
+    "transaction_reference": "TXN-42-000032",
+    "settled_amount": "2885.33",
+    "fee": "59.10",
+    "tax": "10.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T20:27:00"
+  },
+  {
+    "id": "e3b137fc-0a34-50fc-9918-ee461497d658",
+    "settlement_id": "STL-2075321966",
+    "transaction_reference": "TXN-42-000033",
+    "settled_amount": "2496.96",
+    "fee": "51.15",
+    "tax": "9.21",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-29T00:18:00"
+  },
+  {
+    "id": "5913f9d3-7852-99f4-175b-a98df8140102",
+    "settlement_id": "STL-7048809022",
+    "transaction_reference": "TXN-42-000035",
+    "settled_amount": "3432.80",
+    "fee": "70.32",
+    "tax": "12.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T20:28:00"
+  },
+  {
+    "id": "0964fbbf-8cd3-21b0-c2b0-1cfdd045dd1c",
+    "settlement_id": "STL-2953462417",
+    "transaction_reference": "TXN-42-000036",
+    "settled_amount": "3485.50",
+    "fee": "108.41",
+    "tax": "19.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-01T19:28:00"
+  },
+  {
+    "id": "764414fd-8ae7-69ed-de8e-de0ba85c6e4a",
+    "settlement_id": "STL-2774884818",
+    "transaction_reference": "TXN-42-000037",
+    "settled_amount": "1389.70",
+    "fee": "28.47",
+    "tax": "5.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T08:24:00"
+  },
+  {
+    "id": "218a1536-8c99-a894-445d-cc38341c6494",
+    "settlement_id": "STL-9279291478",
+    "transaction_reference": "TXN-42-000038",
+    "settled_amount": "2751.61",
+    "fee": "56.36",
+    "tax": "10.14",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T00:28:00"
+  },
+  {
+    "id": "8d03c91e-4f8d-5238-288b-78b5b5b453ca",
+    "settlement_id": "STL-9648665968",
+    "transaction_reference": "TXN-42-000039",
+    "settled_amount": "4606.83",
+    "fee": "94.36",
+    "tax": "16.98",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T07:03:00"
+  },
+  {
+    "id": "6a5d932b-45ff-2c83-b495-db4e82456fb4",
+    "settlement_id": "STL-8880079328",
+    "transaction_reference": "TXN-42-000040",
+    "settled_amount": "528.97",
+    "fee": "11.77",
+    "tax": "2.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-12T10:02:00"
+  },
+  {
+    "id": "dd30de89-22f2-35f2-e11b-868dbf0d073d",
+    "settlement_id": "STL-5594799319",
+    "transaction_reference": "TXN-42-000041",
+    "settled_amount": "1345.33",
+    "fee": "27.56",
+    "tax": "4.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-15T12:58:00"
+  },
+  {
+    "id": "d664d264-4c6e-27ff-b9de-7a3a486822b9",
+    "settlement_id": "STL-5933179746",
+    "transaction_reference": "TXN-42-000042",
+    "settled_amount": "4141.79",
+    "fee": "84.84",
+    "tax": "15.27",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-27T01:53:00"
+  },
+  {
+    "id": "b28f41de-fb14-0bc3-304b-8590de9e3757",
+    "settlement_id": "STL-2644847276",
+    "transaction_reference": "TXN-42-000043",
+    "settled_amount": "2577.05",
+    "fee": "52.79",
+    "tax": "9.50",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T02:40:00"
+  },
+  {
+    "id": "d21c82f8-cada-4f80-a9e7-82d4fd08b32c",
+    "settlement_id": "STL-5948254671",
+    "transaction_reference": "TXN-42-000044",
+    "settled_amount": "2603.37",
+    "fee": "83.32",
+    "tax": "15.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-31T00:04:00"
+  },
+  {
+    "id": "68f45bce-24e7-5e8e-b8f2-142303edd1f8",
+    "settlement_id": "STL-5165932723",
+    "transaction_reference": "TXN-42-000045",
+    "settled_amount": "743.91",
+    "fee": "15.24",
+    "tax": "2.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-22T19:41:00"
+  },
+  {
+    "id": "889b78d5-dbfd-d97e-aca2-b148da330aa1",
+    "settlement_id": "STL-8556573246",
+    "transaction_reference": "TXN-42-000046",
+    "settled_amount": "2501.03",
+    "fee": "51.23",
+    "tax": "9.22",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T15:31:00"
+  },
+  {
+    "id": "fa745761-6f18-c108-1723-199dbf2c14a0",
+    "settlement_id": "STL-4747699292",
+    "transaction_reference": "TXN-42-000047",
+    "settled_amount": "281.41",
+    "fee": "5.76",
+    "tax": "1.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T01:47:00"
+  },
+  {
+    "id": "e746ccb9-4ca9-cf07-b1aa-0f6a2a96e1e2",
+    "settlement_id": "STL-1124327519",
+    "transaction_reference": "TXN-42-000047",
+    "settled_amount": "281.41",
+    "fee": "5.76",
+    "tax": "1.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T05:47:00"
+  },
+  {
+    "id": "cae28e66-ae8a-7813-90e0-a95b697c3923",
+    "settlement_id": "STL-1773338452",
+    "transaction_reference": "TXN-42-000048",
+    "settled_amount": "4173.21",
+    "fee": "85.48",
+    "tax": "15.39",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T01:04:00"
+  },
+  {
+    "id": "4104a8b5-a34d-b7c5-760d-ebbb3b70b3a1",
+    "settlement_id": "STL-7268807553",
+    "transaction_reference": "TXN-42-000049",
+    "settled_amount": "501.89",
+    "fee": "10.28",
+    "tax": "1.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T14:19:00"
+  },
+  {
+    "id": "a3917c99-4c95-5f6a-966b-1964fcd6bdca",
+    "settlement_id": "STL-9426850694",
+    "transaction_reference": "TXN-42-000050",
+    "settled_amount": "145.73",
+    "fee": "2.99",
+    "tax": "0.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T15:15:00"
+  },
+  {
+    "id": "5be4bf51-9269-8698-61a1-17293cb98350",
+    "settlement_id": "STL-7763765757",
+    "transaction_reference": "TXN-42-000051",
+    "settled_amount": "1377.93",
+    "fee": "28.22",
+    "tax": "5.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-19T10:11:00"
+  },
+  {
+    "id": "7f2984f5-bec3-9a37-9b3d-74bde91e314e",
+    "settlement_id": "STL-9173043235",
+    "transaction_reference": "TXN-42-000052",
+    "settled_amount": "1628.40",
+    "fee": "16.48",
+    "tax": "2.97",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T23:36:00"
+  },
+  {
+    "id": "bb7bee03-5d67-8bb1-945e-f2e4088a93ec",
+    "settlement_id": "STL-1564409423",
+    "transaction_reference": "TXN-42-000054",
+    "settled_amount": "3567.21",
+    "fee": "73.07",
+    "tax": "13.15",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-25T10:30:00"
+  },
+  {
+    "id": "45c45a3e-e9da-484a-8075-9f1f87e5f0fe",
+    "settlement_id": "STL-4566852761",
+    "transaction_reference": "TXN-42-000055",
+    "settled_amount": "1770.15",
+    "fee": "36.26",
+    "tax": "6.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-20T06:38:00"
+  },
+  {
+    "id": "43b38eb4-0390-2c5d-6502-d6a2ca6a2224",
+    "settlement_id": "STL-3304560537",
+    "transaction_reference": "TXN-42-000057",
+    "settled_amount": "818.19",
+    "fee": "16.76",
+    "tax": "3.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T07:01:00"
+  },
+  {
+    "id": "066803ee-78b2-b549-3bdb-c09eacc216a0",
+    "settlement_id": "STL-3620283102",
+    "transaction_reference": "TXN-42-000058",
+    "settled_amount": "1984.48",
+    "fee": "40.65",
+    "tax": "7.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T23:21:00"
+  },
+  {
+    "id": "e3236d1a-3c1b-dacc-18e1-93311dba1267",
+    "settlement_id": "STL-3308745090",
+    "transaction_reference": "TXN-42-000059",
+    "settled_amount": "391.32",
+    "fee": "8.63",
+    "tax": "1.55",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T05:17:00"
+  },
+  {
+    "id": "7d45d8ef-d56c-e8ea-1959-7b5aa7a8f636",
+    "settlement_id": "STL-7939173425",
+    "transaction_reference": "TXN-42-000060",
+    "settled_amount": "2419.90",
+    "fee": "49.57",
+    "tax": "8.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-09T06:35:00"
+  },
+  {
+    "id": "a5135ea0-fa53-e34d-e6d5-901d8b621d41",
+    "settlement_id": "STL-2540492440",
+    "transaction_reference": "TXN-42-000061",
+    "settled_amount": "251.98",
+    "fee": "5.43",
+    "tax": "0.98",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T08:35:00"
+  },
+  {
+    "id": "98de8ebb-a3b5-cece-a446-be72364c911a",
+    "settlement_id": "STL-5170814022",
+    "transaction_reference": "TXN-42-000062",
+    "settled_amount": "1509.91",
+    "fee": "30.93",
+    "tax": "5.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T04:08:00"
+  },
+  {
+    "id": "d0243d72-3748-967f-961d-33ba350843f0",
+    "settlement_id": "STL-4735313433",
+    "transaction_reference": "TXN-42-000063",
+    "settled_amount": "4125.35",
+    "fee": "84.50",
+    "tax": "15.21",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T23:05:00"
+  },
+  {
+    "id": "2cabd7e7-cc6b-66e5-402a-df9c8a4b8f7c",
+    "settlement_id": "STL-4721365350",
+    "transaction_reference": "TXN-42-000064",
+    "settled_amount": "4061.74",
+    "fee": "83.20",
+    "tax": "14.98",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-01T15:11:00"
+  },
+  {
+    "id": "86ad8a8c-6bc4-123e-bde1-3c1b20733f6d",
+    "settlement_id": "STL-5567946981",
+    "transaction_reference": "TXN-42-000065",
+    "settled_amount": "173.71",
+    "fee": "3.56",
+    "tax": "0.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-23T18:22:00"
+  },
+  {
+    "id": "afa415e5-6d20-4496-66d0-6371d8e88ebb",
+    "settlement_id": "STL-5758659815",
+    "transaction_reference": "TXN-42-000067",
+    "settled_amount": "3820.49",
+    "fee": "78.26",
+    "tax": "14.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T20:23:00"
+  },
+  {
+    "id": "8c611654-95da-75c1-a211-50f99fd34579",
+    "settlement_id": "STL-8353640266",
+    "transaction_reference": "TXN-42-000068",
+    "settled_amount": "4739.20",
+    "fee": "97.39",
+    "tax": "17.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T01:28:00"
+  },
+  {
+    "id": "e0b15aba-a6a2-7967-a79b-44b6da509fed",
+    "settlement_id": "STL-6218484323",
+    "transaction_reference": "TXN-42-000069",
+    "settled_amount": "3155.77",
+    "fee": "64.64",
+    "tax": "11.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T00:23:00"
+  },
+  {
+    "id": "50018b7b-6d40-67f4-5003-2b3518578baf",
+    "settlement_id": "STL-8151583833",
+    "transaction_reference": "TXN-42-000070",
+    "settled_amount": "4643.91",
+    "fee": "95.12",
+    "tax": "17.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-02T19:24:00"
+  },
+  {
+    "id": "0f5ae9d3-8e6e-5003-214f-3f12cfd01cbd",
+    "settlement_id": "STL-5819946657",
+    "transaction_reference": "TXN-42-000071",
+    "settled_amount": "879.01",
+    "fee": "18.01",
+    "tax": "3.24",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-30T07:17:00"
+  },
+  {
+    "id": "39e58ff0-92f8-37d4-4750-3f1dc33a1f6c",
+    "settlement_id": "STL-8761956684",
+    "transaction_reference": "TXN-42-000073",
+    "settled_amount": "2730.26",
+    "fee": "55.21",
+    "tax": "9.94",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T17:39:00"
+  },
+  {
+    "id": "4f199ec0-c32d-4526-b3e4-110a45f50c52",
+    "settlement_id": "STL-9252940807",
+    "transaction_reference": "TXN-42-000074",
+    "settled_amount": "1514.34",
+    "fee": "60.82",
+    "tax": "10.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T15:36:00"
+  },
+  {
+    "id": "bf012e32-177d-6e7e-07d9-24cef8c88fae",
+    "settlement_id": "STL-3278405793",
+    "transaction_reference": "TXN-42-000075",
+    "settled_amount": "103.11",
+    "fee": "2.64",
+    "tax": "0.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-23T13:08:00"
+  },
+  {
+    "id": "0d77c5a0-e222-b6a6-15bf-be9798a21f1c",
+    "settlement_id": "STL-1668210614",
+    "transaction_reference": "TXN-42-000076",
+    "settled_amount": "2246.83",
+    "fee": "46.02",
+    "tax": "8.28",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T20:51:00"
+  },
+  {
+    "id": "372f871a-45ee-432d-6a07-f2137129cec7",
+    "settlement_id": "STL-5783809766",
+    "transaction_reference": "TXN-42-000077",
+    "settled_amount": "3260.44",
+    "fee": "66.79",
+    "tax": "12.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T09:25:00"
+  },
+  {
+    "id": "adb14670-ad9f-b00d-4882-d73c1c6345ab",
+    "settlement_id": "STL-7842459488",
+    "transaction_reference": "TXN-42-000077",
+    "settled_amount": "3260.44",
+    "fee": "66.79",
+    "tax": "12.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T13:25:00"
+  },
+  {
+    "id": "36136e15-f200-c261-4d29-d1ab345512f7",
+    "settlement_id": "STL-4295741120",
+    "transaction_reference": "TXN-42-000078",
+    "settled_amount": "3512.79",
+    "fee": "71.95",
+    "tax": "12.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-21T02:43:00"
+  },
+  {
+    "id": "b423ccde-8857-5117-6155-46672112507c",
+    "settlement_id": "STL-2521136431",
+    "transaction_reference": "TXN-42-000079",
+    "settled_amount": "1405.68",
+    "fee": "28.79",
+    "tax": "5.18",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-12T10:06:00"
+  },
+  {
+    "id": "67884209-92ca-525a-6de5-93329364f3d0",
+    "settlement_id": "STL-7088949191",
+    "transaction_reference": "TXN-42-000080",
+    "settled_amount": "4509.14",
+    "fee": "92.36",
+    "tax": "16.62",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-03T13:56:00"
+  },
+  {
+    "id": "6fcc57dd-168f-ae12-5ca2-60c9eb7607c9",
+    "settlement_id": "STL-4627032705",
+    "transaction_reference": "TXN-42-000081",
+    "settled_amount": "2171.06",
+    "fee": "44.47",
+    "tax": "8.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T12:27:00"
+  },
+  {
+    "id": "138d994c-2b0a-bedd-c774-44cb5543fc3c",
+    "settlement_id": "STL-3190227431",
+    "transaction_reference": "TXN-42-000082",
+    "settled_amount": "2356.06",
+    "fee": "23.84",
+    "tax": "4.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T01:48:00"
+  },
+  {
+    "id": "c257cf73-c29d-782b-2722-796e9a36d1ec",
+    "settlement_id": "STL-3815389788",
+    "transaction_reference": "TXN-42-000083",
+    "settled_amount": "1886.15",
+    "fee": "38.63",
+    "tax": "6.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-23T00:08:00"
+  },
+  {
+    "id": "9fe0a8c7-fc8d-5b93-a2a2-e91fa49b1cd9",
+    "settlement_id": "STL-2357806226",
+    "transaction_reference": "TXN-42-000084",
+    "settled_amount": "3081.00",
+    "fee": "83.04",
+    "tax": "14.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-12T12:06:00"
+  },
+  {
+    "id": "7634c169-4f76-e388-12fe-28bf81e0d489",
+    "settlement_id": "STL-2940955281",
+    "transaction_reference": "TXN-42-000085",
+    "settled_amount": "441.80",
+    "fee": "13.74",
+    "tax": "2.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T15:16:00"
+  },
+  {
+    "id": "f4488385-8de7-ad6c-9490-77c27674456f",
+    "settlement_id": "STL-4847761430",
+    "transaction_reference": "TXN-42-000086",
+    "settled_amount": "1938.73",
+    "fee": "40.66",
+    "tax": "7.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T08:17:00"
+  },
+  {
+    "id": "e62d2d06-cf9b-8558-1a7f-195b73557b9d",
+    "settlement_id": "STL-8891474909",
+    "transaction_reference": "TXN-42-000087",
+    "settled_amount": "4751.19",
+    "fee": "97.32",
+    "tax": "17.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-25T05:39:00"
+  },
+  {
+    "id": "5f733a3e-5d28-6aa4-28a3-97799c1c3517",
+    "settlement_id": "STL-9237475801",
+    "transaction_reference": "TXN-42-000088",
+    "settled_amount": "516.54",
+    "fee": "21.68",
+    "tax": "3.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-24T23:12:00"
+  },
+  {
+    "id": "adaa44ca-8ed6-ad5e-1831-8aa354669d19",
+    "settlement_id": "STL-6955247915",
+    "transaction_reference": "TXN-42-000089",
+    "settled_amount": "2190.19",
+    "fee": "44.86",
+    "tax": "8.07",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T23:23:00"
+  },
+  {
+    "id": "b2cf952d-a7f3-33b3-f7ba-f55e4f6b58c8",
+    "settlement_id": "STL-8138816152",
+    "transaction_reference": "TXN-42-000090",
+    "settled_amount": "3802.53",
+    "fee": "77.89",
+    "tax": "14.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T09:02:00"
+  },
+  {
+    "id": "f275b5f3-d436-a7a8-b3ec-b951ab8cbf97",
+    "settlement_id": "STL-3260842187",
+    "transaction_reference": "TXN-42-000091",
+    "settled_amount": "3143.74",
+    "fee": "64.39",
+    "tax": "11.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T05:59:00"
+  },
+  {
+    "id": "7c7c404e-c422-d03e-f29a-6339577bc55a",
+    "settlement_id": "STL-1824656200",
+    "transaction_reference": "TXN-42-000092",
+    "settled_amount": "3529.81",
+    "fee": "72.30",
+    "tax": "13.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-03T12:25:00"
+  },
+  {
+    "id": "86cac6f4-e238-fe93-bd17-c5e8d5ca69ab",
+    "settlement_id": "STL-9752058817",
+    "transaction_reference": "TXN-42-000093",
+    "settled_amount": "890.81",
+    "fee": "18.25",
+    "tax": "3.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T07:40:00"
+  },
+  {
+    "id": "e7147668-cf1d-7d3a-9fee-fdffc566aa81",
+    "settlement_id": "STL-2879792991",
+    "transaction_reference": "TXN-42-000094",
+    "settled_amount": "4584.02",
+    "fee": "93.90",
+    "tax": "16.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T03:57:00"
+  },
+  {
+    "id": "4f3949a8-3d3a-2582-88b4-f4743be79df4",
+    "settlement_id": "STL-8663811838",
+    "transaction_reference": "TXN-42-000095",
+    "settled_amount": "1962.53",
+    "fee": "40.20",
+    "tax": "7.24",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T18:51:00"
+  },
+  {
+    "id": "f75d599f-6b2d-5b09-8707-9ad480be7e35",
+    "settlement_id": "STL-3597009738",
+    "transaction_reference": "TXN-42-000096",
+    "settled_amount": "1090.84",
+    "fee": "22.34",
+    "tax": "4.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-01T15:32:00"
+  },
+  {
+    "id": "290a3abb-c35b-9fea-1578-d70948f9e3d0",
+    "settlement_id": "STL-6466597005",
+    "transaction_reference": "TXN-42-000097",
+    "settled_amount": "171.44",
+    "fee": "7.47",
+    "tax": "1.34",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T21:24:00"
+  },
+  {
+    "id": "808389c8-657e-01c9-0da2-3e5c6a36af18",
+    "settlement_id": "STL-2606152369",
+    "transaction_reference": "TXN-42-000098",
+    "settled_amount": "349.30",
+    "fee": "17.45",
+    "tax": "3.14",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-29T02:28:00"
+  },
+  {
+    "id": "25637cc3-ca97-ebf5-55d5-96afa663d2cd",
+    "settlement_id": "STL-1590985753",
+    "transaction_reference": "TXN-42-000099",
+    "settled_amount": "515.38",
+    "fee": "10.56",
+    "tax": "1.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T11:34:00"
+  },
+  {
+    "id": "41843b03-04dd-7054-1448-23f7e7e646c7",
+    "settlement_id": "STL-2817865363",
+    "transaction_reference": "TXN-42-000100",
+    "settled_amount": "4793.91",
+    "fee": "98.20",
+    "tax": "17.68",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T02:42:00"
+  },
+  {
+    "id": "7ff4cec6-e7b7-b4c6-d631-2a801c612ec2",
+    "settlement_id": "STL-9660523876",
+    "transaction_reference": "TXN-42-000101",
+    "settled_amount": "1614.91",
+    "fee": "32.21",
+    "tax": "5.80",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T18:10:00"
+  },
+  {
+    "id": "aa143cd8-2ff3-cde4-6aa4-2c9f92170475",
+    "settlement_id": "STL-3869961166",
+    "transaction_reference": "TXN-42-000102",
+    "settled_amount": "3041.39",
+    "fee": "62.30",
+    "tax": "11.21",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T04:17:00"
+  },
+  {
+    "id": "a2bb522b-0b25-1279-785a-c5d0df92a621",
+    "settlement_id": "STL-6898288854",
+    "transaction_reference": "TXN-42-000103",
+    "settled_amount": "1936.96",
+    "fee": "39.81",
+    "tax": "7.17",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T00:33:00"
+  },
+  {
+    "id": "c1b5b5ca-bc35-36df-94f7-9dbac5811d2d",
+    "settlement_id": "STL-2428156550",
+    "transaction_reference": "TXN-42-000104",
+    "settled_amount": "180.78",
+    "fee": "3.70",
+    "tax": "0.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-01T16:13:00"
+  },
+  {
+    "id": "cfbe4fe9-2ea9-c542-a1b9-70d07a8104de",
+    "settlement_id": "STL-1579187439",
+    "transaction_reference": "TXN-42-000105",
+    "settled_amount": "1901.11",
+    "fee": "38.94",
+    "tax": "7.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T11:00:00"
+  },
+  {
+    "id": "0977c513-752a-7d25-f190-1b7ec6b469ef",
+    "settlement_id": "STL-2260326267",
+    "transaction_reference": "TXN-42-000105",
+    "settled_amount": "1901.11",
+    "fee": "38.94",
+    "tax": "7.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T17:00:00"
+  },
+  {
+    "id": "c0d7ac73-095f-fa81-40d9-2bce7930ba20",
+    "settlement_id": "STL-3778416511",
+    "transaction_reference": "TXN-42-000106",
+    "settled_amount": "4147.45",
+    "fee": "84.95",
+    "tax": "15.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-31T04:25:00"
+  },
+  {
+    "id": "56cb1ab0-62fb-26d7-f4db-ca07e506f670",
+    "settlement_id": "STL-5182110973",
+    "transaction_reference": "TXN-42-000107",
+    "settled_amount": "1309.03",
+    "fee": "39.43",
+    "tax": "7.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T22:51:00"
+  },
+  {
+    "id": "6e3c4532-1434-8f62-6cac-028cba220065",
+    "settlement_id": "STL-4531928910",
+    "transaction_reference": "TXN-42-000108",
+    "settled_amount": "3640.44",
+    "fee": "74.57",
+    "tax": "13.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T09:11:00"
+  },
+  {
+    "id": "2aa93b43-6d15-f16f-b7b8-c1a59a45693d",
+    "settlement_id": "STL-8257484586",
+    "transaction_reference": "TXN-42-000109",
+    "settled_amount": "1601.48",
+    "fee": "32.80",
+    "tax": "5.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T11:54:00"
+  },
+  {
+    "id": "debac186-ba10-8217-0ad7-c9a2727716ec",
+    "settlement_id": "STL-9210290540",
+    "transaction_reference": "TXN-42-000109",
+    "settled_amount": "1601.48",
+    "fee": "32.80",
+    "tax": "5.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T14:54:00"
+  },
+  {
+    "id": "28f4e3ce-aded-da80-bff9-507dcd14a03e",
+    "settlement_id": "STL-5092199300",
+    "transaction_reference": "TXN-42-000110",
+    "settled_amount": "2324.16",
+    "fee": "47.61",
+    "tax": "8.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T04:55:00"
+  },
+  {
+    "id": "084a6780-9136-f1f8-f310-46dc6202bee6",
+    "settlement_id": "STL-3598862507",
+    "transaction_reference": "TXN-42-000111",
+    "settled_amount": "2798.52",
+    "fee": "90.99",
+    "tax": "16.38",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T11:45:00"
+  },
+  {
+    "id": "a6499cdc-507b-9072-65e5-8f345df06e8c",
+    "settlement_id": "STL-2196963451",
+    "transaction_reference": "TXN-42-000112",
+    "settled_amount": "2400.86",
+    "fee": "49.18",
+    "tax": "8.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T19:48:00"
+  },
+  {
+    "id": "723ef466-b43b-d27f-42a2-59a6c6641285",
+    "settlement_id": "STL-7922959795",
+    "transaction_reference": "TXN-42-000113",
+    "settled_amount": "230.29",
+    "fee": "4.72",
+    "tax": "0.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T20:01:00"
+  },
+  {
+    "id": "d8741408-f7b2-17c7-ae92-ea71cf7dcb43",
+    "settlement_id": "STL-9532273208",
+    "transaction_reference": "TXN-42-000114",
+    "settled_amount": "4830.68",
+    "fee": "98.10",
+    "tax": "17.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-12T15:54:00"
+  },
+  {
+    "id": "a3404f08-b341-91b8-ed65-22b4b5a5f8e6",
+    "settlement_id": "STL-1963110410",
+    "transaction_reference": "TXN-42-993298",
+    "settled_amount": "1876.15",
+    "fee": "38.43",
+    "tax": "6.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T19:23:00"
+  },
+  {
+    "id": "8d38bbd8-fba6-abf7-cdbc-c65377a7e8b7",
+    "settlement_id": "STL-4797809576",
+    "transaction_reference": "TXN-42-000116",
+    "settled_amount": "4102.16",
+    "fee": "127.58",
+    "tax": "22.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T11:35:00"
+  },
+  {
+    "id": "5128b9b1-f8ed-e0ca-2015-6a7212e153a6",
+    "settlement_id": "STL-3758823240",
+    "transaction_reference": "TXN-42-000117",
+    "settled_amount": "1680.94",
+    "fee": "34.43",
+    "tax": "6.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T09:23:00"
+  },
+  {
+    "id": "21084dd9-f75d-1e3c-c48d-56502e9522d6",
+    "settlement_id": "STL-5952163720",
+    "transaction_reference": "TXN-42-000118",
+    "settled_amount": "2482.30",
+    "fee": "50.85",
+    "tax": "9.15",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-23T11:55:00"
+  },
+  {
+    "id": "3240d7a1-4027-ab7d-1430-29a9d88f1c94",
+    "settlement_id": "STL-7660813178",
+    "transaction_reference": "TXN-42-000119",
+    "settled_amount": "926.77",
+    "fee": "18.98",
+    "tax": "3.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-02T06:53:00"
+  },
+  {
+    "id": "2bd3cdcd-2779-4685-94a5-3fdef10d27c8",
+    "settlement_id": "STL-7894019119",
+    "transaction_reference": "TXN-42-000120",
+    "settled_amount": "3297.21",
+    "fee": "67.54",
+    "tax": "12.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-20T03:24:00"
+  },
+  {
+    "id": "c4576cc3-35f7-89bc-a6b0-745843c07d43",
+    "settlement_id": "STL-7752277876",
+    "transaction_reference": "TXN-42-000121",
+    "settled_amount": "4827.37",
+    "fee": "98.88",
+    "tax": "17.80",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T22:26:00"
+  },
+  {
+    "id": "af5b8f47-ceae-71cf-ce00-0af03eb05181",
+    "settlement_id": "STL-7039121410",
+    "transaction_reference": "TXN-42-963300",
+    "settled_amount": "3368.73",
+    "fee": "69.00",
+    "tax": "12.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-23T18:02:00"
+  },
+  {
+    "id": "dc8a4922-5005-680f-24c7-78a59b4e164b",
+    "settlement_id": "STL-8380312396",
+    "transaction_reference": "TXN-42-000123",
+    "settled_amount": "471.19",
+    "fee": "9.65",
+    "tax": "1.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T22:19:00"
+  },
+  {
+    "id": "1f5d988f-776a-bf09-3de2-885951b1943c",
+    "settlement_id": "STL-6443749394",
+    "transaction_reference": "TXN-42-000124",
+    "settled_amount": "4504.08",
+    "fee": "92.26",
+    "tax": "16.61",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T04:39:00"
+  },
+  {
+    "id": "28e213bc-e6fd-d7af-dd84-caccf6729464",
+    "settlement_id": "STL-8788828039",
+    "transaction_reference": "TXN-42-000125",
+    "settled_amount": "450.35",
+    "fee": "16.77",
+    "tax": "3.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T12:58:00"
+  },
+  {
+    "id": "95560a2d-3713-b466-3da0-6476f778c676",
+    "settlement_id": "STL-2515672889",
+    "transaction_reference": "TXN-42-000127",
+    "settled_amount": "4597.75",
+    "fee": "94.18",
+    "tax": "16.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T08:37:00"
+  },
+  {
+    "id": "1b84edc3-d8e0-49de-0217-ea0e896490ab",
+    "settlement_id": "STL-2850820685",
+    "transaction_reference": "TXN-42-000128",
+    "settled_amount": "1537.94",
+    "fee": "31.50",
+    "tax": "5.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-23T02:29:00"
+  },
+  {
+    "id": "49e1cd13-8da0-0495-5cce-5ba931d4ee09",
+    "settlement_id": "STL-5610783750",
+    "transaction_reference": "TXN-42-000129",
+    "settled_amount": "3821.86",
+    "fee": "78.28",
+    "tax": "14.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T19:24:00"
+  },
+  {
+    "id": "479bc637-8cc3-6f3b-c3af-fcfe734a6ca3",
+    "settlement_id": "STL-3624410325",
+    "transaction_reference": "TXN-42-000129",
+    "settled_amount": "3821.86",
+    "fee": "78.28",
+    "tax": "14.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T00:24:00"
+  },
+  {
+    "id": "9a3b0319-32f5-7510-24ee-b4a6c14565c7",
+    "settlement_id": "STL-7481631841",
+    "transaction_reference": "TXN-42-000130",
+    "settled_amount": "592.55",
+    "fee": "12.14",
+    "tax": "2.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T08:28:00"
+  },
+  {
+    "id": "2314d0c8-09f6-4405-0b99-00340a4e2552",
+    "settlement_id": "STL-8359820939",
+    "transaction_reference": "TXN-42-000130",
+    "settled_amount": "592.55",
+    "fee": "12.14",
+    "tax": "2.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T13:28:00"
+  },
+  {
+    "id": "fd98fe33-6498-abe9-2999-bbef518b2f21",
+    "settlement_id": "STL-8913915028",
+    "transaction_reference": "TXN-42-000131",
+    "settled_amount": "2522.80",
+    "fee": "51.68",
+    "tax": "9.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T20:23:00"
+  },
+  {
+    "id": "6aa26216-fada-98f5-1c0f-0bdcac7e937c",
+    "settlement_id": "STL-7801948900",
+    "transaction_reference": "TXN-42-000132",
+    "settled_amount": "1819.58",
+    "fee": "37.27",
+    "tax": "6.71",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-29T04:54:00"
+  },
+  {
+    "id": "9561c813-0d25-9caa-b8ad-ad873a4045dd",
+    "settlement_id": "STL-3063511828",
+    "transaction_reference": "TXN-42-975711",
+    "settled_amount": "4698.56",
+    "fee": "96.24",
+    "tax": "17.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T18:45:00"
+  },
+  {
+    "id": "70e7e756-04d9-145e-30d7-3df71c221cea",
+    "settlement_id": "STL-6642266247",
+    "transaction_reference": "TXN-42-000134",
+    "settled_amount": "3317.71",
+    "fee": "67.96",
+    "tax": "12.23",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T15:56:00"
+  },
+  {
+    "id": "23595fa4-b4ad-af89-0ff1-aa9fba370623",
+    "settlement_id": "STL-3227727430",
+    "transaction_reference": "TXN-42-000135",
+    "settled_amount": "2211.65",
+    "fee": "45.30",
+    "tax": "8.15",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T16:14:00"
+  },
+  {
+    "id": "ad05b912-5ab2-8d4a-8bd8-8fcd57a2be4e",
+    "settlement_id": "STL-8272725281",
+    "transaction_reference": "TXN-42-000136",
+    "settled_amount": "1761.62",
+    "fee": "36.08",
+    "tax": "6.49",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T18:11:00"
+  },
+  {
+    "id": "35102852-b474-6349-49fc-2cd8c56bad4c",
+    "settlement_id": "STL-7395219544",
+    "transaction_reference": "TXN-42-000137",
+    "settled_amount": "2576.22",
+    "fee": "52.77",
+    "tax": "9.50",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T05:29:00"
+  },
+  {
+    "id": "ef3a6f27-ef06-fccb-8f7c-1d59594b2a3a",
+    "settlement_id": "STL-6469458472",
+    "transaction_reference": "TXN-42-000137",
+    "settled_amount": "2576.22",
+    "fee": "52.77",
+    "tax": "9.50",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T09:29:00"
+  },
+  {
+    "id": "143b45e3-b6d1-f6bb-f48f-709c49a22441",
+    "settlement_id": "STL-3057629778",
+    "transaction_reference": "TXN-42-000138",
+    "settled_amount": "3062.15",
+    "fee": "62.13",
+    "tax": "11.18",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T21:46:00"
+  },
+  {
+    "id": "ab7a3d1c-0cfe-f683-3e11-bafe3d4196fe",
+    "settlement_id": "STL-2000025413",
+    "transaction_reference": "TXN-42-000139",
+    "settled_amount": "4336.04",
+    "fee": "88.82",
+    "tax": "15.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-02T08:48:00"
+  },
+  {
+    "id": "682b163a-286e-d390-edd9-7a1afa585b27",
+    "settlement_id": "STL-7338081696",
+    "transaction_reference": "TXN-42-000140",
+    "settled_amount": "2213.38",
+    "fee": "45.34",
+    "tax": "8.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-11T15:38:00"
+  },
+  {
+    "id": "bd1a8f4b-88ff-bd40-3b72-c86d92fa675f",
+    "settlement_id": "STL-5022964382",
+    "transaction_reference": "TXN-42-000141",
+    "settled_amount": "1091.65",
+    "fee": "45.82",
+    "tax": "8.25",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T05:29:00"
+  },
+  {
+    "id": "4a1a81f5-ed10-f004-df4e-713ef64e3dfc",
+    "settlement_id": "STL-4765583254",
+    "transaction_reference": "TXN-42-000142",
+    "settled_amount": "2236.85",
+    "fee": "45.82",
+    "tax": "8.25",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T02:42:00"
+  },
+  {
+    "id": "225aed6c-f045-8043-e3a6-8a707e710b55",
+    "settlement_id": "STL-7305101214",
+    "transaction_reference": "TXN-42-000143",
+    "settled_amount": "1625.15",
+    "fee": "33.29",
+    "tax": "5.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T07:38:00"
+  },
+  {
+    "id": "564cfbd2-bc92-fd81-039b-058c2faabe0b",
+    "settlement_id": "STL-8691288568",
+    "transaction_reference": "TXN-42-000144",
+    "settled_amount": "4238.07",
+    "fee": "86.81",
+    "tax": "15.63",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-17T16:58:00"
+  },
+  {
+    "id": "669d01ff-1634-725b-53f3-007383e96ef4",
+    "settlement_id": "STL-3874432021",
+    "transaction_reference": "TXN-42-000145",
+    "settled_amount": "3549.99",
+    "fee": "72.72",
+    "tax": "13.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T18:39:00"
+  },
+  {
+    "id": "546252e7-f43b-a052-4459-bd6ec0f63229",
+    "settlement_id": "STL-5344083406",
+    "transaction_reference": "TXN-42-000146",
+    "settled_amount": "555.87",
+    "fee": "16.74",
+    "tax": "3.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-27T20:20:00"
+  },
+  {
+    "id": "22319050-f515-9494-3818-cfd33889936a",
+    "settlement_id": "STL-3053775623",
+    "transaction_reference": "TXN-42-000148",
+    "settled_amount": "2670.12",
+    "fee": "54.69",
+    "tax": "9.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T19:17:00"
+  },
+  {
+    "id": "c1369c65-ae2a-e341-3f59-e4f2c3093b6e",
+    "settlement_id": "STL-4381731378",
+    "transaction_reference": "TXN-42-000149",
+    "settled_amount": "3925.40",
+    "fee": "80.41",
+    "tax": "14.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T21:24:00"
+  },
+  {
+    "id": "929c93b3-33c0-8bf1-8167-999fe723ada3",
+    "settlement_id": "STL-3304937838",
+    "transaction_reference": "TXN-42-000150",
+    "settled_amount": "2384.61",
+    "fee": "48.84",
+    "tax": "8.79",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T23:45:00"
+  },
+  {
+    "id": "cf0671c7-720b-274b-82a7-f586e61d9cde",
+    "settlement_id": "STL-5533921266",
+    "transaction_reference": "TXN-42-000151",
+    "settled_amount": "1777.32",
+    "fee": "36.41",
+    "tax": "6.55",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T04:07:00"
+  },
+  {
+    "id": "d1031424-4124-1bb4-655c-e5080592bfa5",
+    "settlement_id": "STL-9602885936",
+    "transaction_reference": "TXN-42-000152",
+    "settled_amount": "2659.15",
+    "fee": "111.64",
+    "tax": "20.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-22T03:52:00"
+  },
+  {
+    "id": "72d35458-61ea-2f30-e42e-707afe2bd987",
+    "settlement_id": "STL-9189503254",
+    "transaction_reference": "TXN-42-000154",
+    "settled_amount": "4838.35",
+    "fee": "99.91",
+    "tax": "17.98",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T21:09:00"
+  },
+  {
+    "id": "d5b6de85-3902-39d9-fa8d-ae42ba54e920",
+    "settlement_id": "STL-6576426590",
+    "transaction_reference": "TXN-42-000155",
+    "settled_amount": "508.46",
+    "fee": "10.41",
+    "tax": "1.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-25T19:09:00"
+  },
+  {
+    "id": "effa2002-3040-413c-4690-fb1527b608dc",
+    "settlement_id": "STL-4287754238",
+    "transaction_reference": "TXN-42-000156",
+    "settled_amount": "3778.79",
+    "fee": "77.40",
+    "tax": "13.93",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T11:32:00"
+  },
+  {
+    "id": "9d6b9b62-6b53-5a19-a902-b73fcf39f648",
+    "settlement_id": "STL-1067198189",
+    "transaction_reference": "TXN-42-000156",
+    "settled_amount": "3778.79",
+    "fee": "77.40",
+    "tax": "13.93",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T12:32:00"
+  },
+  {
+    "id": "66fadca0-0b53-1932-bd94-19aa3ea6e5b2",
+    "settlement_id": "STL-2885330933",
+    "transaction_reference": "TXN-42-000157",
+    "settled_amount": "442.10",
+    "fee": "9.06",
+    "tax": "1.63",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T05:20:00"
+  },
+  {
+    "id": "c5c51060-9911-21e7-93d5-63ae51a3ac26",
+    "settlement_id": "STL-2377246195",
+    "transaction_reference": "TXN-42-000158",
+    "settled_amount": "1180.63",
+    "fee": "49.56",
+    "tax": "8.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T19:46:00"
+  },
+  {
+    "id": "bc36dc59-e134-edfc-9777-7f10f2d2393f",
+    "settlement_id": "STL-4915196257",
+    "transaction_reference": "TXN-42-000159",
+    "settled_amount": "4583.33",
+    "fee": "93.88",
+    "tax": "16.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-22T14:52:00"
+  },
+  {
+    "id": "86433603-c92a-7d7c-6193-5990abdd1a8f",
+    "settlement_id": "STL-7083067988",
+    "transaction_reference": "TXN-42-000160",
+    "settled_amount": "3572.26",
+    "fee": "73.17",
+    "tax": "13.17",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-16T20:42:00"
+  },
+  {
+    "id": "24f43c62-b523-c0de-db87-d29c4cfd0fc1",
+    "settlement_id": "STL-8755749566",
+    "transaction_reference": "TXN-42-000161",
+    "settled_amount": "1632.80",
+    "fee": "33.45",
+    "tax": "6.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T07:02:00"
+  },
+  {
+    "id": "378e6510-8f10-d33e-abe4-2e7db96c1163",
+    "settlement_id": "STL-3058982440",
+    "transaction_reference": "TXN-42-000164",
+    "settled_amount": "1471.93",
+    "fee": "30.15",
+    "tax": "5.43",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T11:06:00"
+  },
+  {
+    "id": "03ece8ff-e8b3-d763-f4ff-3f3a4d9dbaeb",
+    "settlement_id": "STL-4184611760",
+    "transaction_reference": "TXN-42-000164",
+    "settled_amount": "1471.93",
+    "fee": "30.15",
+    "tax": "5.43",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T14:06:00"
+  },
+  {
+    "id": "7f4d908c-e1ff-f6c0-8347-f1da5c11ab6d",
+    "settlement_id": "STL-3001472250",
+    "transaction_reference": "TXN-42-000166",
+    "settled_amount": "1744.03",
+    "fee": "35.72",
+    "tax": "6.43",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-13T03:32:00"
+  },
+  {
+    "id": "bdc2b74b-38a5-6b49-dd34-aa1890019ed4",
+    "settlement_id": "STL-1626733282",
+    "transaction_reference": "TXN-42-000167",
+    "settled_amount": "3795.77",
+    "fee": "77.75",
+    "tax": "14.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-25T08:23:00"
+  },
+  {
+    "id": "f186e47a-a794-6320-8cf6-e8b87fd238c3",
+    "settlement_id": "STL-8236361108",
+    "transaction_reference": "TXN-42-000168",
+    "settled_amount": "1611.57",
+    "fee": "60.02",
+    "tax": "10.80",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T09:56:00"
+  },
+  {
+    "id": "2f1dc121-7d02-4c6d-8bea-75c1b86677aa",
+    "settlement_id": "STL-9842186844",
+    "transaction_reference": "TXN-42-000169",
+    "settled_amount": "1922.59",
+    "fee": "82.04",
+    "tax": "14.77",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-12T09:41:00"
+  },
+  {
+    "id": "26a9e100-b509-109b-1166-58ce3b3f3800",
+    "settlement_id": "STL-1039262289",
+    "transaction_reference": "TXN-42-000170",
+    "settled_amount": "4392.95",
+    "fee": "89.98",
+    "tax": "16.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-13T06:43:00"
+  },
+  {
+    "id": "01b158e9-0406-ff44-7ce4-0679a8c6dbc0",
+    "settlement_id": "STL-2766685440",
+    "transaction_reference": "TXN-42-000171",
+    "settled_amount": "2432.01",
+    "fee": "49.82",
+    "tax": "8.97",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T12:40:00"
+  },
+  {
+    "id": "2de46e91-e8e6-e840-f090-f5a0ce610199",
+    "settlement_id": "STL-1639509845",
+    "transaction_reference": "TXN-42-000172",
+    "settled_amount": "1881.23",
+    "fee": "57.51",
+    "tax": "10.35",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-01T20:20:00"
+  },
+  {
+    "id": "fd7fe973-3e42-df5b-90a3-fbbf7580e050",
+    "settlement_id": "STL-3994607170",
+    "transaction_reference": "TXN-42-000173",
+    "settled_amount": "3270.38",
+    "fee": "66.99",
+    "tax": "12.06",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T09:58:00"
+  },
+  {
+    "id": "b3eda8f1-026b-5383-a301-ec030e5d8c6a",
+    "settlement_id": "STL-1736086849",
+    "transaction_reference": "TXN-42-000174",
+    "settled_amount": "3599.34",
+    "fee": "73.73",
+    "tax": "13.27",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T19:15:00"
+  },
+  {
+    "id": "361f6d90-3ad1-fa33-0ae4-ac11eb4d8f42",
+    "settlement_id": "STL-7729286656",
+    "transaction_reference": "TXN-42-000175",
+    "settled_amount": "4425.00",
+    "fee": "90.64",
+    "tax": "16.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-22T22:07:00"
+  },
+  {
+    "id": "299656e2-4c9d-6907-13b2-2cecedcabf94",
+    "settlement_id": "STL-3422182038",
+    "transaction_reference": "TXN-42-000177",
+    "settled_amount": "1707.52",
+    "fee": "34.98",
+    "tax": "6.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-24T12:23:00"
+  },
+  {
+    "id": "588a3f87-f96d-40f8-bed6-3da08033f5c2",
+    "settlement_id": "STL-1230624431",
+    "transaction_reference": "TXN-42-000178",
+    "settled_amount": "1966.65",
+    "fee": "89.52",
+    "tax": "16.11",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-02T01:40:00"
+  },
+  {
+    "id": "c8969c5b-45f8-c28d-a255-e1bb07958c1f",
+    "settlement_id": "STL-9558091177",
+    "transaction_reference": "TXN-42-000179",
+    "settled_amount": "1286.02",
+    "fee": "26.34",
+    "tax": "4.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T02:00:00"
+  },
+  {
+    "id": "c5acc354-15f0-0cb4-614c-721da921cb4c",
+    "settlement_id": "STL-7951902330",
+    "transaction_reference": "TXN-42-000180",
+    "settled_amount": "1265.51",
+    "fee": "25.92",
+    "tax": "4.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-29T05:57:00"
+  },
+  {
+    "id": "5111d31d-63be-441d-bd5a-0c9e277eb0aa",
+    "settlement_id": "STL-2549195708",
+    "transaction_reference": "TXN-42-000181",
+    "settled_amount": "1359.25",
+    "fee": "27.84",
+    "tax": "5.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T02:23:00"
+  },
+  {
+    "id": "8e969227-72e7-6b51-6e54-ac6d2ff8e87e",
+    "settlement_id": "STL-2752536389",
+    "transaction_reference": "TXN-42-000182",
+    "settled_amount": "124.23",
+    "fee": "2.54",
+    "tax": "0.46",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-03T00:15:00"
+  },
+  {
+    "id": "c777a07f-6346-d4ef-69ef-74e34ab6821c",
+    "settlement_id": "STL-9953716239",
+    "transaction_reference": "TXN-42-000183",
+    "settled_amount": "556.41",
+    "fee": "11.40",
+    "tax": "2.05",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-19T11:18:00"
+  },
+  {
+    "id": "255bfc1c-7e3d-5ee4-44b6-4ec14d16f049",
+    "settlement_id": "STL-1271730355",
+    "transaction_reference": "TXN-42-000184",
+    "settled_amount": "4674.34",
+    "fee": "145.38",
+    "tax": "26.17",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T19:22:00"
+  },
+  {
+    "id": "9803b22e-7eec-e88d-a002-352ab88cddde",
+    "settlement_id": "STL-3648572296",
+    "transaction_reference": "TXN-42-000185",
+    "settled_amount": "1510.32",
+    "fee": "30.94",
+    "tax": "5.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T17:49:00"
+  },
+  {
+    "id": "545cd88d-dcb9-075e-cdd7-f460614077d3",
+    "settlement_id": "STL-7185710340",
+    "transaction_reference": "TXN-42-000186",
+    "settled_amount": "645.24",
+    "fee": "13.22",
+    "tax": "2.38",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-03T06:47:00"
+  },
+  {
+    "id": "f7fe604f-65f3-0779-f6ee-5cdb2d79a2d1",
+    "settlement_id": "STL-6665653122",
+    "transaction_reference": "TXN-42-000187",
+    "settled_amount": "4272.18",
+    "fee": "87.51",
+    "tax": "15.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T04:30:00"
+  },
+  {
+    "id": "905881df-ee9b-f3e1-1d27-c09a5d71a898",
+    "settlement_id": "STL-8418324922",
+    "transaction_reference": "TXN-42-000188",
+    "settled_amount": "3655.23",
+    "fee": "74.87",
+    "tax": "13.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-14T06:14:00"
+  },
+  {
+    "id": "a2224f96-23a1-3e20-7fd2-55eeac484366",
+    "settlement_id": "STL-2300656317",
+    "transaction_reference": "TXN-42-000189",
+    "settled_amount": "1170.86",
+    "fee": "23.98",
+    "tax": "4.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T18:57:00"
+  },
+  {
+    "id": "88cc4d49-669b-29b8-950d-f1a07aaf2001",
+    "settlement_id": "STL-8265834251",
+    "transaction_reference": "TXN-42-000190",
+    "settled_amount": "3469.43",
+    "fee": "71.07",
+    "tax": "12.79",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T10:45:00"
+  },
+  {
+    "id": "5c0a1feb-f7ea-e66e-ca6c-af9b09697101",
+    "settlement_id": "STL-4927323476",
+    "transaction_reference": "TXN-42-000190",
+    "settled_amount": "3469.43",
+    "fee": "71.07",
+    "tax": "12.79",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T15:45:00"
+  },
+  {
+    "id": "bf31c29f-82bb-ad84-38d5-101f423cad9d",
+    "settlement_id": "STL-3470617247",
+    "transaction_reference": "TXN-42-000192",
+    "settled_amount": "3408.40",
+    "fee": "69.82",
+    "tax": "12.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T04:38:00"
+  },
+  {
+    "id": "c5b8386b-768b-4f7e-6421-5e665fc64cd0",
+    "settlement_id": "STL-5942411853",
+    "transaction_reference": "TXN-42-000192",
+    "settled_amount": "3408.40",
+    "fee": "69.82",
+    "tax": "12.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T08:38:00"
+  },
+  {
+    "id": "7490adeb-57d3-37d3-4fd8-0bbb592c1107",
+    "settlement_id": "STL-4368413994",
+    "transaction_reference": "TXN-42-000193",
+    "settled_amount": "2569.02",
+    "fee": "52.62",
+    "tax": "9.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T20:42:00"
+  },
+  {
+    "id": "cf685878-0b70-5933-4cde-1b6b1132567c",
+    "settlement_id": "STL-4052772528",
+    "transaction_reference": "TXN-42-000194",
+    "settled_amount": "2569.80",
+    "fee": "52.64",
+    "tax": "9.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T18:15:00"
+  },
+  {
+    "id": "8d49fe3f-2ca8-f783-8418-2d353e711433",
+    "settlement_id": "STL-5982744929",
+    "transaction_reference": "TXN-42-000195",
+    "settled_amount": "4444.71",
+    "fee": "91.04",
+    "tax": "16.39",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-05T15:14:00"
+  },
+  {
+    "id": "0779250a-6544-e313-6ea0-5d13a84554c3",
+    "settlement_id": "STL-4792874364",
+    "transaction_reference": "TXN-42-000196",
+    "settled_amount": "2280.28",
+    "fee": "46.71",
+    "tax": "8.41",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T07:43:00"
+  },
+  {
+    "id": "93cd1291-1004-2d82-cbc7-2f1acf08ea54",
+    "settlement_id": "STL-6097953682",
+    "transaction_reference": "TXN-42-000197",
+    "settled_amount": "3129.21",
+    "fee": "64.10",
+    "tax": "11.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-03T07:43:00"
+  },
+  {
+    "id": "9c7eb575-637d-dcd6-98d3-148b503b4078",
+    "settlement_id": "STL-5785590330",
+    "transaction_reference": "TXN-42-000198",
+    "settled_amount": "1106.49",
+    "fee": "22.66",
+    "tax": "4.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T14:07:00"
+  },
+  {
+    "id": "224a66a6-ac0f-6801-15b2-4e1d97154633",
+    "settlement_id": "STL-2345122542",
+    "transaction_reference": "TXN-42-000199",
+    "settled_amount": "4318.98",
+    "fee": "181.32",
+    "tax": "32.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-17T12:53:00"
+  },
+  {
+    "id": "623ad0fc-9326-7d25-234b-456298af5cca",
+    "settlement_id": "STL-2816937739",
+    "transaction_reference": "TXN-42-000200",
+    "settled_amount": "1660.93",
+    "fee": "34.02",
+    "tax": "6.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T02:29:00"
+  },
+  {
+    "id": "0db977a9-9e91-a71c-7374-ccbfd78c57d3",
+    "settlement_id": "STL-9012356988",
+    "transaction_reference": "TXN-42-000201",
+    "settled_amount": "3350.85",
+    "fee": "68.64",
+    "tax": "12.36",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-17T01:31:00"
+  },
+  {
+    "id": "6a66c184-7de1-bf5d-af48-47f068bd075b",
+    "settlement_id": "STL-7201296029",
+    "transaction_reference": "TXN-42-000202",
+    "settled_amount": "1830.68",
+    "fee": "52.81",
+    "tax": "9.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T22:51:00"
+  },
+  {
+    "id": "be15ad12-90ce-77e9-7513-03b9c7de96ea",
+    "settlement_id": "STL-3193894984",
+    "transaction_reference": "TXN-42-922047",
+    "settled_amount": "520.84",
+    "fee": "10.67",
+    "tax": "1.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T09:04:00"
+  },
+  {
+    "id": "8bddcee3-70fd-6672-b80f-16c5c28fa16b",
+    "settlement_id": "STL-2826025489",
+    "transaction_reference": "TXN-42-000204",
+    "settled_amount": "682.27",
+    "fee": "13.98",
+    "tax": "2.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T01:29:00"
+  },
+  {
+    "id": "1e0d02b5-fe74-02cd-dd83-ad037066e289",
+    "settlement_id": "STL-2017675569",
+    "transaction_reference": "TXN-42-911401",
+    "settled_amount": "4346.89",
+    "fee": "89.04",
+    "tax": "16.03",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-22T14:03:00"
+  },
+  {
+    "id": "0f321333-ce31-5937-34fa-32b6d0437e4c",
+    "settlement_id": "STL-7743417981",
+    "transaction_reference": "TXN-42-000206",
+    "settled_amount": "3873.59",
+    "fee": "79.34",
+    "tax": "14.28",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T04:18:00"
+  },
+  {
+    "id": "fc48f615-83b0-b35c-dba6-fdf8f3d04ffb",
+    "settlement_id": "STL-4501175349",
+    "transaction_reference": "TXN-42-000207",
+    "settled_amount": "1536.56",
+    "fee": "31.47",
+    "tax": "5.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-31T20:39:00"
+  },
+  {
+    "id": "5274ee11-b61d-f906-2570-35db3fead90a",
+    "settlement_id": "STL-4558302256",
+    "transaction_reference": "TXN-42-000208",
+    "settled_amount": "3937.48",
+    "fee": "80.65",
+    "tax": "14.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T14:49:00"
+  },
+  {
+    "id": "a2356dd4-1355-08d0-73b5-bad5600b4b35",
+    "settlement_id": "STL-4302332663",
+    "transaction_reference": "TXN-42-000209",
+    "settled_amount": "4415.93",
+    "fee": "90.45",
+    "tax": "16.28",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-15T01:34:00"
+  },
+  {
+    "id": "5bb47c18-b281-87c4-aa05-5442a284e8fd",
+    "settlement_id": "STL-4651178503",
+    "transaction_reference": "TXN-42-000210",
+    "settled_amount": "2724.50",
+    "fee": "56.07",
+    "tax": "10.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T10:17:00"
+  },
+  {
+    "id": "8c1c8b05-5677-1f36-4899-8e5fd40e53ce",
+    "settlement_id": "STL-3482206102",
+    "transaction_reference": "TXN-42-000211",
+    "settled_amount": "1700.06",
+    "fee": "58.04",
+    "tax": "10.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T20:54:00"
+  },
+  {
+    "id": "042b03ca-75a7-2686-d632-1d31c8acffcf",
+    "settlement_id": "STL-4683585586",
+    "transaction_reference": "TXN-42-000212",
+    "settled_amount": "4353.48",
+    "fee": "182.76",
+    "tax": "32.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-23T16:18:00"
+  },
+  {
+    "id": "a0279a18-6576-a410-0d41-ee472a5fda18",
+    "settlement_id": "STL-6300607425",
+    "transaction_reference": "TXN-42-985054",
+    "settled_amount": "911.46",
+    "fee": "18.67",
+    "tax": "3.36",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-03T08:58:00"
+  },
+  {
+    "id": "57f479b5-b212-a6ee-0210-63710260a123",
+    "settlement_id": "STL-4509456565",
+    "transaction_reference": "TXN-42-000215",
+    "settled_amount": "516.95",
+    "fee": "11.56",
+    "tax": "2.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-21T01:13:00"
+  },
+  {
+    "id": "e1887eaf-5e18-85c3-5037-cd6b1a6b6a7d",
+    "settlement_id": "STL-2285291868",
+    "transaction_reference": "TXN-42-000216",
+    "settled_amount": "3650.49",
+    "fee": "74.77",
+    "tax": "13.46",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-07T17:43:00"
+  },
+  {
+    "id": "368acd40-b8f1-4e3c-59e7-703a70aa5b0d",
+    "settlement_id": "STL-8243746556",
+    "transaction_reference": "TXN-42-000217",
+    "settled_amount": "4106.13",
+    "fee": "41.55",
+    "tax": "7.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-08T23:26:00"
+  },
+  {
+    "id": "3f6eed9d-23cb-e943-ca84-000350834fef",
+    "settlement_id": "STL-1361845490",
+    "transaction_reference": "TXN-42-000218",
+    "settled_amount": "534.85",
+    "fee": "16.64",
+    "tax": "3.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T10:44:00"
+  },
+  {
+    "id": "304b2370-8270-1238-9b5f-8f39848b34f0",
+    "settlement_id": "STL-8506931282",
+    "transaction_reference": "TXN-42-000219",
+    "settled_amount": "3174.24",
+    "fee": "65.02",
+    "tax": "11.70",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T18:14:00"
+  },
+  {
+    "id": "e3837348-873d-c8bd-122d-d7be980bc81e",
+    "settlement_id": "STL-5199176431",
+    "transaction_reference": "TXN-42-000220",
+    "settled_amount": "3405.47",
+    "fee": "69.76",
+    "tax": "12.56",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-16T18:05:00"
+  },
+  {
+    "id": "78946a15-c342-01db-2c3a-acdcaed54a46",
+    "settlement_id": "STL-4308701294",
+    "transaction_reference": "TXN-42-000221",
+    "settled_amount": "4878.53",
+    "fee": "99.93",
+    "tax": "17.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T05:03:00"
+  },
+  {
+    "id": "b66edbf4-a0ea-0251-4957-43a281b13b80",
+    "settlement_id": "STL-7079234115",
+    "transaction_reference": "TXN-42-000222",
+    "settled_amount": "3104.43",
+    "fee": "63.59",
+    "tax": "11.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-25T22:45:00"
+  },
+  {
+    "id": "8950ddd6-27c6-cbb1-cedd-069df96c9a0a",
+    "settlement_id": "STL-6698349136",
+    "transaction_reference": "TXN-42-000223",
+    "settled_amount": "2168.43",
+    "fee": "44.18",
+    "tax": "7.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T18:31:00"
+  },
+  {
+    "id": "ecb4678c-1612-0aa6-3e96-39ba0ed2ec9d",
+    "settlement_id": "STL-2866092821",
+    "transaction_reference": "TXN-42-000224",
+    "settled_amount": "3344.68",
+    "fee": "68.51",
+    "tax": "12.33",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-06T06:16:00"
+  },
+  {
+    "id": "02e7df89-b395-7a98-2320-4ff5b538f96c",
+    "settlement_id": "STL-5998623100",
+    "transaction_reference": "TXN-42-901660",
+    "settled_amount": "3232.07",
+    "fee": "66.20",
+    "tax": "11.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T23:04:00"
+  },
+  {
+    "id": "c57c7498-1e38-f711-e2ec-13f4bba1aed9",
+    "settlement_id": "STL-4865030023",
+    "transaction_reference": "TXN-42-000226",
+    "settled_amount": "2774.98",
+    "fee": "56.84",
+    "tax": "10.23",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T14:21:00"
+  },
+  {
+    "id": "414f4994-2845-7780-5e20-c9572ab8bd33",
+    "settlement_id": "STL-4321422584",
+    "transaction_reference": "TXN-42-000228",
+    "settled_amount": "492.17",
+    "fee": "10.08",
+    "tax": "1.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-18T00:49:00"
+  },
+  {
+    "id": "620af158-5d2d-904f-78c5-90730bc57207",
+    "settlement_id": "STL-4952342924",
+    "transaction_reference": "TXN-42-000229",
+    "settled_amount": "3548.56",
+    "fee": "72.69",
+    "tax": "13.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T10:15:00"
+  },
+  {
+    "id": "ea75752d-6a8f-cacb-3f8e-2d0d52619dec",
+    "settlement_id": "STL-8388580360",
+    "transaction_reference": "TXN-42-000230",
+    "settled_amount": "4864.38",
+    "fee": "99.64",
+    "tax": "17.94",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-01T02:25:00"
+  },
+  {
+    "id": "fb3df063-8409-c5ea-cde9-18b33922a7e4",
+    "settlement_id": "STL-2721959126",
+    "transaction_reference": "TXN-42-000231",
+    "settled_amount": "2206.28",
+    "fee": "88.61",
+    "tax": "15.95",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T02:24:00"
+  },
+  {
+    "id": "c8d57717-9055-a36f-4aa5-f9d3335f2f59",
+    "settlement_id": "STL-3674551397",
+    "transaction_reference": "TXN-42-000232",
+    "settled_amount": "4530.98",
+    "fee": "92.81",
+    "tax": "16.71",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-31T18:59:00"
+  },
+  {
+    "id": "061efb95-68f8-2063-eeb1-9ad201a1fb0f",
+    "settlement_id": "STL-4767539382",
+    "transaction_reference": "TXN-42-000233",
+    "settled_amount": "971.61",
+    "fee": "40.62",
+    "tax": "7.31",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T08:05:00"
+  },
+  {
+    "id": "f8f9a45d-0f55-4896-f610-396b7df59abf",
+    "settlement_id": "STL-5281907480",
+    "transaction_reference": "TXN-42-000234",
+    "settled_amount": "105.12",
+    "fee": "2.15",
+    "tax": "0.39",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-11T14:04:00"
+  },
+  {
+    "id": "94ad6252-15bc-2a3e-bf76-55d7f97c6c3c",
+    "settlement_id": "STL-8816681105",
+    "transaction_reference": "TXN-42-000235",
+    "settled_amount": "1494.60",
+    "fee": "31.34",
+    "tax": "5.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T23:33:00"
+  },
+  {
+    "id": "cd0254db-ed11-15d7-50a4-6c85d9d57b02",
+    "settlement_id": "STL-6696207128",
+    "transaction_reference": "TXN-42-000236",
+    "settled_amount": "3127.64",
+    "fee": "64.06",
+    "tax": "11.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-03T00:07:00"
+  },
+  {
+    "id": "7316ce64-2a14-7a96-1b0c-62eb27c8fc6c",
+    "settlement_id": "STL-7296658772",
+    "transaction_reference": "TXN-42-000237",
+    "settled_amount": "1489.82",
+    "fee": "30.52",
+    "tax": "5.49",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-09T21:13:00"
+  },
+  {
+    "id": "afa14a55-cebe-abaa-2859-7b341725d2c7",
+    "settlement_id": "STL-3591164476",
+    "transaction_reference": "TXN-42-000238",
+    "settled_amount": "715.70",
+    "fee": "14.66",
+    "tax": "2.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T11:13:00"
+  },
+  {
+    "id": "4c80d33a-ad5b-e3c8-0c88-0714837217e0",
+    "settlement_id": "STL-5254923696",
+    "transaction_reference": "TXN-42-000239",
+    "settled_amount": "4376.86",
+    "fee": "89.65",
+    "tax": "16.14",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T09:15:00"
+  },
+  {
+    "id": "d49347fc-0fc9-8d2e-030f-9be91f178f93",
+    "settlement_id": "STL-1954720281",
+    "transaction_reference": "TXN-42-000240",
+    "settled_amount": "1040.53",
+    "fee": "44.40",
+    "tax": "7.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-10T09:12:00"
+  },
+  {
+    "id": "d010318a-eadc-9960-4242-11e2960be0f4",
+    "settlement_id": "STL-1322067505",
+    "transaction_reference": "TXN-42-000241",
+    "settled_amount": "4314.14",
+    "fee": "88.37",
+    "tax": "15.91",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-06T01:12:00"
+  },
+  {
+    "id": "7603c36c-f139-4e3c-0aee-25571f5df912",
+    "settlement_id": "STL-1217487269",
+    "transaction_reference": "TXN-42-000242",
+    "settled_amount": "1109.95",
+    "fee": "22.74",
+    "tax": "4.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T06:55:00"
+  },
+  {
+    "id": "46653497-2fe9-22aa-e886-a01136f7a26c",
+    "settlement_id": "STL-6496933442",
+    "transaction_reference": "TXN-42-000243",
+    "settled_amount": "2315.02",
+    "fee": "47.42",
+    "tax": "8.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T15:24:00"
+  },
+  {
+    "id": "2321e64e-620d-4a1f-479f-66281674eb65",
+    "settlement_id": "STL-2800599868",
+    "transaction_reference": "TXN-42-000244",
+    "settled_amount": "275.02",
+    "fee": "5.63",
+    "tax": "1.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T13:50:00"
+  },
+  {
+    "id": "c80c2195-8b65-84ce-7acc-99705beec570",
+    "settlement_id": "STL-7376649850",
+    "transaction_reference": "TXN-42-000245",
+    "settled_amount": "4626.30",
+    "fee": "94.76",
+    "tax": "17.06",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T06:22:00"
+  },
+  {
+    "id": "c74e48ff-cf89-569d-e550-d73607806e71",
+    "settlement_id": "STL-2206596621",
+    "transaction_reference": "TXN-42-000246",
+    "settled_amount": "2669.46",
+    "fee": "54.68",
+    "tax": "9.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T05:46:00"
+  },
+  {
+    "id": "ca8e858c-d0f8-1063-889f-e107443b1d0f",
+    "settlement_id": "STL-8719734235",
+    "transaction_reference": "TXN-42-000247",
+    "settled_amount": "2512.26",
+    "fee": "51.46",
+    "tax": "9.26",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-08T04:28:00"
+  },
+  {
+    "id": "07388ba4-9770-a3db-e9fa-97e25bd93609",
+    "settlement_id": "STL-5073211715",
+    "transaction_reference": "TXN-42-000248",
+    "settled_amount": "4393.74",
+    "fee": "90.00",
+    "tax": "16.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-24T09:45:00"
+  },
+  {
+    "id": "051a0039-3803-dcee-9a06-92953b8d3447",
+    "settlement_id": "STL-7556046460",
+    "transaction_reference": "TXN-42-000249",
+    "settled_amount": "4246.19",
+    "fee": "86.98",
+    "tax": "15.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-29T07:08:00"
+  },
+  {
+    "id": "962c04dd-25d0-7461-059c-15740f3f0f48",
+    "settlement_id": "STL-5606488160",
+    "transaction_reference": "TXN-42-000250",
+    "settled_amount": "1795.84",
+    "fee": "36.78",
+    "tax": "6.62",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-01T21:23:00"
+  },
+  {
+    "id": "a3a6ef83-cab6-3107-6fd6-9b3af2dd9456",
+    "settlement_id": "STL-9420979586",
+    "transaction_reference": "TXN-42-000251",
+    "settled_amount": "3402.94",
+    "fee": "142.86",
+    "tax": "25.71",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T15:42:00"
+  },
+  {
+    "id": "2ce3d822-d080-12b8-96c5-6fe7aa604892",
+    "settlement_id": "STL-6920114673",
+    "transaction_reference": "TXN-42-929260",
+    "settled_amount": "1721.85",
+    "fee": "35.27",
+    "tax": "6.35",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-06T02:06:00"
+  },
+  {
+    "id": "f7164b73-c555-23ed-fe89-56c8d9cb3540",
+    "settlement_id": "STL-3437319900",
+    "transaction_reference": "TXN-42-951327",
+    "settled_amount": "3622.17",
+    "fee": "74.19",
+    "tax": "13.35",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T17:12:00"
+  },
+  {
+    "id": "3ced4d1f-13eb-22c9-bece-d21a54c7743b",
+    "settlement_id": "STL-2372322277",
+    "transaction_reference": "TXN-42-000254",
+    "settled_amount": "3181.35",
+    "fee": "65.17",
+    "tax": "11.73",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T02:33:00"
+  },
+  {
+    "id": "c97a24ad-41b4-55b8-59b9-222c115affac",
+    "settlement_id": "STL-1005502537",
+    "transaction_reference": "TXN-42-000255",
+    "settled_amount": "4629.72",
+    "fee": "94.83",
+    "tax": "17.07",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-12T12:40:00"
+  },
+  {
+    "id": "cc9803de-12de-9e5a-7387-928a29a3db6d",
+    "settlement_id": "STL-4632522232",
+    "transaction_reference": "TXN-42-000257",
+    "settled_amount": "2043.50",
+    "fee": "20.68",
+    "tax": "3.72",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T15:00:00"
+  },
+  {
+    "id": "8c0b393a-1333-5bc9-bb63-5ff529310971",
+    "settlement_id": "STL-5200656353",
+    "transaction_reference": "TXN-42-000258",
+    "settled_amount": "200.41",
+    "fee": "4.11",
+    "tax": "0.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-29T15:56:00"
+  },
+  {
+    "id": "54c29d5c-19ec-0829-0db5-d4412837f418",
+    "settlement_id": "STL-6110943464",
+    "transaction_reference": "TXN-42-000259",
+    "settled_amount": "3138.57",
+    "fee": "64.29",
+    "tax": "11.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T10:14:00"
+  },
+  {
+    "id": "2751ab86-7dae-c949-d700-b4618cb6b0ba",
+    "settlement_id": "STL-5529063864",
+    "transaction_reference": "TXN-42-000260",
+    "settled_amount": "2934.22",
+    "fee": "60.10",
+    "tax": "10.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-29T14:40:00"
+  },
+  {
+    "id": "a3607681-2bbb-a89d-34fa-dee106969d48",
+    "settlement_id": "STL-5646880148",
+    "transaction_reference": "TXN-42-000261",
+    "settled_amount": "1051.84",
+    "fee": "46.84",
+    "tax": "8.43",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T12:49:00"
+  },
+  {
+    "id": "2f546033-6334-fa2a-8b4b-d7e7a4515ae0",
+    "settlement_id": "STL-6933261892",
+    "transaction_reference": "TXN-42-000262",
+    "settled_amount": "688.94",
+    "fee": "14.11",
+    "tax": "2.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-13T02:47:00"
+  },
+  {
+    "id": "c0927b74-26b0-7ff6-0fc7-9913907276ea",
+    "settlement_id": "STL-1415334610",
+    "transaction_reference": "TXN-42-000263",
+    "settled_amount": "2379.63",
+    "fee": "48.74",
+    "tax": "8.77",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T18:37:00"
+  },
+  {
+    "id": "afe3af13-8917-78e8-f733-60946b2b78b9",
+    "settlement_id": "STL-4786674545",
+    "transaction_reference": "TXN-42-000264",
+    "settled_amount": "1857.55",
+    "fee": "38.05",
+    "tax": "6.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-23T03:00:00"
+  },
+  {
+    "id": "fb95d0fc-ad72-ed05-924c-de09ccea5031",
+    "settlement_id": "STL-3664052763",
+    "transaction_reference": "TXN-42-000265",
+    "settled_amount": "1188.08",
+    "fee": "33.34",
+    "tax": "6.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-25T17:08:00"
+  },
+  {
+    "id": "fcffe9e3-140f-f589-6c62-4c2c0aeccec7",
+    "settlement_id": "STL-8228968839",
+    "transaction_reference": "TXN-42-000266",
+    "settled_amount": "3973.79",
+    "fee": "81.40",
+    "tax": "14.65",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-11T09:15:00"
+  },
+  {
+    "id": "537d0bd1-8d53-6c75-65b9-0e948e6de263",
+    "settlement_id": "STL-8974140139",
+    "transaction_reference": "TXN-42-000267",
+    "settled_amount": "4296.34",
+    "fee": "88.25",
+    "tax": "15.89",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-24T16:21:00"
+  },
+  {
+    "id": "952a5345-9682-d9ff-910c-4cb725f06b0a",
+    "settlement_id": "STL-5035765954",
+    "transaction_reference": "TXN-42-000268",
+    "settled_amount": "1197.07",
+    "fee": "50.04",
+    "tax": "9.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-24T14:34:00"
+  },
+  {
+    "id": "7c4f48e4-a7a0-2a3d-620f-230b439e754c",
+    "settlement_id": "STL-3031719772",
+    "transaction_reference": "TXN-42-000269",
+    "settled_amount": "2978.10",
+    "fee": "61.00",
+    "tax": "10.98",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-22T02:01:00"
+  },
+  {
+    "id": "54dccba5-e103-5e1c-e3bb-22ae6552ac53",
+    "settlement_id": "STL-3965734008",
+    "transaction_reference": "TXN-42-000270",
+    "settled_amount": "1507.52",
+    "fee": "30.88",
+    "tax": "5.56",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T09:34:00"
+  },
+  {
+    "id": "b23909f4-dbb5-4645-7dda-c1b6d7c4caed",
+    "settlement_id": "STL-3941417062",
+    "transaction_reference": "TXN-42-000271",
+    "settled_amount": "3884.76",
+    "fee": "80.20",
+    "tax": "14.44",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T11:35:00"
+  },
+  {
+    "id": "301c8db3-16db-80db-a543-148e9adfe981",
+    "settlement_id": "STL-2897158366",
+    "transaction_reference": "TXN-42-000272",
+    "settled_amount": "785.57",
+    "fee": "16.09",
+    "tax": "2.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-13T13:53:00"
+  },
+  {
+    "id": "22b9f24c-6744-3fb8-81bd-55d5b5a6571c",
+    "settlement_id": "STL-3442428958",
+    "transaction_reference": "TXN-42-000273",
+    "settled_amount": "2171.64",
+    "fee": "44.69",
+    "tax": "8.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T09:24:00"
+  },
+  {
+    "id": "5e4c4fd1-4623-63a9-32f8-dbabb462e3e8",
+    "settlement_id": "STL-8831899893",
+    "transaction_reference": "TXN-42-000274",
+    "settled_amount": "1084.42",
+    "fee": "22.21",
+    "tax": "4.00",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-24T17:01:00"
+  },
+  {
+    "id": "963dc8bf-797e-3984-ded7-d3eff5e4a9c1",
+    "settlement_id": "STL-7662927609",
+    "transaction_reference": "TXN-42-000275",
+    "settled_amount": "2129.65",
+    "fee": "43.62",
+    "tax": "7.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-23T12:31:00"
+  },
+  {
+    "id": "db6ba39b-36dd-9529-f704-d72fc7a2f280",
+    "settlement_id": "STL-6182870116",
+    "transaction_reference": "TXN-42-000276",
+    "settled_amount": "934.68",
+    "fee": "19.15",
+    "tax": "3.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T11:44:00"
+  },
+  {
+    "id": "409ca8f2-3948-fe22-022a-addacd0579e2",
+    "settlement_id": "STL-9345142789",
+    "transaction_reference": "TXN-42-000277",
+    "settled_amount": "2193.96",
+    "fee": "44.94",
+    "tax": "8.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T18:40:00"
+  },
+  {
+    "id": "ad5cba24-4d59-616b-7779-857f37dc8c78",
+    "settlement_id": "STL-7973335079",
+    "transaction_reference": "TXN-42-000278",
+    "settled_amount": "3729.00",
+    "fee": "76.38",
+    "tax": "13.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T05:12:00"
+  },
+  {
+    "id": "ffda9a93-82f2-9004-01e1-87d81a312044",
+    "settlement_id": "STL-7910817577",
+    "transaction_reference": "TXN-42-000278",
+    "settled_amount": "3729.00",
+    "fee": "76.38",
+    "tax": "13.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T10:12:00"
+  },
+  {
+    "id": "e4729be5-f3c2-944a-b60a-3dcca7f77451",
+    "settlement_id": "STL-8092994480",
+    "transaction_reference": "TXN-42-000279",
+    "settled_amount": "3573.56",
+    "fee": "73.77",
+    "tax": "13.28",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-07T16:27:00"
+  },
+  {
+    "id": "23d26b8d-ae46-024d-51d0-5ef3a91883fc",
+    "settlement_id": "STL-4097887746",
+    "transaction_reference": "TXN-42-000280",
+    "settled_amount": "865.15",
+    "fee": "17.72",
+    "tax": "3.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T09:29:00"
+  },
+  {
+    "id": "92715f6e-fea8-2e3a-b544-01cb95410a9d",
+    "settlement_id": "STL-4504756453",
+    "transaction_reference": "TXN-42-000281",
+    "settled_amount": "2643.76",
+    "fee": "54.15",
+    "tax": "9.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T16:10:00"
+  },
+  {
+    "id": "d86d655d-4cd9-9164-81df-62f45bc677ca",
+    "settlement_id": "STL-3397657114",
+    "transaction_reference": "TXN-42-000282",
+    "settled_amount": "3816.96",
+    "fee": "78.18",
+    "tax": "14.07",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T21:25:00"
+  },
+  {
+    "id": "bdacdc5e-20c0-f275-7885-187d18fc83b7",
+    "settlement_id": "STL-1383539822",
+    "transaction_reference": "TXN-42-000282",
+    "settled_amount": "3816.96",
+    "fee": "78.18",
+    "tax": "14.07",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T00:25:00"
+  },
+  {
+    "id": "0dbdc5da-7875-15b9-1e26-ed31d9e92758",
+    "settlement_id": "STL-5600836559",
+    "transaction_reference": "TXN-42-000283",
+    "settled_amount": "1211.80",
+    "fee": "25.42",
+    "tax": "4.58",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T07:36:00"
+  },
+  {
+    "id": "91c46efc-fcb8-96bb-68c0-cbef57b936b0",
+    "settlement_id": "STL-9532593594",
+    "transaction_reference": "TXN-42-000284",
+    "settled_amount": "2675.90",
+    "fee": "54.48",
+    "tax": "9.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-18T15:26:00"
+  },
+  {
+    "id": "73b9c2ac-0134-e76b-0ed9-fa95a26e865b",
+    "settlement_id": "STL-2174793230",
+    "transaction_reference": "TXN-42-000285",
+    "settled_amount": "1717.25",
+    "fee": "35.18",
+    "tax": "6.33",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T06:08:00"
+  },
+  {
+    "id": "7d54ec82-288f-3435-c3b5-34db938703c9",
+    "settlement_id": "STL-4349011298",
+    "transaction_reference": "TXN-42-000285",
+    "settled_amount": "1717.25",
+    "fee": "35.18",
+    "tax": "6.33",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T08:08:00"
+  },
+  {
+    "id": "039a8ed5-f337-b261-5f83-92d5bb0c7919",
+    "settlement_id": "STL-9126105576",
+    "transaction_reference": "TXN-42-000286",
+    "settled_amount": "3251.34",
+    "fee": "66.43",
+    "tax": "11.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T18:13:00"
+  },
+  {
+    "id": "4fe54745-5827-4e80-e082-1918b18ad67d",
+    "settlement_id": "STL-1553753599",
+    "transaction_reference": "TXN-42-000287",
+    "settled_amount": "4363.05",
+    "fee": "89.37",
+    "tax": "16.09",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T05:22:00"
+  },
+  {
+    "id": "2a35ce30-303c-b04b-c007-93365bf7dda1",
+    "settlement_id": "STL-2732553940",
+    "transaction_reference": "TXN-42-000289",
+    "settled_amount": "3823.51",
+    "fee": "78.32",
+    "tax": "14.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T03:48:00"
+  },
+  {
+    "id": "cac8d87e-a689-d07f-b60b-4f875dd8effc",
+    "settlement_id": "STL-5455441991",
+    "transaction_reference": "TXN-42-000290",
+    "settled_amount": "1245.97",
+    "fee": "25.52",
+    "tax": "4.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T03:36:00"
+  },
+  {
+    "id": "6ab1cdb6-1da4-66fe-b093-70850c5921f8",
+    "settlement_id": "STL-7203282627",
+    "transaction_reference": "TXN-42-000291",
+    "settled_amount": "1407.06",
+    "fee": "28.82",
+    "tax": "5.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T10:46:00"
+  },
+  {
+    "id": "a962d996-6bbe-3b5a-4d15-f7d80261c87a",
+    "settlement_id": "STL-7529678452",
+    "transaction_reference": "TXN-42-000292",
+    "settled_amount": "2899.25",
+    "fee": "59.39",
+    "tax": "10.69",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-07T14:15:00"
+  },
+  {
+    "id": "1b341937-c8e6-0939-1d2f-ed2a485f7888",
+    "settlement_id": "STL-3137772998",
+    "transaction_reference": "TXN-42-000293",
+    "settled_amount": "3236.60",
+    "fee": "32.76",
+    "tax": "5.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T06:35:00"
+  },
+  {
+    "id": "7f111a36-8c52-d271-0a16-7e18290e3e89",
+    "settlement_id": "STL-4909951947",
+    "transaction_reference": "TXN-42-000294",
+    "settled_amount": "1120.18",
+    "fee": "22.95",
+    "tax": "4.13",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-31T08:48:00"
+  },
+  {
+    "id": "7e7d9a19-ab45-0578-92fb-acf6d5d1c669",
+    "settlement_id": "STL-3197757742",
+    "transaction_reference": "TXN-42-000295",
+    "settled_amount": "4874.43",
+    "fee": "99.85",
+    "tax": "17.97",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-22T16:17:00"
+  },
+  {
+    "id": "d02c75f9-198d-13a4-0cd2-0e4376dae194",
+    "settlement_id": "STL-6542943838",
+    "transaction_reference": "TXN-42-000296",
+    "settled_amount": "2128.97",
+    "fee": "77.87",
+    "tax": "14.02",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T10:34:00"
+  },
+  {
+    "id": "54231dbe-2ba6-b158-a5ae-cf37a9d1a28e",
+    "settlement_id": "STL-7965608188",
+    "transaction_reference": "TXN-42-000297",
+    "settled_amount": "3567.90",
+    "fee": "72.96",
+    "tax": "13.13",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T08:21:00"
+  },
+  {
+    "id": "b09d721b-62be-4009-d5f0-fb6a4596da75",
+    "settlement_id": "STL-8948573913",
+    "transaction_reference": "TXN-42-000298",
+    "settled_amount": "573.46",
+    "fee": "11.75",
+    "tax": "2.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T21:29:00"
+  },
+  {
+    "id": "973b6977-e946-2820-6a80-cac21a8cf13c",
+    "settlement_id": "STL-2881894932",
+    "transaction_reference": "TXN-42-000299",
+    "settled_amount": "2256.59",
+    "fee": "46.22",
+    "tax": "8.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T12:28:00"
+  },
+  {
+    "id": "7bab1baa-2172-a0aa-e44a-913af933a9fa",
+    "settlement_id": "STL-9248046539",
+    "transaction_reference": "TXN-42-000300",
+    "settled_amount": "2041.63",
+    "fee": "41.82",
+    "tax": "7.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T13:57:00"
+  },
+  {
+    "id": "865a7766-ad8c-bfea-de4b-061eb45e9463",
+    "settlement_id": "STL-3426709025",
+    "transaction_reference": "TXN-42-000301",
+    "settled_amount": "4641.36",
+    "fee": "95.07",
+    "tax": "17.11",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T05:25:00"
+  },
+  {
+    "id": "a4331510-ad21-b4cc-a9e8-f0d8588309de",
+    "settlement_id": "STL-2653032484",
+    "transaction_reference": "TXN-42-000302",
+    "settled_amount": "4542.02",
+    "fee": "93.56",
+    "tax": "16.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-18T18:44:00"
+  },
+  {
+    "id": "2a57e880-de92-05ea-7eef-09abda143a47",
+    "settlement_id": "STL-7406579219",
+    "transaction_reference": "TXN-42-000303",
+    "settled_amount": "4328.29",
+    "fee": "88.66",
+    "tax": "15.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T20:31:00"
+  },
+  {
+    "id": "0ce3c8c8-4735-4e4f-f85b-6d0a54b58635",
+    "settlement_id": "STL-3177244907",
+    "transaction_reference": "TXN-42-000303",
+    "settled_amount": "4328.29",
+    "fee": "88.66",
+    "tax": "15.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T22:31:00"
+  },
+  {
+    "id": "7f9ad277-db49-6e6d-1688-782f72b696ca",
+    "settlement_id": "STL-7215110267",
+    "transaction_reference": "TXN-42-000304",
+    "settled_amount": "3390.87",
+    "fee": "69.46",
+    "tax": "12.50",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T21:59:00"
+  },
+  {
+    "id": "9aad10ce-cab2-4f24-1744-ee3fd36ec1bd",
+    "settlement_id": "STL-8033172680",
+    "transaction_reference": "TXN-42-000305",
+    "settled_amount": "2643.76",
+    "fee": "54.15",
+    "tax": "9.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T18:19:00"
+  },
+  {
+    "id": "8f660bbd-54fc-286f-7457-7d47d8253010",
+    "settlement_id": "STL-7871737874",
+    "transaction_reference": "TXN-42-000306",
+    "settled_amount": "2976.31",
+    "fee": "60.96",
+    "tax": "10.97",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-29T03:04:00"
+  },
+  {
+    "id": "b783e1d5-d264-04b9-23f4-7a557e0f60b2",
+    "settlement_id": "STL-2757546829",
+    "transaction_reference": "TXN-42-000308",
+    "settled_amount": "1915.65",
+    "fee": "39.24",
+    "tax": "7.06",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T23:17:00"
+  },
+  {
+    "id": "b77f69b9-30c9-c51f-c80b-2af7d315fafa",
+    "settlement_id": "STL-2451413560",
+    "transaction_reference": "TXN-42-000309",
+    "settled_amount": "3224.68",
+    "fee": "66.05",
+    "tax": "11.89",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T05:46:00"
+  },
+  {
+    "id": "eca391d4-7ba1-6dd7-95ca-788dd6bca712",
+    "settlement_id": "STL-3484872186",
+    "transaction_reference": "TXN-42-000311",
+    "settled_amount": "2678.69",
+    "fee": "54.87",
+    "tax": "9.88",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-02T13:28:00"
+  },
+  {
+    "id": "6b2d9ccc-6279-403c-e1a2-cfe7810d5c57",
+    "settlement_id": "STL-4274374218",
+    "transaction_reference": "TXN-42-000312",
+    "settled_amount": "4270.99",
+    "fee": "87.48",
+    "tax": "15.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T03:18:00"
+  },
+  {
+    "id": "dc57546d-8c3d-031a-b395-2193d7d3b9d9",
+    "settlement_id": "STL-1933479178",
+    "transaction_reference": "TXN-42-000313",
+    "settled_amount": "2087.43",
+    "fee": "43.72",
+    "tax": "7.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-12T20:15:00"
+  },
+  {
+    "id": "a30a6658-b1be-6df2-8ae0-b8a080ff2909",
+    "settlement_id": "STL-8934097788",
+    "transaction_reference": "TXN-42-000314",
+    "settled_amount": "3292.84",
+    "fee": "67.45",
+    "tax": "12.14",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-09T20:22:00"
+  },
+  {
+    "id": "fbc8c77e-2933-0fc4-c918-a346c00c200c",
+    "settlement_id": "STL-2076151332",
+    "transaction_reference": "TXN-42-000315",
+    "settled_amount": "92.92",
+    "fee": "3.34",
+    "tax": "0.60",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-05T05:01:00"
+  },
+  {
+    "id": "acef45c4-de37-90fb-9db9-4eee1a3c2131",
+    "settlement_id": "STL-4714465905",
+    "transaction_reference": "TXN-42-000316",
+    "settled_amount": "415.20",
+    "fee": "8.50",
+    "tax": "1.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T19:15:00"
+  },
+  {
+    "id": "3cd30e99-638e-1388-8faf-6d4aa5a99ebc",
+    "settlement_id": "STL-8284816444",
+    "transaction_reference": "TXN-42-000316",
+    "settled_amount": "415.20",
+    "fee": "8.50",
+    "tax": "1.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-12T01:15:00"
+  },
+  {
+    "id": "0dc5fb06-8d58-09b7-f740-d87c500a174e",
+    "settlement_id": "STL-9645619869",
+    "transaction_reference": "TXN-42-000317",
+    "settled_amount": "3499.28",
+    "fee": "71.68",
+    "tax": "12.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-07T02:37:00"
+  },
+  {
+    "id": "bd0b0fa2-8bee-f83f-96a0-6bf2c14ebd10",
+    "settlement_id": "STL-3591527330",
+    "transaction_reference": "TXN-42-000318",
+    "settled_amount": "1137.27",
+    "fee": "23.30",
+    "tax": "4.19",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-25T23:10:00"
+  },
+  {
+    "id": "838b77ad-bc2e-2b59-2c7d-d667f664c720",
+    "settlement_id": "STL-5807588013",
+    "transaction_reference": "TXN-42-000319",
+    "settled_amount": "3808.58",
+    "fee": "78.01",
+    "tax": "14.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T08:27:00"
+  },
+  {
+    "id": "b5ae329d-7761-7d80-549f-c34c0171f5a7",
+    "settlement_id": "STL-5026508020",
+    "transaction_reference": "TXN-42-000320",
+    "settled_amount": "2291.23",
+    "fee": "46.93",
+    "tax": "8.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-25T18:14:00"
+  },
+  {
+    "id": "929af586-ca37-6c36-7d94-bf104d187b75",
+    "settlement_id": "STL-7657887271",
+    "transaction_reference": "TXN-42-000321",
+    "settled_amount": "884.46",
+    "fee": "18.12",
+    "tax": "3.26",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-07T10:05:00"
+  },
+  {
+    "id": "67465743-897b-303d-8b07-4d1a6a7a7841",
+    "settlement_id": "STL-5689870435",
+    "transaction_reference": "TXN-42-000322",
+    "settled_amount": "4160.89",
+    "fee": "42.11",
+    "tax": "7.58",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-22T09:30:00"
+  },
+  {
+    "id": "8fb3a134-ff23-36e9-7990-3d9687cec69d",
+    "settlement_id": "STL-1037811610",
+    "transaction_reference": "TXN-42-000323",
+    "settled_amount": "4619.88",
+    "fee": "94.63",
+    "tax": "17.03",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-01T19:13:00"
+  },
+  {
+    "id": "61a1a29c-5228-ed8d-e2ba-9fceaebbaf9c",
+    "settlement_id": "STL-5058691146",
+    "transaction_reference": "TXN-42-000324",
+    "settled_amount": "1868.90",
+    "fee": "38.28",
+    "tax": "6.89",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-04T07:54:00"
+  },
+  {
+    "id": "7c9f3bc3-7210-045a-823c-7ef9cd8565ce",
+    "settlement_id": "STL-5483308751",
+    "transaction_reference": "TXN-42-000325",
+    "settled_amount": "1411.16",
+    "fee": "28.91",
+    "tax": "5.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T07:50:00"
+  },
+  {
+    "id": "10c2c2e5-a07e-afb1-01e0-6ad888802d4d",
+    "settlement_id": "STL-8238760130",
+    "transaction_reference": "TXN-42-000326",
+    "settled_amount": "1083.13",
+    "fee": "22.19",
+    "tax": "3.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T22:53:00"
+  },
+  {
+    "id": "bf343ca7-1276-7d13-f093-8776d116d014",
+    "settlement_id": "STL-3946534590",
+    "transaction_reference": "TXN-42-000327",
+    "settled_amount": "614.43",
+    "fee": "25.80",
+    "tax": "4.64",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T14:25:00"
+  },
+  {
+    "id": "3a46fbe3-d255-a4de-9330-ba8312087e20",
+    "settlement_id": "STL-9207624837",
+    "transaction_reference": "TXN-42-973149",
+    "settled_amount": "2448.48",
+    "fee": "50.15",
+    "tax": "9.03",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T16:11:00"
+  },
+  {
+    "id": "9e4c24dd-b864-a47b-a434-47fb01829782",
+    "settlement_id": "STL-9785427977",
+    "transaction_reference": "TXN-42-000329",
+    "settled_amount": "2084.03",
+    "fee": "42.69",
+    "tax": "7.68",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-08T09:57:00"
+  },
+  {
+    "id": "ed3b9d13-c3e9-0323-4811-86e9162534ca",
+    "settlement_id": "STL-7174772035",
+    "transaction_reference": "TXN-42-000330",
+    "settled_amount": "469.23",
+    "fee": "9.61",
+    "tax": "1.73",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-12T06:51:00"
+  },
+  {
+    "id": "795741bb-07e3-c39a-a925-2745d2769c96",
+    "settlement_id": "STL-1944316108",
+    "transaction_reference": "TXN-42-000330",
+    "settled_amount": "469.23",
+    "fee": "9.61",
+    "tax": "1.73",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-12T10:51:00"
+  },
+  {
+    "id": "8db3c2c1-02da-bd76-f310-2525f5179e72",
+    "settlement_id": "STL-1607196157",
+    "transaction_reference": "TXN-42-000331",
+    "settled_amount": "1322.48",
+    "fee": "43.00",
+    "tax": "7.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-30T02:06:00"
+  },
+  {
+    "id": "3634646c-5806-a961-b9d7-07a9e74ed0b3",
+    "settlement_id": "STL-3201397080",
+    "transaction_reference": "TXN-42-000332",
+    "settled_amount": "120.40",
+    "fee": "5.06",
+    "tax": "0.91",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T20:05:00"
+  },
+  {
+    "id": "0dec644c-da2d-2156-913a-1734ccb68571",
+    "settlement_id": "STL-3360791536",
+    "transaction_reference": "TXN-42-000333",
+    "settled_amount": "1039.53",
+    "fee": "21.29",
+    "tax": "3.83",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T18:32:00"
+  },
+  {
+    "id": "a7cd13cb-abda-06b2-20d2-b5285b6d6b7c",
+    "settlement_id": "STL-2007310926",
+    "transaction_reference": "TXN-42-000334",
+    "settled_amount": "3536.09",
+    "fee": "72.43",
+    "tax": "13.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T20:31:00"
+  },
+  {
+    "id": "3f05557c-502e-d818-013c-a9982b2bf58c",
+    "settlement_id": "STL-4374384508",
+    "transaction_reference": "TXN-42-000336",
+    "settled_amount": "3647.55",
+    "fee": "74.71",
+    "tax": "13.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-22T18:19:00"
+  },
+  {
+    "id": "7202fae5-767d-3b27-7ade-4367e0bd202c",
+    "settlement_id": "STL-6606958660",
+    "transaction_reference": "TXN-42-000337",
+    "settled_amount": "3884.86",
+    "fee": "79.58",
+    "tax": "14.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T09:14:00"
+  },
+  {
+    "id": "4363589c-3249-5cff-89e2-df24e42c0aea",
+    "settlement_id": "STL-3691307645",
+    "transaction_reference": "TXN-42-000338",
+    "settled_amount": "654.77",
+    "fee": "13.41",
+    "tax": "2.41",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-08T20:04:00"
+  },
+  {
+    "id": "8d3543be-0962-4ec9-e803-82eb36777be4",
+    "settlement_id": "STL-7612862866",
+    "transaction_reference": "TXN-42-000339",
+    "settled_amount": "372.39",
+    "fee": "9.91",
+    "tax": "1.78",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T13:48:00"
+  },
+  {
+    "id": "76f6a778-2246-0ac9-4a7e-ebc2db6f1c33",
+    "settlement_id": "STL-5683893864",
+    "transaction_reference": "TXN-42-000340",
+    "settled_amount": "4065.98",
+    "fee": "83.29",
+    "tax": "14.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-07T16:25:00"
+  },
+  {
+    "id": "23ef5561-839e-7623-c1d8-41d32a74b90c",
+    "settlement_id": "STL-2916502228",
+    "transaction_reference": "TXN-42-000341",
+    "settled_amount": "2668.30",
+    "fee": "54.66",
+    "tax": "9.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T00:26:00"
+  },
+  {
+    "id": "5e934de0-43ac-e875-1017-ab443b53f64b",
+    "settlement_id": "STL-2005102559",
+    "transaction_reference": "TXN-42-000342",
+    "settled_amount": "2996.90",
+    "fee": "61.39",
+    "tax": "11.05",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-28T19:39:00"
+  },
+  {
+    "id": "606cc2f5-2c81-6bf0-91f6-04068b5a8683",
+    "settlement_id": "STL-8102481401",
+    "transaction_reference": "TXN-42-975842",
+    "settled_amount": "1756.60",
+    "fee": "35.98",
+    "tax": "6.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T09:02:00"
+  },
+  {
+    "id": "585409d9-de22-dc3f-d136-6db15a578607",
+    "settlement_id": "STL-3595066420",
+    "transaction_reference": "TXN-42-000345",
+    "settled_amount": "3106.05",
+    "fee": "63.62",
+    "tax": "11.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T21:35:00"
+  },
+  {
+    "id": "5cbaa496-2848-9240-2fd9-0ce1267627ca",
+    "settlement_id": "STL-4508795329",
+    "transaction_reference": "TXN-42-000346",
+    "settled_amount": "4668.63",
+    "fee": "47.25",
+    "tax": "8.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T19:46:00"
+  },
+  {
+    "id": "a5b2c7ea-2947-6f54-973e-129c35f0b1be",
+    "settlement_id": "STL-8874242713",
+    "transaction_reference": "TXN-42-000347",
+    "settled_amount": "1276.81",
+    "fee": "26.15",
+    "tax": "4.71",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-08T20:25:00"
+  },
+  {
+    "id": "2598f383-9280-3da2-e40b-50e40a086989",
+    "settlement_id": "STL-1240140248",
+    "transaction_reference": "TXN-42-000348",
+    "settled_amount": "1345.02",
+    "fee": "27.55",
+    "tax": "4.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-23T13:48:00"
+  },
+  {
+    "id": "ba5c865d-b834-4070-e0e5-f6e504c44853",
+    "settlement_id": "STL-1368287033",
+    "transaction_reference": "TXN-42-000349",
+    "settled_amount": "4819.77",
+    "fee": "98.73",
+    "tax": "17.77",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T22:18:00"
+  },
+  {
+    "id": "c47a3b7e-d209-383b-9528-4c0acb6bf562",
+    "settlement_id": "STL-2136107759",
+    "transaction_reference": "TXN-42-000350",
+    "settled_amount": "3202.53",
+    "fee": "65.60",
+    "tax": "11.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T22:36:00"
+  },
+  {
+    "id": "33cd1d56-043d-72db-1bcb-404c21d8b96a",
+    "settlement_id": "STL-8234304760",
+    "transaction_reference": "TXN-42-000351",
+    "settled_amount": "3607.28",
+    "fee": "73.89",
+    "tax": "13.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-25T08:08:00"
+  },
+  {
+    "id": "17db4c2f-1e15-8e2f-c09c-2ebe80da2ed7",
+    "settlement_id": "STL-4554178984",
+    "transaction_reference": "TXN-42-000352",
+    "settled_amount": "863.27",
+    "fee": "17.68",
+    "tax": "3.18",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T18:33:00"
+  },
+  {
+    "id": "cd638ba8-f03c-664b-3abf-9c656dd013f3",
+    "settlement_id": "STL-8596386996",
+    "transaction_reference": "TXN-42-000353",
+    "settled_amount": "3571.28",
+    "fee": "73.15",
+    "tax": "13.17",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-09T16:59:00"
+  },
+  {
+    "id": "689d1205-8b31-f4d8-e073-c1d09929afeb",
+    "settlement_id": "STL-2107263953",
+    "transaction_reference": "TXN-42-000354",
+    "settled_amount": "1805.57",
+    "fee": "63.77",
+    "tax": "11.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-13T10:28:00"
+  },
+  {
+    "id": "68aa1236-50de-ef43-cde5-c35ab0117b0a",
+    "settlement_id": "STL-2555936898",
+    "transaction_reference": "TXN-42-000355",
+    "settled_amount": "3772.93",
+    "fee": "38.18",
+    "tax": "6.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T07:30:00"
+  },
+  {
+    "id": "65bf8e04-ae3c-2ce6-fde6-849b468b22af",
+    "settlement_id": "STL-4242579642",
+    "transaction_reference": "TXN-42-000356",
+    "settled_amount": "2278.76",
+    "fee": "46.68",
+    "tax": "8.40",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T11:43:00"
+  },
+  {
+    "id": "f301bb6c-b306-1300-c879-d93272540ab7",
+    "settlement_id": "STL-1694904767",
+    "transaction_reference": "TXN-42-000358",
+    "settled_amount": "1860.44",
+    "fee": "38.11",
+    "tax": "6.86",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T10:46:00"
+  },
+  {
+    "id": "4359ff43-1067-93b6-1690-636b6f74e55d",
+    "settlement_id": "STL-6247463262",
+    "transaction_reference": "TXN-42-000360",
+    "settled_amount": "920.49",
+    "fee": "18.85",
+    "tax": "3.39",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T20:10:00"
+  },
+  {
+    "id": "c8b190e1-089a-9f4f-31da-e8174937b90f",
+    "settlement_id": "STL-5449848690",
+    "transaction_reference": "TXN-42-000362",
+    "settled_amount": "3740.45",
+    "fee": "76.62",
+    "tax": "13.79",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-26T06:44:00"
+  },
+  {
+    "id": "9609598e-67cb-a27a-6528-1970ab6ef8dd",
+    "settlement_id": "STL-9655933303",
+    "transaction_reference": "TXN-42-000363",
+    "settled_amount": "3450.78",
+    "fee": "70.68",
+    "tax": "12.72",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T20:42:00"
+  },
+  {
+    "id": "46c937e0-d0c5-9550-f69a-053958f42098",
+    "settlement_id": "STL-5136298935",
+    "transaction_reference": "TXN-42-945625",
+    "settled_amount": "448.89",
+    "fee": "9.20",
+    "tax": "1.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T11:29:00"
+  },
+  {
+    "id": "5708013e-4b54-1670-80cf-b1db1287e313",
+    "settlement_id": "STL-5067400473",
+    "transaction_reference": "TXN-42-000365",
+    "settled_amount": "4739.57",
+    "fee": "198.98",
+    "tax": "35.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-01T17:09:00"
+  },
+  {
+    "id": "7bcf2b31-902b-d154-6088-5550f74f6900",
+    "settlement_id": "STL-4306983924",
+    "transaction_reference": "TXN-42-000366",
+    "settled_amount": "2725.23",
+    "fee": "55.82",
+    "tax": "10.05",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T05:20:00"
+  },
+  {
+    "id": "a237a8c1-61f6-dfbe-114b-3c79420079f5",
+    "settlement_id": "STL-4011528431",
+    "transaction_reference": "TXN-42-000367",
+    "settled_amount": "1836.41",
+    "fee": "37.62",
+    "tax": "6.77",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-23T22:29:00"
+  },
+  {
+    "id": "66205167-17cf-775f-498b-cf673f8dcf96",
+    "settlement_id": "STL-8821456242",
+    "transaction_reference": "TXN-42-000368",
+    "settled_amount": "1713.90",
+    "fee": "35.11",
+    "tax": "6.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T17:19:00"
+  },
+  {
+    "id": "79ff89d9-2db1-3deb-ee6f-fbea8df71647",
+    "settlement_id": "STL-6643040635",
+    "transaction_reference": "TXN-42-000368",
+    "settled_amount": "1713.90",
+    "fee": "35.11",
+    "tax": "6.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-17T18:19:00"
+  },
+  {
+    "id": "3c1fdff0-331d-58bb-bcb3-636d7fbe6bb3",
+    "settlement_id": "STL-4158643786",
+    "transaction_reference": "TXN-42-000369",
+    "settled_amount": "4675.77",
+    "fee": "95.78",
+    "tax": "17.24",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-28T18:00:00"
+  },
+  {
+    "id": "eb91731a-1eb0-5b4a-1b4f-fd5fc7688339",
+    "settlement_id": "STL-9927036153",
+    "transaction_reference": "TXN-42-000370",
+    "settled_amount": "1156.17",
+    "fee": "23.68",
+    "tax": "4.26",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T09:57:00"
+  },
+  {
+    "id": "fc40a3d4-e5eb-4549-7e0a-04c250bf2995",
+    "settlement_id": "STL-6474936701",
+    "transaction_reference": "TXN-42-000371",
+    "settled_amount": "2619.66",
+    "fee": "53.66",
+    "tax": "9.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T20:46:00"
+  },
+  {
+    "id": "82d9a774-ea7f-6c7d-c3a6-b204fc014a22",
+    "settlement_id": "STL-6498703287",
+    "transaction_reference": "TXN-42-000371",
+    "settled_amount": "2619.66",
+    "fee": "53.66",
+    "tax": "9.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-30T22:46:00"
+  },
+  {
+    "id": "c6a1a468-afb3-e3ad-dc43-2ed564caa1c7",
+    "settlement_id": "STL-6045729129",
+    "transaction_reference": "TXN-42-000372",
+    "settled_amount": "3930.20",
+    "fee": "80.66",
+    "tax": "14.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T07:29:00"
+  },
+  {
+    "id": "9cdf0664-5c91-f845-534f-c96d19ca9c1b",
+    "settlement_id": "STL-8996550604",
+    "transaction_reference": "TXN-42-000373",
+    "settled_amount": "2827.48",
+    "fee": "75.22",
+    "tax": "13.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-05T18:36:00"
+  },
+  {
+    "id": "b361e70a-6b49-acc6-35e5-74e06c878546",
+    "settlement_id": "STL-8525623511",
+    "transaction_reference": "TXN-42-000374",
+    "settled_amount": "2885.76",
+    "fee": "59.52",
+    "tax": "10.71",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T12:31:00"
+  },
+  {
+    "id": "f58ab7c7-cccf-4130-2556-03d4323132fa",
+    "settlement_id": "STL-4172013806",
+    "transaction_reference": "TXN-42-000376",
+    "settled_amount": "1267.70",
+    "fee": "25.97",
+    "tax": "4.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T05:33:00"
+  },
+  {
+    "id": "50d3802d-b876-a455-88b3-152d845a91b8",
+    "settlement_id": "STL-8667946580",
+    "transaction_reference": "TXN-42-000377",
+    "settled_amount": "4221.97",
+    "fee": "86.48",
+    "tax": "15.57",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T01:49:00"
+  },
+  {
+    "id": "18a73d94-a13e-a66d-d6c6-d99779fe7ccc",
+    "settlement_id": "STL-6732306182",
+    "transaction_reference": "TXN-42-000378",
+    "settled_amount": "1382.40",
+    "fee": "28.32",
+    "tax": "5.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T17:12:00"
+  },
+  {
+    "id": "93acb00e-32ee-eb38-9b07-07e5f68ece81",
+    "settlement_id": "STL-8646369354",
+    "transaction_reference": "TXN-42-000379",
+    "settled_amount": "1942.10",
+    "fee": "39.78",
+    "tax": "7.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T15:19:00"
+  },
+  {
+    "id": "de46222e-2514-c7ce-f4e3-5f7ba1b7e3d8",
+    "settlement_id": "STL-6744039057",
+    "transaction_reference": "TXN-42-000380",
+    "settled_amount": "1761.81",
+    "fee": "36.09",
+    "tax": "6.50",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T05:25:00"
+  },
+  {
+    "id": "9afa8267-4479-1214-b5de-f8074a965478",
+    "settlement_id": "STL-8063693463",
+    "transaction_reference": "TXN-42-985591",
+    "settled_amount": "3232.13",
+    "fee": "66.21",
+    "tax": "11.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-09T01:49:00"
+  },
+  {
+    "id": "05e9f407-daad-a0b1-2f13-2a6d2ad55c0b",
+    "settlement_id": "STL-4220107677",
+    "transaction_reference": "TXN-42-000382",
+    "settled_amount": "4641.87",
+    "fee": "95.08",
+    "tax": "17.11",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T04:48:00"
+  },
+  {
+    "id": "65a29cc8-c55b-e95d-06bf-d9c40dc78104",
+    "settlement_id": "STL-5277846424",
+    "transaction_reference": "TXN-42-000383",
+    "settled_amount": "952.08",
+    "fee": "19.50",
+    "tax": "3.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-11T04:44:00"
+  },
+  {
+    "id": "7172f636-48bf-b602-bcd2-e8eb3f5560cd",
+    "settlement_id": "STL-3690714075",
+    "transaction_reference": "TXN-42-000384",
+    "settled_amount": "1441.17",
+    "fee": "29.52",
+    "tax": "5.31",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T05:30:00"
+  },
+  {
+    "id": "ef52d36e-8a63-b93c-def3-306af99863f2",
+    "settlement_id": "STL-2910594463",
+    "transaction_reference": "TXN-42-000385",
+    "settled_amount": "2750.11",
+    "fee": "57.23",
+    "tax": "10.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T01:47:00"
+  },
+  {
+    "id": "88a613b4-a3b8-1f92-a3c9-0c6a86017633",
+    "settlement_id": "STL-6786043791",
+    "transaction_reference": "TXN-42-000386",
+    "settled_amount": "2858.33",
+    "fee": "58.55",
+    "tax": "10.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T09:26:00"
+  },
+  {
+    "id": "cc476b72-6e31-0234-c410-010802568389",
+    "settlement_id": "STL-9620935604",
+    "transaction_reference": "TXN-42-000388",
+    "settled_amount": "54.03",
+    "fee": "2.01",
+    "tax": "0.36",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T10:26:00"
+  },
+  {
+    "id": "3878becf-60dc-12eb-d413-c85063c4e76d",
+    "settlement_id": "STL-2129491690",
+    "transaction_reference": "TXN-42-984671",
+    "settled_amount": "1062.96",
+    "fee": "21.77",
+    "tax": "3.92",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T18:52:00"
+  },
+  {
+    "id": "a60147c3-48e0-9502-4598-f3c8af449605",
+    "settlement_id": "STL-8768773991",
+    "transaction_reference": "TXN-42-000390",
+    "settled_amount": "3298.76",
+    "fee": "67.57",
+    "tax": "12.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-13T11:09:00"
+  },
+  {
+    "id": "7df37378-9f6c-cab4-b352-2c1845aa9503",
+    "settlement_id": "STL-6101516825",
+    "transaction_reference": "TXN-42-000391",
+    "settled_amount": "1060.04",
+    "fee": "21.71",
+    "tax": "3.91",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T10:27:00"
+  },
+  {
+    "id": "ba23b07a-703c-1286-b717-14cd200291bb",
+    "settlement_id": "STL-1035236295",
+    "transaction_reference": "TXN-42-000392",
+    "settled_amount": "876.52",
+    "fee": "17.95",
+    "tax": "3.23",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-03T18:20:00"
+  },
+  {
+    "id": "081fec82-ca9a-cf77-b26a-51a576b40672",
+    "settlement_id": "STL-2418407139",
+    "transaction_reference": "TXN-42-000393",
+    "settled_amount": "547.48",
+    "fee": "17.80",
+    "tax": "3.20",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-22T02:27:00"
+  },
+  {
+    "id": "4005353d-d76f-1e65-e54c-87393133839e",
+    "settlement_id": "STL-8805032417",
+    "transaction_reference": "TXN-42-923803",
+    "settled_amount": "3939.91",
+    "fee": "80.70",
+    "tax": "14.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-26T13:11:00"
+  },
+  {
+    "id": "c55ffde8-bc3e-1d19-75f9-423032fd73c5",
+    "settlement_id": "STL-9993491029",
+    "transaction_reference": "TXN-42-000395",
+    "settled_amount": "164.18",
+    "fee": "1.66",
+    "tax": "0.30",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-07T00:36:00"
+  },
+  {
+    "id": "bea6450f-0acc-b23c-ba6d-bed8a110e887",
+    "settlement_id": "STL-3237361243",
+    "transaction_reference": "TXN-42-000396",
+    "settled_amount": "1164.71",
+    "fee": "23.86",
+    "tax": "4.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-04T11:38:00"
+  },
+  {
+    "id": "a206527c-3c68-41d6-1ce8-e12ff9287d26",
+    "settlement_id": "STL-7159677390",
+    "transaction_reference": "TXN-42-000397",
+    "settled_amount": "2561.12",
+    "fee": "52.46",
+    "tax": "9.44",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-03T09:21:00"
+  },
+  {
+    "id": "b03b6934-79ab-56d1-b0d5-15abc891d55d",
+    "settlement_id": "STL-3560712271",
+    "transaction_reference": "TXN-42-000398",
+    "settled_amount": "734.87",
+    "fee": "19.55",
+    "tax": "3.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-12T00:22:00"
+  },
+  {
+    "id": "c27288e6-ff39-a117-f83b-1806ee4c1b18",
+    "settlement_id": "STL-3684922912",
+    "transaction_reference": "TXN-42-000399",
+    "settled_amount": "4043.46",
+    "fee": "82.82",
+    "tax": "14.91",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T06:29:00"
+  },
+  {
+    "id": "b38a3db1-2767-32d3-a502-dc4b5b0334d8",
+    "settlement_id": "STL-1461243650",
+    "transaction_reference": "TXN-42-000399",
+    "settled_amount": "4043.46",
+    "fee": "82.82",
+    "tax": "14.91",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T07:29:00"
+  },
+  {
+    "id": "b072afc8-0577-6108-3166-2c94bbb24366",
+    "settlement_id": "STL-6917472535",
+    "transaction_reference": "TXN-42-000400",
+    "settled_amount": "1288.73",
+    "fee": "26.40",
+    "tax": "4.75",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-14T23:38:00"
+  },
+  {
+    "id": "91135d7e-3095-2621-7d76-ab58b271115b",
+    "settlement_id": "STL-6788175717",
+    "transaction_reference": "TXN-42-000401",
+    "settled_amount": "787.35",
+    "fee": "16.13",
+    "tax": "2.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T15:09:00"
+  },
+  {
+    "id": "d4d353a5-de1f-1619-467b-a9e577e8b762",
+    "settlement_id": "STL-1688669716",
+    "transaction_reference": "TXN-42-000401",
+    "settled_amount": "787.35",
+    "fee": "16.13",
+    "tax": "2.90",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-15T21:09:00"
+  },
+  {
+    "id": "04cad30a-e207-db20-2f7f-2cd7bbd0fe6c",
+    "settlement_id": "STL-3663727197",
+    "transaction_reference": "TXN-42-000402",
+    "settled_amount": "844.78",
+    "fee": "18.26",
+    "tax": "3.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-16T15:02:00"
+  },
+  {
+    "id": "5295ea96-487b-25d7-9cf0-23dd277529a2",
+    "settlement_id": "STL-2383082793",
+    "transaction_reference": "TXN-42-000403",
+    "settled_amount": "3788.56",
+    "fee": "77.60",
+    "tax": "13.97",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-12T13:14:00"
+  },
+  {
+    "id": "310dc9d1-7c41-3a2a-1b67-f7bb33bb7382",
+    "settlement_id": "STL-1424143426",
+    "transaction_reference": "TXN-42-000404",
+    "settled_amount": "2775.98",
+    "fee": "56.86",
+    "tax": "10.23",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T03:30:00"
+  },
+  {
+    "id": "03599c6d-1224-cbd2-b7c4-b3ee9b1fc6d1",
+    "settlement_id": "STL-5638379165",
+    "transaction_reference": "TXN-42-000405",
+    "settled_amount": "3417.87",
+    "fee": "69.29",
+    "tax": "12.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-18T00:40:00"
+  },
+  {
+    "id": "d2da43ec-0eec-c013-b55b-eaaacb53f0be",
+    "settlement_id": "STL-7944675764",
+    "transaction_reference": "TXN-42-000406",
+    "settled_amount": "3368.34",
+    "fee": "69.00",
+    "tax": "12.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T19:00:00"
+  },
+  {
+    "id": "881af04f-3b23-feed-b9a4-de2b19e9e3a4",
+    "settlement_id": "STL-2654984428",
+    "transaction_reference": "TXN-42-000407",
+    "settled_amount": "305.74",
+    "fee": "6.26",
+    "tax": "1.13",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-08T09:15:00"
+  },
+  {
+    "id": "c42b266b-1b02-fa24-bf00-f56c6a4989a6",
+    "settlement_id": "STL-8152161448",
+    "transaction_reference": "TXN-42-000408",
+    "settled_amount": "2791.29",
+    "fee": "57.18",
+    "tax": "10.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-28T10:02:00"
+  },
+  {
+    "id": "eefb2a24-7169-3ed5-9994-13ccff9957a8",
+    "settlement_id": "STL-6891490448",
+    "transaction_reference": "TXN-42-000409",
+    "settled_amount": "951.56",
+    "fee": "19.49",
+    "tax": "3.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-08T00:12:00"
+  },
+  {
+    "id": "be9cafcf-ed17-f6e9-8cdc-718dc4057420",
+    "settlement_id": "STL-6386271785",
+    "transaction_reference": "TXN-42-000410",
+    "settled_amount": "3339.29",
+    "fee": "68.40",
+    "tax": "12.31",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T10:05:00"
+  },
+  {
+    "id": "e3ec4f6a-fe50-3fdc-2294-fa0a84820c08",
+    "settlement_id": "STL-2296400037",
+    "transaction_reference": "TXN-42-000411",
+    "settled_amount": "2388.45",
+    "fee": "48.92",
+    "tax": "8.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-08T04:39:00"
+  },
+  {
+    "id": "db107e7f-36fe-a0b4-38cd-9122fc0145e1",
+    "settlement_id": "STL-2352505293",
+    "transaction_reference": "TXN-42-000411",
+    "settled_amount": "2388.45",
+    "fee": "48.92",
+    "tax": "8.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-08T07:39:00"
+  },
+  {
+    "id": "5b0c4170-75da-cbbe-09a9-161a18233383",
+    "settlement_id": "STL-1670474924",
+    "transaction_reference": "TXN-42-000412",
+    "settled_amount": "4305.27",
+    "fee": "88.19",
+    "tax": "15.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-16T22:53:00"
+  },
+  {
+    "id": "13c37b5d-bbf8-da91-37a9-f824eafa4d5b",
+    "settlement_id": "STL-8402722005",
+    "transaction_reference": "TXN-42-000413",
+    "settled_amount": "1976.79",
+    "fee": "40.49",
+    "tax": "7.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-21T07:46:00"
+  },
+  {
+    "id": "bb1502ea-0991-2f46-4ce6-928ba46acc9a",
+    "settlement_id": "STL-2638728074",
+    "transaction_reference": "TXN-42-000414",
+    "settled_amount": "2505.72",
+    "fee": "105.20",
+    "tax": "18.94",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T10:46:00"
+  },
+  {
+    "id": "bf67de42-3a0a-2b59-c538-4872deaa543e",
+    "settlement_id": "STL-9639044885",
+    "transaction_reference": "TXN-42-000415",
+    "settled_amount": "383.92",
+    "fee": "7.86",
+    "tax": "1.41",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-22T09:56:00"
+  },
+  {
+    "id": "388629ff-b2a0-f778-809d-644453ab3cce",
+    "settlement_id": "STL-1657978181",
+    "transaction_reference": "TXN-42-000416",
+    "settled_amount": "3333.93",
+    "fee": "68.29",
+    "tax": "12.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T17:48:00"
+  },
+  {
+    "id": "25e42403-64f2-502e-c94f-6ed34a2f3876",
+    "settlement_id": "STL-5862714930",
+    "transaction_reference": "TXN-42-000417",
+    "settled_amount": "3796.25",
+    "fee": "118.07",
+    "tax": "21.25",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-11T03:36:00"
+  },
+  {
+    "id": "c31496ea-2160-446e-b2a7-a475c6196773",
+    "settlement_id": "STL-5874232824",
+    "transaction_reference": "TXN-42-000418",
+    "settled_amount": "2533.60",
+    "fee": "51.90",
+    "tax": "9.34",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-07T12:02:00"
+  },
+  {
+    "id": "44296ca2-1257-429e-3e08-5cb73f09f7a6",
+    "settlement_id": "STL-8631177201",
+    "transaction_reference": "TXN-42-000419",
+    "settled_amount": "811.60",
+    "fee": "22.77",
+    "tax": "4.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-03T08:51:00"
+  },
+  {
+    "id": "a7c8f0c5-9808-552c-5832-c8de521be8c2",
+    "settlement_id": "STL-2309186996",
+    "transaction_reference": "TXN-42-000420",
+    "settled_amount": "3602.91",
+    "fee": "73.80",
+    "tax": "13.28",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-03T16:27:00"
+  },
+  {
+    "id": "27ef0a4b-5fb2-b838-af73-b3cf331e91f2",
+    "settlement_id": "STL-4662594124",
+    "transaction_reference": "TXN-42-000421",
+    "settled_amount": "3252.16",
+    "fee": "66.62",
+    "tax": "11.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-14T21:32:00"
+  },
+  {
+    "id": "f2edcab0-3e38-69e2-0df6-3417bd5538c7",
+    "settlement_id": "STL-2235598059",
+    "transaction_reference": "TXN-42-000421",
+    "settled_amount": "3252.16",
+    "fee": "66.62",
+    "tax": "11.99",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-14T22:32:00"
+  },
+  {
+    "id": "8be27516-342c-5348-363d-75f189bab9c8",
+    "settlement_id": "STL-5373945362",
+    "transaction_reference": "TXN-42-000422",
+    "settled_amount": "3649.27",
+    "fee": "74.75",
+    "tax": "13.46",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-12T23:10:00"
+  },
+  {
+    "id": "7707ac0e-0d96-feb3-4572-b3859e32f085",
+    "settlement_id": "STL-1035795037",
+    "transaction_reference": "TXN-42-000423",
+    "settled_amount": "4735.79",
+    "fee": "97.01",
+    "tax": "17.46",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T09:04:00"
+  },
+  {
+    "id": "fa033d6c-822f-b2f0-6175-a257fad3b44c",
+    "settlement_id": "STL-4048090198",
+    "transaction_reference": "TXN-42-000424",
+    "settled_amount": "3514.83",
+    "fee": "71.25",
+    "tax": "12.83",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-22T10:03:00"
+  },
+  {
+    "id": "ec19e4eb-3f55-1740-0a2d-36a605804493",
+    "settlement_id": "STL-7568788980",
+    "transaction_reference": "TXN-42-000425",
+    "settled_amount": "2578.69",
+    "fee": "52.82",
+    "tax": "9.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-21T00:26:00"
+  },
+  {
+    "id": "47bac8aa-f2f9-4b2c-8e10-814ff1b2f143",
+    "settlement_id": "STL-1968870326",
+    "transaction_reference": "TXN-42-000427",
+    "settled_amount": "1306.80",
+    "fee": "26.77",
+    "tax": "4.82",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T01:03:00"
+  },
+  {
+    "id": "afbffde4-a022-6155-df69-5d179cc96aed",
+    "settlement_id": "STL-6271763012",
+    "transaction_reference": "TXN-42-000428",
+    "settled_amount": "4690.41",
+    "fee": "96.08",
+    "tax": "17.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T19:47:00"
+  },
+  {
+    "id": "f8751fd4-6d2c-cf42-271a-919f92a97acd",
+    "settlement_id": "STL-7895006867",
+    "transaction_reference": "TXN-42-000428",
+    "settled_amount": "4690.41",
+    "fee": "96.08",
+    "tax": "17.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T21:47:00"
+  },
+  {
+    "id": "b043a39a-4f1a-84cb-235b-275bdcd28b97",
+    "settlement_id": "STL-5875872347",
+    "transaction_reference": "TXN-42-000429",
+    "settled_amount": "2873.41",
+    "fee": "58.86",
+    "tax": "10.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T22:20:00"
+  },
+  {
+    "id": "eac7dc2e-9099-a283-eedb-0ce5a7fecdcd",
+    "settlement_id": "STL-5973777930",
+    "transaction_reference": "TXN-42-000429",
+    "settled_amount": "2873.41",
+    "fee": "58.86",
+    "tax": "10.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-02T00:20:00"
+  },
+  {
+    "id": "f610f40d-69fe-890f-f90f-b6e4e15052f3",
+    "settlement_id": "STL-7061280172",
+    "transaction_reference": "TXN-42-000430",
+    "settled_amount": "2915.08",
+    "fee": "90.66",
+    "tax": "16.32",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-29T23:48:00"
+  },
+  {
+    "id": "9df034d3-9caa-d37c-fc67-95e2c32fc21b",
+    "settlement_id": "STL-1997216402",
+    "transaction_reference": "TXN-42-000431",
+    "settled_amount": "3914.53",
+    "fee": "80.18",
+    "tax": "14.43",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-12T23:59:00"
+  },
+  {
+    "id": "68994c84-0840-3234-39ed-0800317979f9",
+    "settlement_id": "STL-2774010584",
+    "transaction_reference": "TXN-42-000433",
+    "settled_amount": "3742.57",
+    "fee": "76.66",
+    "tax": "13.80",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-20T00:30:00"
+  },
+  {
+    "id": "b017c533-7d6c-e5c3-9df7-9a27ddfc2a92",
+    "settlement_id": "STL-6354895816",
+    "transaction_reference": "TXN-42-000434",
+    "settled_amount": "3534.32",
+    "fee": "72.40",
+    "tax": "13.03",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-08T05:28:00"
+  },
+  {
+    "id": "926a4bd0-be12-5f8f-f06b-6c129c8b9550",
+    "settlement_id": "STL-4379795093",
+    "transaction_reference": "TXN-42-000435",
+    "settled_amount": "4071.20",
+    "fee": "83.39",
+    "tax": "15.01",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-10T00:21:00"
+  },
+  {
+    "id": "fbdc532e-6546-c66d-89b1-cad184c9b276",
+    "settlement_id": "STL-4157531471",
+    "transaction_reference": "TXN-42-000436",
+    "settled_amount": "657.25",
+    "fee": "13.46",
+    "tax": "2.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T22:37:00"
+  },
+  {
+    "id": "4b5f174b-6c26-7b56-2a9e-dda7761ad914",
+    "settlement_id": "STL-9824210727",
+    "transaction_reference": "TXN-42-000437",
+    "settled_amount": "2080.79",
+    "fee": "42.62",
+    "tax": "7.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-28T07:05:00"
+  },
+  {
+    "id": "e4f2ae4c-f016-716b-95df-e6cbc75aec94",
+    "settlement_id": "STL-5876105046",
+    "transaction_reference": "TXN-42-000438",
+    "settled_amount": "4737.95",
+    "fee": "96.76",
+    "tax": "17.42",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-18T21:55:00"
+  },
+  {
+    "id": "400564b8-1716-03b1-7466-1e6fe1eeb1f1",
+    "settlement_id": "STL-4149337748",
+    "transaction_reference": "TXN-42-000439",
+    "settled_amount": "1753.47",
+    "fee": "35.92",
+    "tax": "6.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-17T19:45:00"
+  },
+  {
+    "id": "8ce377d7-60f1-1528-28ef-2f46f323123e",
+    "settlement_id": "STL-2634694666",
+    "transaction_reference": "TXN-42-000440",
+    "settled_amount": "538.84",
+    "fee": "13.97",
+    "tax": "2.51",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T03:21:00"
+  },
+  {
+    "id": "0d22af35-b648-be8a-c4e7-75b92dca365a",
+    "settlement_id": "STL-7097056942",
+    "transaction_reference": "TXN-42-000441",
+    "settled_amount": "972.41",
+    "fee": "19.92",
+    "tax": "3.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T17:23:00"
+  },
+  {
+    "id": "3ce5988c-7e53-d702-e1f8-d1929ba4d5a6",
+    "settlement_id": "STL-8127372046",
+    "transaction_reference": "TXN-42-000443",
+    "settled_amount": "3284.61",
+    "fee": "67.28",
+    "tax": "12.11",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-11T18:55:00"
+  },
+  {
+    "id": "d1f379b1-8ebb-8208-a0ee-404f9ea8fcb1",
+    "settlement_id": "STL-4544432520",
+    "transaction_reference": "TXN-42-000444",
+    "settled_amount": "2170.70",
+    "fee": "67.52",
+    "tax": "12.15",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T05:22:00"
+  },
+  {
+    "id": "9a70ea8a-d688-1d3e-93fd-e248aac04912",
+    "settlement_id": "STL-6576763981",
+    "transaction_reference": "TXN-42-000445",
+    "settled_amount": "1043.86",
+    "fee": "21.38",
+    "tax": "3.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-01T14:06:00"
+  },
+  {
+    "id": "92811c92-984f-e323-b329-2925b107094e",
+    "settlement_id": "STL-7781608576",
+    "transaction_reference": "TXN-42-000446",
+    "settled_amount": "348.63",
+    "fee": "7.14",
+    "tax": "1.29",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-19T00:23:00"
+  },
+  {
+    "id": "4af715b7-109e-fb40-8ceb-ac57d7e323cf",
+    "settlement_id": "STL-3022142957",
+    "transaction_reference": "TXN-42-000447",
+    "settled_amount": "574.36",
+    "fee": "11.76",
+    "tax": "2.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-04T17:09:00"
+  },
+  {
+    "id": "bacf7cfc-9245-1cc4-1bfb-3b3d0ee52f63",
+    "settlement_id": "STL-5671505977",
+    "transaction_reference": "TXN-42-980223",
+    "settled_amount": "3653.49",
+    "fee": "74.84",
+    "tax": "13.47",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-18T13:21:00"
+  },
+  {
+    "id": "9d421bae-2134-e15b-ed56-c7145a9621f5",
+    "settlement_id": "STL-7711463369",
+    "transaction_reference": "TXN-42-981689",
+    "settled_amount": "3622.96",
+    "fee": "74.21",
+    "tax": "13.36",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-26T23:02:00"
+  },
+  {
+    "id": "00679b62-318c-d979-fab0-a15d4a5d6cea",
+    "settlement_id": "STL-1507695800",
+    "transaction_reference": "TXN-42-000450",
+    "settled_amount": "3830.44",
+    "fee": "78.46",
+    "tax": "14.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-17T11:03:00"
+  },
+  {
+    "id": "a3336ea8-ce58-de20-8f77-63e05982aa44",
+    "settlement_id": "STL-1911984483",
+    "transaction_reference": "TXN-42-000451",
+    "settled_amount": "2012.68",
+    "fee": "67.58",
+    "tax": "12.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-14T21:40:00"
+  },
+  {
+    "id": "1d2467e2-0191-d19d-c45c-3fbb52ecac27",
+    "settlement_id": "STL-8240609570",
+    "transaction_reference": "TXN-42-000452",
+    "settled_amount": "1127.54",
+    "fee": "23.10",
+    "tax": "4.16",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-15T10:12:00"
+  },
+  {
+    "id": "cc18dd0e-7978-dc84-ea89-a9797aa6d6ea",
+    "settlement_id": "STL-9742656117",
+    "transaction_reference": "TXN-42-000453",
+    "settled_amount": "2125.06",
+    "fee": "43.53",
+    "tax": "7.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-20T11:50:00"
+  },
+  {
+    "id": "d5c97d5d-0e57-79ec-be1a-070fed83a4c8",
+    "settlement_id": "STL-7532959755",
+    "transaction_reference": "TXN-42-000454",
+    "settled_amount": "2562.48",
+    "fee": "52.49",
+    "tax": "9.45",
+    "settlement_status": "settled",
+    "settled_at": "2026-04-15T04:43:00"
+  },
+  {
+    "id": "cbb86be0-e355-e636-ea8b-31f5ccae58fe",
+    "settlement_id": "STL-2518681304",
+    "transaction_reference": "TXN-42-000455",
+    "settled_amount": "3808.84",
+    "fee": "78.02",
+    "tax": "14.04",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-19T16:39:00"
+  },
+  {
+    "id": "985e7e89-2ff8-107a-63ba-9d869b0e70ad",
+    "settlement_id": "STL-8979273911",
+    "transaction_reference": "TXN-42-974839",
+    "settled_amount": "1533.35",
+    "fee": "31.41",
+    "tax": "5.65",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-31T23:44:00"
+  },
+  {
+    "id": "1cbb304b-2ccd-a2af-4d64-bb63866cfb2b",
+    "settlement_id": "STL-5692698971",
+    "transaction_reference": "TXN-42-000457",
+    "settled_amount": "289.33",
+    "fee": "5.32",
+    "tax": "0.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T02:36:00"
+  },
+  {
+    "id": "c6895836-4f73-ab1c-860c-7b68dfb68a5f",
+    "settlement_id": "STL-2405905813",
+    "transaction_reference": "TXN-42-000458",
+    "settled_amount": "225.29",
+    "fee": "4.61",
+    "tax": "0.83",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T23:35:00"
+  },
+  {
+    "id": "85b864d4-dd64-3387-b6b3-8fbc6338fb29",
+    "settlement_id": "STL-1497511785",
+    "transaction_reference": "TXN-42-000459",
+    "settled_amount": "3146.75",
+    "fee": "93.41",
+    "tax": "16.81",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-03T17:18:00"
+  },
+  {
+    "id": "bedcacb7-a8b3-31a0-c424-6277854494ab",
+    "settlement_id": "STL-2342094845",
+    "transaction_reference": "TXN-42-000460",
+    "settled_amount": "2240.39",
+    "fee": "99.76",
+    "tax": "17.96",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-21T11:38:00"
+  },
+  {
+    "id": "abcec90f-70ec-f41b-c5d5-601651b3ccf5",
+    "settlement_id": "STL-5800273809",
+    "transaction_reference": "TXN-42-000461",
+    "settled_amount": "3980.48",
+    "fee": "81.53",
+    "tax": "14.68",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-31T15:58:00"
+  },
+  {
+    "id": "51883a26-8ca3-3a54-59ae-73028ae3297e",
+    "settlement_id": "STL-2164159934",
+    "transaction_reference": "TXN-42-000462",
+    "settled_amount": "914.80",
+    "fee": "9.26",
+    "tax": "1.67",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-02T16:19:00"
+  },
+  {
+    "id": "076c108d-214c-87b1-0cfc-64207192e443",
+    "settlement_id": "STL-3901232981",
+    "transaction_reference": "TXN-42-000463",
+    "settled_amount": "3117.95",
+    "fee": "86.31",
+    "tax": "15.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-24T04:49:00"
+  },
+  {
+    "id": "b3099e0d-b0ac-0677-d60f-8680a124fdb2",
+    "settlement_id": "STL-6822362090",
+    "transaction_reference": "TXN-42-000464",
+    "settled_amount": "2061.34",
+    "fee": "42.22",
+    "tax": "7.60",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T09:37:00"
+  },
+  {
+    "id": "3b504fda-7875-b1c7-7724-3aa3c438eae0",
+    "settlement_id": "STL-5069259334",
+    "transaction_reference": "TXN-42-000466",
+    "settled_amount": "772.31",
+    "fee": "15.82",
+    "tax": "2.85",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-11T18:28:00"
+  },
+  {
+    "id": "53238aff-e1e5-38a1-dc5c-d673c9ed66a6",
+    "settlement_id": "STL-7241803245",
+    "transaction_reference": "TXN-42-000467",
+    "settled_amount": "4505.72",
+    "fee": "92.29",
+    "tax": "16.61",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-06T14:30:00"
+  },
+  {
+    "id": "931e1d4d-9abc-9859-593e-dc83c497d0a8",
+    "settlement_id": "STL-5737057771",
+    "transaction_reference": "TXN-42-000468",
+    "settled_amount": "432.26",
+    "fee": "8.85",
+    "tax": "1.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-02T18:44:00"
+  },
+  {
+    "id": "3d134526-69d7-5427-972d-5d57669be896",
+    "settlement_id": "STL-3666637135",
+    "transaction_reference": "TXN-42-960420",
+    "settled_amount": "3754.10",
+    "fee": "76.90",
+    "tax": "13.84",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-22T01:55:00"
+  },
+  {
+    "id": "8b661d1f-579a-7954-c98e-3f5b9134c0b7",
+    "settlement_id": "STL-3981279224",
+    "transaction_reference": "TXN-42-000470",
+    "settled_amount": "871.38",
+    "fee": "18.67",
+    "tax": "3.36",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-08T14:18:00"
+  },
+  {
+    "id": "d2701a52-18ff-d8ad-8e1a-3a51534bfa86",
+    "settlement_id": "STL-2912189154",
+    "transaction_reference": "TXN-42-000471",
+    "settled_amount": "3489.64",
+    "fee": "71.48",
+    "tax": "12.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T09:54:00"
+  },
+  {
+    "id": "9927839b-11d1-ce50-67e2-189bf4b4c704",
+    "settlement_id": "STL-6922377726",
+    "transaction_reference": "TXN-42-000471",
+    "settled_amount": "3489.64",
+    "fee": "71.48",
+    "tax": "12.87",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-19T12:54:00"
+  },
+  {
+    "id": "880061b6-73f6-21a8-2633-0c43a92f85fe",
+    "settlement_id": "STL-6546964238",
+    "transaction_reference": "TXN-42-000472",
+    "settled_amount": "3404.45",
+    "fee": "69.63",
+    "tax": "12.53",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-22T12:22:00"
+  },
+  {
+    "id": "4df6ff4f-adf7-92ff-e9c7-c13acb5a4d77",
+    "settlement_id": "STL-9317962158",
+    "transaction_reference": "TXN-42-000473",
+    "settled_amount": "3056.15",
+    "fee": "62.60",
+    "tax": "11.27",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-21T06:16:00"
+  },
+  {
+    "id": "fa8bd601-d21c-e315-8f5e-248eb40f040e",
+    "settlement_id": "STL-2542943951",
+    "transaction_reference": "TXN-42-000475",
+    "settled_amount": "750.60",
+    "fee": "15.38",
+    "tax": "2.77",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-03T15:34:00"
+  },
+  {
+    "id": "6274d240-8e30-1bcc-302f-a247239a046d",
+    "settlement_id": "STL-2792012815",
+    "transaction_reference": "TXN-42-000477",
+    "settled_amount": "2057.19",
+    "fee": "42.14",
+    "tax": "7.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T21:41:00"
+  },
+  {
+    "id": "6fcddf50-a86d-e251-7c98-756fe288109d",
+    "settlement_id": "STL-1583152392",
+    "transaction_reference": "TXN-42-000478",
+    "settled_amount": "4565.30",
+    "fee": "93.51",
+    "tax": "16.83",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-04T00:20:00"
+  },
+  {
+    "id": "8269041a-7453-3044-2e07-336d9f8d367d",
+    "settlement_id": "STL-8817147252",
+    "transaction_reference": "TXN-42-000479",
+    "settled_amount": "3385.38",
+    "fee": "69.34",
+    "tax": "12.48",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T12:03:00"
+  },
+  {
+    "id": "44ed98e2-8071-4c8a-b64e-26cf3c9ba542",
+    "settlement_id": "STL-2576124271",
+    "transaction_reference": "TXN-42-000480",
+    "settled_amount": "1916.50",
+    "fee": "39.26",
+    "tax": "7.07",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-10T14:55:00"
+  },
+  {
+    "id": "86c2ad8f-bb36-07b0-baed-6f49245fd841",
+    "settlement_id": "STL-8640187694",
+    "transaction_reference": "TXN-42-000481",
+    "settled_amount": "3006.09",
+    "fee": "61.57",
+    "tax": "11.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-11T13:12:00"
+  },
+  {
+    "id": "ab310bfe-f5dd-7f92-a9ea-a9ffbddf2416",
+    "settlement_id": "STL-9925293862",
+    "transaction_reference": "TXN-42-000482",
+    "settled_amount": "2743.97",
+    "fee": "56.21",
+    "tax": "10.12",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-24T17:03:00"
+  },
+  {
+    "id": "e7f339dc-833d-e3ad-743b-9f717807c947",
+    "settlement_id": "STL-8446676790",
+    "transaction_reference": "TXN-42-000483",
+    "settled_amount": "2857.86",
+    "fee": "58.54",
+    "tax": "10.54",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-05T20:17:00"
+  },
+  {
+    "id": "cf13cb3d-4ab0-5699-fd88-8cbda8049463",
+    "settlement_id": "STL-5412211686",
+    "transaction_reference": "TXN-42-000485",
+    "settled_amount": "3819.11",
+    "fee": "78.23",
+    "tax": "14.08",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-27T10:43:00"
+  },
+  {
+    "id": "cecea5d3-5ea9-09ef-7257-dcb6a8be6c80",
+    "settlement_id": "STL-6048301832",
+    "transaction_reference": "TXN-42-000487",
+    "settled_amount": "1535.98",
+    "fee": "31.46",
+    "tax": "5.66",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-16T07:01:00"
+  },
+  {
+    "id": "ef16d03b-9875-93c3-2523-52f6f7a3f6a6",
+    "settlement_id": "STL-4529276727",
+    "transaction_reference": "TXN-42-911062",
+    "settled_amount": "3685.00",
+    "fee": "75.48",
+    "tax": "13.59",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T08:59:00"
+  },
+  {
+    "id": "c1676505-43af-6c46-a46b-39320de84b63",
+    "settlement_id": "STL-4519858899",
+    "transaction_reference": "TXN-42-000489",
+    "settled_amount": "2614.20",
+    "fee": "54.00",
+    "tax": "9.72",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-23T02:48:00"
+  },
+  {
+    "id": "b4a2b699-aefa-823b-613a-9ff93bd13a43",
+    "settlement_id": "STL-6970307272",
+    "transaction_reference": "TXN-42-000490",
+    "settled_amount": "955.61",
+    "fee": "19.57",
+    "tax": "3.52",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-14T19:20:00"
+  },
+  {
+    "id": "a32e3ab5-8802-d74a-eaef-2ec218ecde2b",
+    "settlement_id": "STL-8920947409",
+    "transaction_reference": "TXN-42-000491",
+    "settled_amount": "871.54",
+    "fee": "17.22",
+    "tax": "3.10",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-29T02:52:00"
+  },
+  {
+    "id": "c5ed3982-760b-3673-6422-a73e958c9cfd",
+    "settlement_id": "STL-4309260670",
+    "transaction_reference": "TXN-42-000492",
+    "settled_amount": "4797.23",
+    "fee": "98.26",
+    "tax": "17.69",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-27T08:32:00"
+  },
+  {
+    "id": "8677b81d-1902-c93b-6947-9974030fe73e",
+    "settlement_id": "STL-7210274473",
+    "transaction_reference": "TXN-42-000493",
+    "settled_amount": "1824.87",
+    "fee": "37.38",
+    "tax": "6.73",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-20T01:16:00"
+  },
+  {
+    "id": "e4db04c8-a817-4c85-9819-7749f041e4f7",
+    "settlement_id": "STL-4588269668",
+    "transaction_reference": "TXN-42-000494",
+    "settled_amount": "3810.30",
+    "fee": "78.05",
+    "tax": "14.05",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-18T17:47:00"
+  },
+  {
+    "id": "90e9e294-a5dd-2836-e65f-a9fac38c2eaf",
+    "settlement_id": "STL-6086370835",
+    "transaction_reference": "TXN-42-000495",
+    "settled_amount": "3364.08",
+    "fee": "68.91",
+    "tax": "12.40",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-10T15:42:00"
+  },
+  {
+    "id": "46fc4ff2-12f1-78bd-c7de-01a929769b0f",
+    "settlement_id": "STL-4337644657",
+    "transaction_reference": "TXN-42-000496",
+    "settled_amount": "2456.57",
+    "fee": "50.96",
+    "tax": "9.17",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-27T20:39:00"
+  },
+  {
+    "id": "edb7d4e4-fabb-6609-7de1-7a8511c4194a",
+    "settlement_id": "STL-2686352103",
+    "transaction_reference": "TXN-42-000497",
+    "settled_amount": "2086.88",
+    "fee": "42.75",
+    "tax": "7.70",
+    "settlement_status": "settled",
+    "settled_at": "2026-01-25T17:07:00"
+  },
+  {
+    "id": "b72479b7-710b-7fa9-e9a0-c20d1b332e43",
+    "settlement_id": "STL-2112380464",
+    "transaction_reference": "TXN-42-000498",
+    "settled_amount": "2616.54",
+    "fee": "53.60",
+    "tax": "9.65",
+    "settlement_status": "settled",
+    "settled_at": "2026-02-20T23:01:00"
+  },
+  {
+    "id": "0038dc84-a3ed-033a-a722-2ea2261b5048",
+    "settlement_id": "STL-5006748052",
+    "transaction_reference": "TXN-42-000499",
+    "settled_amount": "470.91",
+    "fee": "9.65",
+    "tax": "1.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T13:20:00"
+  },
+  {
+    "id": "b336d143-26cf-bf51-4435-2e6f63f6bf77",
+    "settlement_id": "STL-9605842084",
+    "transaction_reference": "TXN-42-000499",
+    "settled_amount": "470.91",
+    "fee": "9.65",
+    "tax": "1.74",
+    "settlement_status": "settled",
+    "settled_at": "2026-03-09T19:20:00"
+  }
+]

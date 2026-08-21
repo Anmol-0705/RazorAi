@@ -35,3 +35,23 @@ from or push to a remote GitHub repo. Work in this session happens in
 a local-only git repo. Syncing to the real GitHub repo is the
 project owner's responsibility until this is resolved (e.g. via
 Claude Code locally, which has network access).
+
+## D006 — Phase 1 built with stdlib, not Pydantic/SQLAlchemy yet
+This sandbox has no network access, so `pip install` cannot fetch
+pydantic/sqlalchemy/pytest. Rather than write untestable code, Phase 1
+domain models use `dataclasses` with explicit validation functions,
+and tests use `unittest` (stdlib). The validation rules and field
+shapes are written to map directly onto Pydantic validators and
+SQLAlchemy columns later. Migrating to the real stack happens once
+dependency installation is possible (Docker build, or a networked
+environment) — tracked as a known issue in PROJECT_STATE.md, not
+silently deferred.
+
+## D007 — Anomaly counts are exact, not probabilistic
+The generator converts target anomaly weights into exact per-condition
+counts (rounded, drift absorbed into normal_match) and then does a
+seeded shuffle, rather than sampling each record's condition
+independently at random. This guarantees every configured anomaly
+type actually appears at the requested dataset sizes (100/250/500),
+which pure random sampling could fail to do at small n, while
+remaining fully deterministic under a fixed seed.

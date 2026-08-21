@@ -60,6 +60,22 @@ evaluation against held-out labeled set → dashboards / AI explanation
 layer reads final computed results (read-only, no write-back of
 financial values from AI).
 
+## Data Model & Generator (Phase 1, implemented)
+- `backend/app/models/` — Payment, Settlement, ReconciliationResult,
+  ExceptionCase, ReviewAudit. Currently stdlib `dataclasses` with
+  explicit validation (not yet SQLAlchemy ORM — see DECISIONS.md D006).
+  Only Payment/Settlement are populated by the generator; the other
+  three are schema-only contracts for later phases.
+- `backend/app/data_generation/` — deterministic generator. Config
+  (seed, record count, anomaly weights) lives in `config.py`; anomaly
+  labels live in their own `GroundTruthCondition` enum, intentionally
+  separate from `models.enums.ExceptionType` so the reconciliation
+  engine can never accidentally import the answer key.
+- `data/demo/` and `data/eval/` hold generator output (payments +
+  settlements only). `data/ground_truth/` is a physically separate
+  tree holding the true condition per transaction, for evaluation
+  scripts only — never a valid input to the reconciliation engine.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions
