@@ -8,10 +8,11 @@ schema applied — see docs/api.md.
 import os
 import unittest
 from decimal import Decimal
+from unittest import mock
 
 os.environ["DATABASE_URL"] = "postgresql+psycopg://postgres:password@localhost:5432/razorrecon_test"
 
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, select, text
 from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
 
@@ -109,6 +110,129 @@ class DemoDatasetTests(ApiTestCase):
         self.assertFalse(second.json()["created"])
         self.assertEqual(first.json()["dataset_id"], second.json()["dataset_id"])
         self.assertEqual(second.json()["payment_count"], first.json()["payment_count"])
+
+    def test_repeated_generation_does_not_duplicate_payment_rows_in_db(self):
+        client.post("/datasets/demo", json={"seed": 11, "num_records": 30})
+        client.post("/datasets/demo", json={"seed": 11, "num_records": 30})
+        client.post("/datasets/demo", json={"seed": 11, "num_records": 30})
+
+        db = _TestSessionLocal()
+        try:
+            all_payments = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed11-n30")
+            ).scalars().all()
+            self.assertEqual(len(all_payments), 30)
+            self.assertEqual(len({p.transaction_id for p in all_payments}), 30)
+        finally:
+            db.close()
+
+    def test_repeated_generation_does_not_duplicate_settlement_rows_in_db(self):
+        first = client.post("/datasets/demo", json={"seed": 12, "num_records": 30}).json()
+        client.post("/datasets/demo", json={"seed": 12, "num_records": 30})
+
+        db = _TestSessionLocal()
+        try:
+            all_settlements = db.execute(
+                select(SettlementORM).where(SettlementORM.dataset_id == "demo-seed12-n30")
+            ).scalars().all()
+            self.assertEqual(len(all_settlements), first["settlement_count"])
+            self.assertEqual(
+                len({s.settlement_id for s in all_settlements}), len(all_settlements)
+            )
+        finally:
+            db.close()
+
+    def test_same_dataset_id_reused_across_repeated_calls(self):
+        responses = [
+            client.post("/datasets/demo", json={"seed": 13, "num_records": 30}).json()
+            for _ in range(3)
+        ]
+        dataset_ids = {r["dataset_id"] for r in responses}
+        self.assertEqual(dataset_ids, {"demo-seed13-n30"})
+        self.assertEqual([r["created"] for r in responses], [True, False, False])
+
+    def test_different_seed_creates_a_different_dataset(self):
+        first = client.post("/datasets/demo", json={"seed": 20, "num_records": 30})
+        second = client.post("/datasets/demo", json={"seed": 21, "num_records": 30})
+
+        self.assertEqual(first.status_code, 201)
+        self.assertEqual(second.status_code, 201)
+        self.assertNotEqual(first.json()["dataset_id"], second.json()["dataset_id"])
+        self.assertTrue(first.json()["created"])
+        self.assertTrue(second.json()["created"])
+
+    def test_same_seed_different_num_records_is_a_clean_conflict_not_a_crash(self):
+        # The generator derives transaction_id from (seed, index) only,
+        # independent of num_records (app.data_generation.generator),
+        # so two datasets sharing a seed always collide on their
+        # overlapping index range's globally-unique transaction_id.
+        # This must surface as a clean 409, never a raw 500/IntegrityError,
+        # and must never leave partial rows behind for the rejected dataset.
+        first = client.post("/datasets/demo", json={"seed": 30, "num_records": 30})
+        self.assertEqual(first.status_code, 201)
+
+        second = client.post("/datasets/demo", json={"seed": 30, "num_records": 60})
+        self.assertEqual(second.status_code, 409)
+        self.assertIn("collide", second.json()["detail"])
+
+        db = _TestSessionLocal()
+        try:
+            leftover = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed30-n60")
+            ).scalars().all()
+            self.assertEqual(len(leftover), 0, "a rejected conflicting dataset must not leave partial rows")
+            # The original, successfully-created dataset must be untouched.
+            original = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed30-n30")
+            ).scalars().all()
+            self.assertEqual(len(original), 30)
+        finally:
+            db.close()
+
+    def test_concurrent_duplicate_request_reuses_winner_instead_of_crashing(self):
+        # Simulate two requests racing to generate the same dataset: by
+        # the time our own insert reaches db.commit(), a "concurrent"
+        # request has already committed the identical rows first (this
+        # is exactly the state a genuine race leaves behind, without
+        # relying on real thread timing to reproduce reliably).
+        from app.services import dataset_service
+
+        winner_committed = {"done": False}
+        real_generate_dataset = dataset_service.generate_dataset
+
+        def _generate_then_let_concurrent_winner_commit_first(config):
+            bundle = real_generate_dataset(config)
+            if not winner_committed["done"]:
+                winner_committed["done"] = True
+                concurrent_db = _TestSessionLocal()
+                try:
+                    dataset_service.generate_and_persist_demo_dataset(
+                        concurrent_db, seed=config.seed, num_records=config.num_records
+                    )
+                finally:
+                    concurrent_db.close()
+            return bundle
+
+        with mock.patch.object(
+            dataset_service, "generate_dataset", side_effect=_generate_then_let_concurrent_winner_commit_first
+        ):
+            resp = client.post("/datasets/demo", json={"seed": 40, "num_records": 30})
+
+        self.assertEqual(resp.status_code, 200)  # not created by us -- the concurrent winner created it
+        body = resp.json()
+        self.assertEqual(body["dataset_id"], "demo-seed40-n30")
+        self.assertFalse(body["created"])
+        self.assertEqual(body["payment_count"], 30)
+
+        db = _TestSessionLocal()
+        try:
+            all_payments = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed40-n30")
+            ).scalars().all()
+            self.assertEqual(len(all_payments), 30)
+            self.assertEqual(len({p.transaction_id for p in all_payments}), 30)
+        finally:
+            db.close()
 
 
 class ReconciliationRunTests(ApiTestCase):
