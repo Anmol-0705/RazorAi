@@ -6,8 +6,14 @@ from __future__ import annotations
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.db.models import AutoResolutionRecordORM, ExceptionCaseORM, ReconciliationResultORM, ReviewAuditORM
-from app.services import reconciliation_service
+from app.db.models import (
+    ActionExecutionORM,
+    AutoResolutionRecordORM,
+    ExceptionCaseORM,
+    ReconciliationResultORM,
+    ReviewAuditORM,
+)
+from app.services import action_service, reconciliation_service
 from app.services.errors import NotFoundError
 
 
@@ -45,6 +51,11 @@ def get_exception_detail(db: Session, exception_id: str) -> dict:
         .where(ReviewAuditORM.exception_case_id == exception_id)
         .order_by(ReviewAuditORM.created_at)
     ).scalars().all()
+    action_executions = db.execute(
+        select(ActionExecutionORM)
+        .where(ActionExecutionORM.exception_case_id == exception_id)
+        .order_by(ActionExecutionORM.created_at)
+    ).scalars().all()
 
     result_row = db.get(ReconciliationResultORM, exc.reconciliation_result_id)
     enriched_result = (
@@ -56,4 +67,9 @@ def get_exception_detail(db: Session, exception_id: str) -> dict:
         "result": enriched_result,
         "auto_resolutions": list(auto_resolutions),
         "review_audits": list(review_audits),
+        "action_executions": list(action_executions),
+        # Read-only preview so the UI can show eligibility/reason/rule
+        # before the user attempts execution; the POST endpoint
+        # re-runs this exact check server-side regardless.
+        "controller_action": action_service.check_eligibility(db, exception_id),
     }

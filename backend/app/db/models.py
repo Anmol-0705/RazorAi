@@ -120,6 +120,9 @@ class ExceptionCaseORM(Base):
     review_audits: Mapped[list["ReviewAuditORM"]] = relationship(
         back_populates="exception", cascade="all, delete-orphan"
     )
+    action_executions: Mapped[list["ActionExecutionORM"]] = relationship(
+        back_populates="exception", cascade="all, delete-orphan"
+    )
 
 
 class AutoResolutionRecordORM(Base):
@@ -157,6 +160,34 @@ class ReviewAuditORM(Base):
     exception: Mapped[ExceptionCaseORM] = relationship(back_populates="review_audits")
 
 
+class ActionExecutionORM(Base):
+    """One bounded, synthetic finance-operations action the Action
+    Engine (`backend/app/actions/`) executed for an ExceptionCase
+    (Phase 8). `id` == `idempotency_key` by construction (both are the
+    engine's deterministic uuid5 of exception_id+action_type), so a
+    retried execute-action call finds this row by primary key instead
+    of inserting a duplicate — see `app.services.action_service`.
+    """
+
+    __tablename__ = "action_executions"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    exception_case_id: Mapped[str] = mapped_column(
+        String, ForeignKey("exception_cases.id"), index=True, nullable=False
+    )
+    action_type: Mapped[str] = mapped_column(String(50), nullable=False)
+    actor: Mapped[str] = mapped_column(String(80), nullable=False)
+    reason: Mapped[str] = mapped_column(Text, nullable=False)
+    rule_id: Mapped[str] = mapped_column(String(80), nullable=False)
+    status: Mapped[str] = mapped_column(String(20), nullable=False)
+    idempotency_key: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
+    resulting_reference: Mapped[str] = mapped_column(String(80), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    exception: Mapped[ExceptionCaseORM] = relationship(back_populates="action_executions")
+
+
 class EvaluationRunORM(Base):
     """One held-out ground-truth evaluation run (Phase 7). References
     the underlying `ReconciliationRunORM` it scored so the exact
@@ -175,5 +206,28 @@ class EvaluationRunORM(Base):
     status: Mapped[str] = mapped_column(String(20), index=True, nullable=False, default="running")
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=_now)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    metrics: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class StressEvaluationRunORM(Base):
+    """One Stress / Dirty Data evaluation run (Part B). Unlike
+    `EvaluationRunORM`, this has no `reconciliation_run_id` FK — the
+    noisy dataset is scored entirely in memory
+    (`app.evaluation.stress_service`), never persisted as
+    payments/settlements/a reconciliation run, since it deliberately
+    reuses the baseline eval dataset's globally-unique payment/
+    settlement identifiers (see stress.py's docstring)."""
+
+    __tablename__ = "stress_evaluation_runs"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    dataset_name: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    seed: Mapped[int] = mapped_column(Integer, nullable=False)
+    record_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(20), index=True, nullable=False, default="running")
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=_now)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    noise_summary: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     metrics: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     error: Mapped[str | None] = mapped_column(Text, nullable=True)

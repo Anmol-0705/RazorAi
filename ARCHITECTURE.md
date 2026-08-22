@@ -275,6 +275,101 @@ Full methodology writeup: `docs/evaluation.md`. Summary:
   four metric groups the API returns plus a methodology/limitations
   section and the D009 disclosure inline.
 
+## Bounded Finance Controller Action (Phase 8, implemented)
+Closes the finance-ops loop end to end: reconciliation detects an
+exception → the AI (optionally) explains it → the deterministic safety
+policy decides if it's safe → the Action Engine executes one bounded,
+synthetic downstream instruction → the result is audited.
+`docs/ai-architecture.md`'s "The AI cannot execute" section has the
+full separation write-up.
+- `backend/app/actions/engine.py` — pure, deterministic, no I/O, no
+  FastAPI, no AI import (mirrors `app.reconciliation.engine`/
+  `app.auto_resolution.engine`'s shape exactly). `check_eligibility()`
+  reuses `app.auto_resolution.engine.policy_decision` (the exact
+  type/financial-impact bounds Phase 3 already proved out — no second,
+  independently-tuned safety threshold), adding one extra guard: an
+  exception a human has `REJECTED` is never eligible regardless of
+  type/impact. `execute_action()` maps each of the three safe
+  resolution types to exactly one allowlisted `ActionType`:
+  `fee_adjustment_accepted` → `SETTLEMENT_ADJUSTMENT_INSTRUCTION`,
+  `delay_accepted` → `SETTLEMENT_FOLLOWUP_INSTRUCTION`,
+  `duplicate_suppressed` → `DUPLICATE_SETTLEMENT_REVIEW_INSTRUCTION`.
+  Everything else (`missing_settlement`, `amount_mismatch`,
+  `partial_settlement`, `invalid_reference`) stays human-review-only,
+  identically to Phase 3's own boundary. Synthetic/test-mode only — no
+  network call, no banking API, no real money movement anywhere in
+  this module.
+- Idempotency: `ActionExecution.id` (== `idempotency_key`) is a
+  deterministic `uuid5` of `(exception_id, action_type)`. A retried
+  `execute-action` call is detected by primary-key lookup in
+  `app.services.action_service` before any insert — never by a
+  duplicate/unique-constraint error, and never by re-running the
+  eligibility policy differently.
+- `backend/app/models/action_execution.py` — the `ActionExecution`
+  domain dataclass (id, exception_case_id, action_type, actor, reason,
+  rule_id, status, idempotency_key, created_at, completed_at,
+  resulting_reference); `backend/app/db/models.py`'s
+  `ActionExecutionORM` is its persistence mirror, same pattern as
+  Phase 3's `AutoResolutionRecord`/`AutoResolutionRecordORM` (D012).
+- `backend/app/services/action_service.py` — loads the exception,
+  calls the pure engine, and on a genuine (non-replay) execution:
+  persists the `ActionExecutionORM` row, moves a still-`PENDING`
+  exception to `APPROVED` (an already `AUTO_RESOLVED`/`APPROVED` case
+  — the common path, since auto-resolution usually already ran — keeps
+  its status), and writes one `ReviewAuditORM` row
+  (`action="controller_action"`) reusing the existing audit table
+  rather than adding a new one — every action is visible in the same
+  audit history human review actions already populate.
+- `POST /exceptions/{exception_id}/execute-action` — the only new
+  route; no request body, so there is nothing for client input (or an
+  AI response) to select. `GET /exceptions/{id}` additively gained
+  `controller_action` (a read-only eligibility preview — eligible,
+  action_type, reason, rule_id — computed by the same
+  `check_eligibility` the POST route re-runs) and `action_executions`
+  (persisted history), so the UI can show "eligible"/"requires human
+  review" before a user attempts anything, without that preview itself
+  bypassing the real check.
+- Frontend: Exception Detail gained a "Controller Action" section
+  showing eligibility/action type/reason/rule/financial impact, an
+  "Execute Controller Action" button gated on `eligible: true` from
+  the server (never client-side-only), the resulting synthetic
+  reference and updated status after execution, and an action history
+  list — alongside the existing human-review audit trail.
+
+## Stress / Dirty Data Evaluation (Part B, implemented)
+A second, clearly-labeled benchmark alongside the unchanged 250-record
+held-out evaluation (Phase 7) — methodology in `docs/evaluation.md`.
+- `backend/app/evaluation/stress.py` — `apply_noise()` perturbs an
+  in-memory copy of the committed held-out dataset with seven
+  deterministic, seeded noise types (timestamp offsets, delayed
+  settlement timestamps, rounding differences, reference truncation,
+  missing reference prefixes, case/whitespace variations,
+  duplicate/misaligned references), applied only to **settlement-side**
+  fields — `Payment.transaction_id` is never touched, which is what
+  keeps ground-truth alignment in `app.evaluation.scoring.score()`
+  valid under noise. The committed dataset on disk
+  (`data/eval/n250/`) is never modified or regenerated.
+- `backend/app/evaluation/stress_service.py` — calls
+  `app.reconciliation.engine.reconcile` and
+  `app.auto_resolution.engine.auto_resolve` directly (the same
+  unmodified pure functions the baseline evaluation and every
+  reconciliation API route use) against the noisy in-memory dataset,
+  then scores with the same `app.evaluation.scoring.score`. Run
+  entirely in memory rather than through
+  `app.services.reconciliation_service` like the baseline evaluation
+  (D019) — see DECISIONS.md D021 for why persisting it would collide
+  with the baseline eval's already-persisted rows.
+- `StressEvaluationRunORM` (new table, own Alembic migration) persists
+  each run's noise summary and metrics so `GET /evaluation/stress/latest`
+  survives a page reload; `POST /evaluation/stress/run`,
+  `GET /evaluation/stress/{id}` complete the endpoint set.
+- Frontend: the Evaluation page now has two clearly separated
+  sections — the unchanged Baseline Held-Out Synthetic Evaluation
+  (100% of its original metrics, untouched) and a new Stress / Dirty
+  Data Evaluation section showing the noise summary and side-by-side
+  stress-vs-baseline comparison cards, with its own explicit
+  methodology/limitations block.
+
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances
 - Matching transactions
@@ -283,6 +378,9 @@ Full methodology writeup: `docs/evaluation.md`. Summary:
   deterministic rule or human approval
 - Executing a review action (approve/reject/mark-resolved) — the AI
   layer (Phase 6A) is read/explain-only, never a write path
+- Executing a bounded finance-operations action (Phase 8) — that's
+  `app.actions.engine`'s job, deterministically, from a fixed
+  allowlist the AI has no code path to reach or influence
 - Choosing which backend data-retrieval function runs for a given
   question — that's `query_router.py`'s job, deterministically, never
   the model's

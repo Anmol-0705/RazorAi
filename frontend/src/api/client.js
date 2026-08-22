@@ -85,6 +85,9 @@ export const api = {
       data: { reviewer, note },
     }),
 
+  executeControllerAction: (exceptionId) =>
+    request({ method: "POST", url: `/exceptions/${exceptionId}/execute-action` }),
+
   explainExceptionWithAI: (exceptionId) =>
     request({ method: "POST", url: `/ai/exceptions/${exceptionId}/explain` }),
 
@@ -101,6 +104,11 @@ export const api = {
     request({ method: "POST", url: "/evaluation/run", data: { dataset_name: datasetName } }),
 
   getLatestEvaluation: () => request({ method: "GET", url: "/evaluation/latest" }),
+
+  runStressEvaluation: ({ datasetName = "n250" } = {}) =>
+    request({ method: "POST", url: "/evaluation/stress/run", data: { dataset_name: datasetName } }),
+
+  getLatestStressEvaluation: () => request({ method: "GET", url: "/evaluation/stress/latest" }),
 };
 
 export default api;

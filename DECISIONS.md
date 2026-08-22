@@ -297,3 +297,88 @@ behavior) rather than scored as a mystery mismatch. Both mappings live
 in one place, `scoring.EXPECTED_EXCEPTION_TYPES`, so the exact
 concessions being made are auditable in one small table rather than
 scattered through ad-hoc score-adjustment logic.
+
+## D021 — Action Engine eligibility reuses auto-resolution's bounds directly, not a copy
+Phase 8's Action Engine (`backend/app/actions/engine.py`) needed a
+safety policy deciding which exceptions are safe to act on
+automatically. Rather than writing a second set of rupee caps/type
+checks, `auto_resolution/engine.py`'s private `_decide()` was split
+into two functions: `policy_decision()` (public) — the pure
+type/financial-impact bounds check, no `review_status` involved — and
+`_decide()` (still private) — `policy_decision()` plus the
+idempotency/`PENDING`-only gate `auto_resolve()` needs. All 12 existing
+`test_auto_resolution.py` tests pass unmodified after the split,
+confirming zero behavior change to Phase 3. `app.actions.engine`
+imports `policy_decision` directly. This guarantees the Action Engine
+can never be more permissive than the auto-resolution engine it's
+built on, and a future change to the caps only has one place to edit.
+Deliberately *not* gated on `review_status == PENDING` like
+`auto_resolve()` is: by the time a user reaches Exception Detail, an
+eligible exception has almost always already been auto-resolved by the
+normal reconciliation flow (`review_status == AUTO_RESOLVED`), and
+gating on `PENDING` would make the "Execute Controller Action" button
+never appear for the common case. Instead, the Action Engine adds its
+own, different guard: an exception a human has explicitly `REJECTED`
+is never eligible, regardless of type/impact, since executing an
+action would silently override that decision.
+
+## D022 — Action execution reuses ReviewAuditORM instead of a new audit table
+The bounded finance action needed "before state, action, after state,
+rule, actor, timestamp" recorded in the audit trail. Rather than adding
+a fourth audit-shaped table (`ReviewAuditORM` already exists for human
+review, `AutoResolutionRecordORM` for automated resolution), action
+execution writes one `ReviewAuditORM` row per execution
+(`action="controller_action"`, `note` carries the action type/reason/
+rule/resulting reference, `previous_status`/`new_status` carry the
+before/after state) alongside its own dedicated `ActionExecutionORM`
+row (which carries the richer, action-specific fields the task
+requires: `action_type`, `rule_id`, `idempotency_key`,
+`resulting_reference`). This means an executed action shows up in the
+same "Audit history" list a human review action does — a real,
+demonstrable closed loop — without a fourth parallel audit
+representation to keep in sync. `action` is a `String(20)` column
+(existing values: `start_review`, `approve`, `reject`, `mark_resolved`,
+`add_note`); `controller_action` was chosen to fit that width rather
+than widening the column for one new value.
+
+## D023 — Stress evaluation noises only the settlement side, never payments
+The Stress / Dirty Data benchmark (Part B) needed to inject realistic
+data-quality noise while keeping ground-truth scoring valid.
+`app.evaluation.scoring.score()` aligns every ground-truth row to the
+run's output via `Payment.transaction_id` /
+`ExceptionCaseORM.payment_reference` — both payment-side identifiers.
+Perturbing them would silently break that alignment (a "noisy" score
+would really just be measuring a broken join, not engine robustness).
+`app.evaluation.stress.apply_noise()` therefore only ever perturbs
+`Settlement.transaction_reference`, `.settled_amount`, and
+`.settled_at` — `Payment.transaction_id` (and every other payment
+field) is byte-identical to the clean baseline in every noisy run,
+verified directly by `test_stress_evaluation.py`'s
+`test_payment_records_are_never_perturbed`. This is not just a scoring
+convenience: real-world reconciliation data-quality issues (bank
+statement re-exports, delayed settlement feeds, truncated references)
+overwhelmingly originate on the settlement/bank-statement side of the
+pipeline, not on the merchant's own transaction record, so the
+boundary matches the failure mode it's modeling.
+
+## D024 — Stress evaluation runs the engines in memory, never through the DB-persisted service
+The baseline evaluation (D019) persists its dataset and calls
+`app.services.reconciliation_service.run_reconciliation` specifically
+to prove "the evaluator uses the exact same code path production
+routes use, through the database, not just the same function in
+isolation." The stress benchmark cannot follow that same pattern:
+`PaymentORM.transaction_id` and `SettlementORM.settlement_id` are
+globally unique columns, and the noisy dataset (D023) intentionally
+reuses the baseline eval dataset's exact payment identities — trying
+to insert it under a second `dataset_id` would collide with the
+already-persisted baseline eval rows on those unique constraints.
+Instead, `app.evaluation.stress_service.run_stress_evaluation` calls
+`app.reconciliation.engine.reconcile` and
+`app.auto_resolution.engine.auto_resolve` directly — the identical,
+unmodified pure functions `reconciliation_service` itself calls
+internally, just without the database round-trip. This still satisfies
+"run the actual production reconciliation engine against the noisy
+dataset": it is the same function, not a second matching algorithm: no
+different decision was ever written for the stress case. Only the
+persistence boundary differs, and it differs for a reason (unique-key
+collision), documented here rather than silently worked around.

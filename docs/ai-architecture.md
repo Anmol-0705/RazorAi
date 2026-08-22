@@ -147,3 +147,33 @@ this phase's verification).
   lives only in `AnthropicAIProvider`'s client construction.
 - CORS remains scoped to the Vite dev origins (Phase 5, DECISIONS.md
   D016) — the `/ai/*` routes add no new origin exposure.
+
+## The AI cannot execute — the Action Engine boundary (Phase 8)
+
+Phase 8 (see ARCHITECTURE.md's "Bounded Finance Controller Action"
+section) adds `backend/app/actions/`, a deterministic engine that
+executes one small, allowlisted, synthetic downstream finance-ops
+instruction for an eligible exception. This does **not** change the
+one rule above — it makes the existing boundary explicit end to end:
+
+```
+Verified facts  →  AI interpretation  →  deterministic safety policy  →  bounded finance action  →  audit trail
+(app.services.*)   (app.ai, optional,      (app.actions.engine,           (ActionExecutionORM +
+                     never in the             reuses the exact same         ReviewAuditORM)
+                     execution path)          caps as auto_resolution)
+```
+
+- `app.actions` never imports `app.ai`, and `app.ai` never imports
+  `app.actions` — there is no code path connecting them. The AI can
+  explain *why* an exception looks the way it does; it has no API, no
+  tool-use loop, and no function call that reaches the Action Engine.
+- `POST /exceptions/{id}/execute-action` takes no request body — the
+  action type is derived entirely from server-side policy
+  (`app.actions.engine.check_eligibility`), never from client input,
+  and certainly never from an LLM's output. There is nothing for a
+  request (or a prompt-injected AI response, if one were ever wired
+  in) to select.
+- The eligibility policy itself is the same bounded, rupee-capped rule
+  table Phase 3's auto-resolution engine already proved out
+  (`app.auto_resolution.engine.policy_decision`, reused verbatim) —
+  Phase 8 does not introduce a second, possibly-looser safety surface.

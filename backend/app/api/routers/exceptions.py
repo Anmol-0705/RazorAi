@@ -3,9 +3,9 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from app.api.schemas import ExceptionCaseResponse, ExceptionDetailResponse
+from app.api.schemas import ExceptionCaseResponse, ExceptionDetailResponse, ExecuteActionResponse
 from app.db.base import get_db
-from app.services import exception_service
+from app.services import action_service, exception_service
 from app.services.errors import NotFoundError
 
 router = APIRouter(prefix="/exceptions", tags=["exceptions"])
@@ -36,4 +36,20 @@ def get_exception(exception_id: str, db: Session = Depends(get_db)) -> Exception
         result=detail["result"],
         auto_resolutions=detail["auto_resolutions"],
         review_audits=detail["review_audits"],
+        action_executions=detail["action_executions"],
+        controller_action=detail["controller_action"],
     )
+
+
+@router.post("/{exception_id}/execute-action", response_model=ExecuteActionResponse)
+def execute_controller_action(exception_id: str, db: Session = Depends(get_db)) -> ExecuteActionResponse:
+    """Execute the one bounded, allowlisted finance-operations action
+    (if any) this exception is eligible for. Takes no request body —
+    the action type is derived entirely server-side from the
+    deterministic eligibility policy (`app.actions.engine`), never
+    from client input. See ARCHITECTURE.md."""
+    try:
+        result = action_service.execute_action(db, exception_id)
+    except NotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return ExecuteActionResponse(**result)

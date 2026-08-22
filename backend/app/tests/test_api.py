@@ -18,6 +18,7 @@ from fastapi.testclient import TestClient
 from app.api.main import app
 from app.db.base import get_db
 from app.db.models import (
+    ActionExecutionORM,
     AutoResolutionRecordORM,
     ExceptionCaseORM,
     PaymentORM,
@@ -32,6 +33,7 @@ _engine = create_engine(TEST_DATABASE_URL, future=True)
 _TestSessionLocal = sessionmaker(bind=_engine, autoflush=False, autocommit=False, future=True)
 
 _TABLES = (
+    ActionExecutionORM,
     ReviewAuditORM,
     AutoResolutionRecordORM,
     ExceptionCaseORM,
@@ -323,6 +325,105 @@ class ReviewActionTests(ApiTestCase):
 
     def test_review_action_on_unknown_exception_returns_404(self):
         resp = client.post("/exceptions/does-not-exist/approve", json={"reviewer": "r@example.com"})
+        self.assertEqual(resp.status_code, 404)
+
+
+class ControllerActionExecutionTests(ApiTestCase):
+    def _exception_id_by_type(self, dataset_id, exception_type):
+        self._run_reconciliation(dataset_id)
+        exceptions = client.get("/exceptions", params={"exception_type": exception_type}).json()
+        self.assertGreater(len(exceptions), 0, f"no {exception_type} exceptions in this dataset")
+        return exceptions[0]["id"]
+
+    def test_eligible_action_executes_and_persists(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        exc_id = self._exception_id_by_type(dataset_id, "fee_mismatch")
+
+        detail_before = client.get(f"/exceptions/{exc_id}").json()
+        self.assertTrue(detail_before["controller_action"]["eligible"])
+        self.assertEqual(
+            detail_before["controller_action"]["action_type"], "settlement_adjustment_instruction"
+        )
+
+        resp = client.post(f"/exceptions/{exc_id}/execute-action")
+        self.assertEqual(resp.status_code, 200)
+        body = resp.json()
+        self.assertTrue(body["eligible"])
+        self.assertFalse(body["already_executed"])
+        self.assertIsNotNone(body["action"])
+        self.assertEqual(body["action"]["action_type"], "settlement_adjustment_instruction")
+        self.assertEqual(body["action"]["status"], "completed")
+        self.assertTrue(body["action"]["resulting_reference"].startswith("SYN-SAI-"))
+        self.assertIsNotNone(body["audit"])
+        self.assertEqual(body["audit"]["action"], "controller_action")
+
+        detail_after = client.get(f"/exceptions/{exc_id}").json()
+        self.assertEqual(len(detail_after["action_executions"]), 1)
+        self.assertEqual(
+            detail_after["action_executions"][0]["resulting_reference"], body["action"]["resulting_reference"]
+        )
+
+    def test_non_eligible_action_is_rejected_without_persisting(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        exc_id = self._exception_id_by_type(dataset_id, "amount_mismatch")
+
+        resp = client.post(f"/exceptions/{exc_id}/execute-action")
+        self.assertEqual(resp.status_code, 200)
+        body = resp.json()
+        self.assertFalse(body["eligible"])
+        self.assertIsNone(body["action"])
+        self.assertIsNone(body["audit"])
+        self.assertIn("human review", body["reason"])
+
+        detail = client.get(f"/exceptions/{exc_id}").json()
+        self.assertEqual(len(detail["action_executions"]), 0)
+
+    def test_high_impact_missing_settlement_is_rejected(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        exc_id = self._exception_id_by_type(dataset_id, "missing_settlement")
+
+        resp = client.post(f"/exceptions/{exc_id}/execute-action")
+        self.assertEqual(resp.status_code, 200)
+        body = resp.json()
+        self.assertFalse(body["eligible"])
+        self.assertIsNone(body["action"])
+
+    def test_duplicate_execution_is_idempotent(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        exc_id = self._exception_id_by_type(dataset_id, "fee_mismatch")
+
+        first = client.post(f"/exceptions/{exc_id}/execute-action").json()
+        second = client.post(f"/exceptions/{exc_id}/execute-action").json()
+
+        self.assertFalse(first["already_executed"])
+        self.assertTrue(second["already_executed"])
+        self.assertEqual(first["action"]["id"], second["action"]["id"])
+        self.assertEqual(first["action"]["resulting_reference"], second["action"]["resulting_reference"])
+        self.assertIsNone(second["audit"])  # no duplicate audit entry on replay
+
+        detail = client.get(f"/exceptions/{exc_id}").json()
+        self.assertEqual(len(detail["action_executions"]), 1)
+        self.assertEqual(
+            len([a for a in detail["review_audits"] if a["action"] == "controller_action"]), 1
+        )
+
+    def test_pending_exception_status_moves_to_approved_on_execution(self):
+        dataset_id = self._create_dataset(seed=42, num_records=100)
+        exc_id = self._exception_id_by_type(dataset_id, "fee_mismatch")
+        exc_before = client.get(f"/exceptions/{exc_id}").json()["exception"]
+
+        resp = client.post(f"/exceptions/{exc_id}/execute-action").json()
+
+        if exc_before["review_status"] == "pending":
+            self.assertEqual(resp["exception"]["review_status"], "approved")
+        else:
+            # Most fee_mismatch cases are already auto_resolved by the
+            # time a normal reconciliation run completes; the action
+            # engine must not disturb that status.
+            self.assertEqual(resp["exception"]["review_status"], exc_before["review_status"])
+
+    def test_execute_action_on_unknown_exception_returns_404(self):
+        resp = client.post("/exceptions/does-not-exist/execute-action")
         self.assertEqual(resp.status_code, 404)
 
 

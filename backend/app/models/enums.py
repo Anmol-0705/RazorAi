@@ -88,3 +88,17 @@ class ResolutionType(str, Enum):
     FEE_ADJUSTMENT_ACCEPTED = "fee_adjustment_accepted"
     DELAY_ACCEPTED = "delay_accepted"
     DUPLICATE_SUPPRESSED = "duplicate_suppressed"
+
+
+class ActionType(str, Enum):
+    """Bounded finance-operations actions the deterministic Action
+    Engine (`app.actions`) may execute (Phase 8). Synthetic/test-mode
+    only — never contacts a real banking system. See ARCHITECTURE.md."""
+
+    SETTLEMENT_ADJUSTMENT_INSTRUCTION = "settlement_adjustment_instruction"
+    SETTLEMENT_FOLLOWUP_INSTRUCTION = "settlement_followup_instruction"
+    DUPLICATE_SETTLEMENT_REVIEW_INSTRUCTION = "duplicate_settlement_review_instruction"
+
+
+class ActionStatus(str, Enum):
+    COMPLETED = "completed"

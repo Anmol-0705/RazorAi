@@ -25,6 +25,9 @@ export default function ExceptionDetailPage() {
   const [reviewer, setReviewer] = useState("reviewer@razorpay.com");
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState(null);
+  const [actionSubmitting, setActionSubmitting] = useState(false);
+  const [actionResult, setActionResult] = useState(null);
+  const [actionError, setActionError] = useState(null);
 
   if (loading) return <LoadingState label="Loading exception…" />;
   if (error) return <ErrorState error={error} onRetry={refetch} />;
@@ -74,6 +77,20 @@ export default function ExceptionDetailPage() {
       setAiResponse({ ai_available: false, error: err.message });
     } finally {
       setAiLoading(false);
+    }
+  }
+
+  async function handleExecuteControllerAction() {
+    setActionSubmitting(true);
+    setActionError(null);
+    try {
+      const response = await api.executeControllerAction(exc.id);
+      setActionResult(response);
+      await refetch();
+    } catch (err) {
+      setActionError(err.message);
+    } finally {
+      setActionSubmitting(false);
     }
   }
 
@@ -197,6 +214,90 @@ export default function ExceptionDetailPage() {
                 </>
               )}
             </AIResultCard>
+          </div>
+        )}
+      </section>
+
+      <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <h2 className="text-sm font-semibold text-slate-900">Controller Action</h2>
+        <p className="mt-1 text-xs text-slate-500">
+          A bounded, synthetic finance-operations instruction executed within this application — never a
+          call to a real banking system, never real money movement.
+        </p>
+
+        {detail.controller_action && (
+          <div className="mt-3 space-y-2 text-sm">
+            <Row
+              label="Eligible"
+              value={
+                <span className={detail.controller_action.eligible ? "text-emerald-700" : "text-amber-700"}>
+                  {detail.controller_action.eligible ? "Yes" : "Requires human review"}
+                </span>
+              }
+            />
+            {detail.controller_action.eligible && (
+              <Row label="Action type" value={titleCase(detail.controller_action.action_type)} />
+            )}
+            <Row label="Reason" value={detail.controller_action.reason} />
+            <Row label="Rule" value={<span className="font-mono text-xs">{detail.controller_action.rule_id}</span>} />
+            <Row label="Financial impact" value={formatMoney(exc.financial_impact)} />
+          </div>
+        )}
+
+        {detail.controller_action?.eligible && (
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={handleExecuteControllerAction}
+              disabled={actionSubmitting}
+              className="rounded-md bg-emerald-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-800 disabled:opacity-50"
+            >
+              {actionSubmitting ? "Executing…" : "Execute Controller Action"}
+            </button>
+          </div>
+        )}
+
+        {actionError && <p className="mt-3 text-sm text-rose-600">{actionError}</p>}
+
+        {actionResult && (
+          <div className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm">
+            {actionResult.eligible && actionResult.action ? (
+              <>
+                <p className="font-medium text-emerald-800">
+                  {actionResult.already_executed ? "Action already completed" : "Action completed"}
+                </p>
+                <p className="mt-1 text-slate-700">
+                  Resulting reference:{" "}
+                  <span className="font-mono text-xs">{actionResult.action.resulting_reference}</span>
+                </p>
+                <p className="mt-1 text-slate-700">Updated exception status: {titleCase(actionResult.exception?.review_status)}</p>
+                {actionResult.audit && (
+                  <p className="mt-1 text-xs text-slate-500">
+                    Audit entry recorded ({actionResult.audit.actor}, {formatDateTime(actionResult.audit.created_at)})
+                  </p>
+                )}
+              </>
+            ) : (
+              <p className="text-amber-800">Requires human review — {actionResult.reason}</p>
+            )}
+          </div>
+        )}
+
+        {detail.action_executions.length > 0 && (
+          <div className="mt-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Action history</p>
+            <ul className="mt-2 space-y-2 text-sm">
+              {detail.action_executions.map((a) => (
+                <li key={a.id} className="rounded-md bg-emerald-50 p-2">
+                  <span className="font-medium text-emerald-800">{titleCase(a.action_type)}</span>
+                  <span className="ml-2 text-xs text-slate-500">{formatDateTime(a.created_at)}</span>
+                  <p className="text-slate-600">{a.reason}</p>
+                  <p className="text-xs text-slate-400">
+                    {a.actor} · rule {a.rule_id} · ref <span className="font-mono">{a.resulting_reference}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </section>

@@ -48,13 +48,19 @@ class AutoResolutionReport:
     records: list = field(default_factory=list)
 
 
-def _decide(exception: ExceptionCase, config: AutoResolutionConfig):
-    """Pure decision logic: returns (ResolutionType, reason) if this
-    exception should be auto-resolved, else None. No side effects."""
+def policy_decision(exception: ExceptionCase, config: AutoResolutionConfig):
+    """Pure bounded-safety check: returns (ResolutionType, reason) if
+    this exception's *type and financial impact* fall within the
+    auto-resolution policy, else None. Deliberately excludes the
+    `review_status`/idempotency gating in `_decide` below — this is
+    the reusable safety rule itself (exposed for
+    `app.actions.engine`, Phase 8, to reuse verbatim for downstream
+    finance-operation action eligibility, rather than re-deriving or
+    duplicating these caps), independent of where a given exception
+    currently sits in the review workflow.
+    """
     if not exception.auto_resolvable:
         return None
-    if exception.review_status != ReviewStatus.PENDING:
-        return None  # already acted on elsewhere -> idempotent no-op
 
     if exception.exception_type == ExceptionType.FEE_MISMATCH:
         if exception.financial_impact <= config.max_auto_fee_adjustment:
@@ -84,6 +90,16 @@ def _decide(exception: ExceptionCase, config: AutoResolutionConfig):
         return None
 
     return None
+
+
+def _decide(exception: ExceptionCase, config: AutoResolutionConfig):
+    """Pure decision logic: returns (ResolutionType, reason) if this
+    exception should be auto-resolved *right now*, else None. Adds the
+    idempotency/workflow-state gate on top of `policy_decision`'s bounded
+    safety check. No side effects."""
+    if exception.review_status != ReviewStatus.PENDING:
+        return None  # already acted on elsewhere -> idempotent no-op
+    return policy_decision(exception, config)
 
 
 def auto_resolve(

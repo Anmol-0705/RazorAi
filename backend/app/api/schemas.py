@@ -128,11 +128,48 @@ class ReviewAuditResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class ActionExecutionResponse(BaseModel):
+    id: str
+    exception_case_id: str
+    action_type: str
+    actor: str
+    reason: str
+    rule_id: str
+    status: str
+    idempotency_key: str
+    resulting_reference: str
+    created_at: datetime
+    completed_at: Optional[datetime]
+
+    model_config = {"from_attributes": True}
+
+
+class ControllerActionEligibilityResponse(BaseModel):
+    eligible: bool
+    action_type: Optional[str] = None
+    reason: str
+    rule_id: str
+
+    model_config = {"from_attributes": True}
+
+
+class ExecuteActionResponse(BaseModel):
+    eligible: bool
+    reason: str
+    rule_id: str
+    already_executed: bool = False
+    action: Optional[ActionExecutionResponse] = None
+    audit: Optional[ReviewAuditResponse] = None
+    exception: Optional[ExceptionCaseResponse] = None
+
+
 class ExceptionDetailResponse(BaseModel):
     exception: ExceptionCaseResponse
     result: Optional[ReconciliationResultResponse] = None
     auto_resolutions: list[AutoResolutionRecordResponse]
     review_audits: list[ReviewAuditResponse]
+    action_executions: list[ActionExecutionResponse] = []
+    controller_action: Optional[ControllerActionEligibilityResponse] = None
 
 
 class ReviewActionRequest(BaseModel):
