@@ -57,7 +57,10 @@ see PROJECT_STATE.md for the exact remaining manual steps.
 - **Health check path:** `/health` — already exists
   (`backend/app/api/routers/health.py`), returns `200` with
   `{"status": "ok", "database": "connected" | "unavailable"}` and
-  never depends on `ANTHROPIC_API_KEY`.
+  never depends on `ANTHROPIC_API_KEY`. Accepts both `GET` and `HEAD`
+  (a single route registered with `methods=["GET", "HEAD"]`, no second
+  implementation) so third-party uptime monitors that probe with `HEAD`
+  (e.g. UptimeRobot's free HTTP monitor) get `200` instead of `405`.
 - **Migration procedure:** migrations run automatically as part of the
   start command above (`alembic upgrade head`). To run them manually
   against a hosted database from a local machine:

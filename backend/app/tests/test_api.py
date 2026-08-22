@@ -91,6 +91,11 @@ class HealthTests(ApiTestCase):
         self.assertEqual(body["status"], "ok")
         self.assertEqual(body["database"], "connected")
 
+    def test_health_supports_head(self):
+        resp = client.head("/health")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.content, b"")
+
 
 class DemoDatasetTests(ApiTestCase):
     def test_generate_demo_dataset_creates_rows(self):

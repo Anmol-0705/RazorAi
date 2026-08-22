@@ -76,7 +76,7 @@ before/after every test — none of them read dev data or the dev
 
 | Method | Path | Purpose |
 |---|---|---|
-| GET | `/health` | Liveness + DB connectivity check |
+| GET, HEAD | `/health` | Liveness + DB connectivity check (HEAD for uptime monitors, e.g. UptimeRobot) |
 | POST | `/datasets/demo` | Generate + persist a deterministic demo dataset |
 | POST | `/reconciliation/runs` | Run reconciliation + auto-resolution against a dataset |
 | GET | `/reconciliation/runs` | List runs |

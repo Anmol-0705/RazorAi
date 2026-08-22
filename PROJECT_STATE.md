@@ -369,10 +369,26 @@ evaluation scoring, or the AI safety boundary:
   passing tests (verified this pass — see "Tests" below).
 
 ## Current Work
-- None. Feature development is at freeze. This documentation pass
-  (README.md created; ARCHITECTURE.md/PROJECT_STATE.md/DECISIONS.md
-  and docs/* audited and brought current) is the latest activity — no
-  application code was touched.
+- None. Feature development is at freeze. Latest activity is the
+  "Health Endpoint HEAD Support" fix below, a small, isolated
+  production fix — no reconciliation/evaluation/AI/actions logic
+  touched.
+
+## Health Endpoint HEAD Support
+Live symptom: UptimeRobot's free HTTP monitor probes with `HEAD
+/health`; FastAPI's route was registered via `@router.get(...)`, which
+only registers `GET` — Starlette does not auto-derive `HEAD` from a
+`GET`-only route — so the monitor received `405 Method Not Allowed`.
+- Fix: `backend/app/api/routers/health.py` now registers the *same*
+  handler function via `@router.api_route("/health", methods=["GET",
+  "HEAD"], response_model=HealthResponse)` instead of `@router.get`.
+  One implementation, two methods — no duplicate route, no change to
+  the DB-connectivity check or response body/shape for `GET`.
+- Test: `backend/app/tests/test_api.py`'s `HealthTests` gained
+  `test_health_supports_head`, asserting `HEAD /health` returns `200`
+  with an empty body.
+- No business logic changed. `docs/api.md` and `docs/deployment.md`
+  updated to reflect `HEAD` support.
 
 ## Deployment Readiness (prep pass, no live deployment performed)
 - **Security fix, found during this pass:** `.env.example` (tracked in
@@ -583,11 +599,12 @@ Command is corrected, same failure mode as before.
 - API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`,
   `test_stress_evaluation.py`, `test_datasets.py`; needs `razorrecon_test` DB
   migrated — see docs/api.md): included in the same discover command
-- Current verified result (this documentation pass, re-run against a local
-  PostgreSQL instance): **165/165 passed**. The count grew from the
-  previously-recorded 157 with the post-Phase-8 fix commits (`test_datasets.py`
-  and additional coverage for dataset-identifier namespacing and dataset-
-  generation idempotency).
+- Current verified result (re-run against a local PostgreSQL instance):
+  **166/166 passed**. Grew from 165 with `HealthTests.test_health_supports_head`
+  (`GET /health`/`HEAD /health` production fix, see "Health Endpoint HEAD
+  Support" below); grew from the previously-recorded 157 with the
+  post-Phase-8 fix commits (`test_datasets.py` and additional coverage for
+  dataset-identifier namespacing and dataset-generation idempotency).
 - Result at the close of Phase 8 (superseded by the count above): **157/157
   passed**. The previously-known environment-coupled
   failure (`test_ai.ProviderUnavailableTests.test_real_provider_with_no_api_key_is_unavailable`
