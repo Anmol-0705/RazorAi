@@ -7,6 +7,16 @@ const http = axios.create({
   timeout: 30000,
 });
 
+// Reconciliation/evaluation runs do real work (persisting hundreds of
+// rows) against a hosted backend + database that can have real-world
+// latency the default 30s doesn't budget for -- most notably a Render
+// free-tier web service waking from an idle cold start, which alone
+// can take 30-50s before the request is even accepted. Only these
+// long-running run-triggering calls get the longer budget; every
+// other endpoint (health, listing, review actions, AI) keeps the
+// default 30s so a genuinely unreachable backend still fails fast.
+const LONG_RUN_TIMEOUT_MS = 90000;
+
 // Normalizes axios/network errors into a small, UI-friendly shape so
 // components never have to poke at axios internals.
 function toApiError(error) {
@@ -15,6 +25,16 @@ function toApiError(error) {
     return {
       status: error.response.status,
       message: typeof detail === "string" ? detail : `Request failed (${error.response.status})`,
+    };
+  }
+  if (error.code === "ECONNABORTED") {
+    // The client gave up waiting -- the backend may still be
+    // reachable and even still processing the request. Distinct from
+    // a genuine connection failure so the user isn't told the API is
+    // down when it might just be slow.
+    return {
+      status: 0,
+      message: "The request timed out waiting for the backend. It may still be processing — please try again shortly.",
     };
   }
   if (error.request) {
@@ -45,6 +65,7 @@ export const api = {
       method: "POST",
       url: "/reconciliation/runs",
       data: { dataset_id: datasetId, ...(runId ? { run_id: runId } : {}) },
+      timeout: LONG_RUN_TIMEOUT_MS,
     }),
 
   listRuns: ({ limit = 50 } = {}) =>
@@ -101,12 +122,22 @@ export const api = {
     request({ method: "POST", url: `/ai/runs/${runId}/summary` }),
 
   runEvaluation: ({ datasetName = "n250" } = {}) =>
-    request({ method: "POST", url: "/evaluation/run", data: { dataset_name: datasetName } }),
+    request({
+      method: "POST",
+      url: "/evaluation/run",
+      data: { dataset_name: datasetName },
+      timeout: LONG_RUN_TIMEOUT_MS,
+    }),
 
   getLatestEvaluation: () => request({ method: "GET", url: "/evaluation/latest" }),
 
   runStressEvaluation: ({ datasetName = "n250" } = {}) =>
-    request({ method: "POST", url: "/evaluation/stress/run", data: { dataset_name: datasetName } }),
+    request({
+      method: "POST",
+      url: "/evaluation/stress/run",
+      data: { dataset_name: datasetName },
+      timeout: LONG_RUN_TIMEOUT_MS,
+    }),
 
   getLatestStressEvaluation: () => request({ method: "GET", url: "/evaluation/stress/latest" }),
 };
