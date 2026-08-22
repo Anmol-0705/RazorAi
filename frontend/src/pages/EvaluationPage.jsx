@@ -307,11 +307,16 @@ export default function EvaluationPage() {
                 tone="warn"
               />
               <ComparisonStatCard
-                label="Auto-Resolution Precision"
+                label="Auto-Resolution Classification Agreement"
                 stressValue={pct(stressMetrics.auto_resolution.precision)}
                 baselineValue={metrics ? pct(metrics.auto_resolution.precision) : null}
               />
             </div>
+            <p className="mt-3 text-xs text-slate-500">
+              This benchmark measures agreement between the deterministic auto-resolution classifier and
+              hidden ground truth under noisy inputs. No Controller Actions are executed during this
+              benchmark.
+            </p>
           </Section>
 
           <Section title="Financial Impact (Stress Run)">

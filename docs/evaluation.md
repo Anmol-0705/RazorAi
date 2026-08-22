@@ -110,6 +110,40 @@ Four groups of metrics, all computed from the aggregation above:
   persisted `Decimal` fields — the evaluator does no independent
   recomputation of money.
 
+### Three distinct things this evaluator's "auto-resolution" metric does *not* conflate
+
+The phrase "auto-resolution" spans three separate layers of this
+system, and the evaluator's auto-resolution precision/recall metrics
+measure only the first one:
+
+1. **Auto-resolution classification** — `app.auto_resolution.engine`
+   deterministically flips an exception's `review_status` to
+   `auto_resolved` when its type/financial-impact fall within the
+   bounded policy (`fee_mismatch`, `delayed_settlement`,
+   `duplicate_settlement`, each capped). This is a status label only —
+   no money moves and nothing is "executed" at this step.
+2. **Controller-action eligibility** — `app.actions.engine.check_eligibility`
+   re-checks the same bounded policy (reusing
+   `app.auto_resolution.engine.policy_decision` directly) to decide
+   whether a bounded, synthetic finance-ops instruction is allowed to
+   run for a given exception. This is also just a decision, computed
+   from the same reconciliation-engine-derived fields — it has no
+   access to ground truth.
+3. **Actual Controller Action execution** — only happens when
+   `POST /exceptions/{id}/execute-action` is called (a human clicking
+   "Execute Controller Action" in the UI, or an equivalent API call),
+   producing a persisted `ActionExecution` record with a synthetic
+   resulting reference.
+
+The evaluator's auto-resolution precision/recall (both the baseline
+and stress benchmarks) score only layer 1 — whether the classification
+agrees with hidden ground truth. **Neither evaluation benchmark ever
+calls layer 3.** A precision below 1.0 means the deterministic
+classifier disagreed with ground truth under the given input
+conditions; it is not a count of executed, let alone unsafe, financial
+actions. See "Stress / Dirty Data Evaluation" below for what this
+means concretely for the stress benchmark's auto-resolution number.
+
 ### The `invalid_reference` → `missing_settlement` mapping
 
 A ground-truth `invalid_reference` condition means *this payment's*
@@ -255,6 +289,18 @@ DECISIONS.md D024 for the full reasoning; the engines invoked are
 identical either way, so this does not change what's actually being
 measured.
 
+Only `reconcile()` and `auto_resolve()` are called — `app.actions`
+(the Controller Action Engine) is never imported or invoked anywhere
+in `stress.py` or `stress_service.py`, and nothing here persists to
+the database or calls `POST /exceptions/{id}/execute-action`. **The
+stress benchmark executes zero Controller Actions, every run.** Its
+"Auto-Resolution Classification Agreement" metric (labeled
+"Auto-Resolution Precision" prior to this clarification) measures
+layer 1 only, from the three-layer distinction above: whether
+`auto_resolve()`'s classification agrees with hidden ground truth
+under the injected noise. It is not, and has never been, a report of
+executed or unsafe financial actions.
+
 ## Baseline vs. Stress — reference numbers from this session
 
 Both were run against the real 250-record held-out dataset in this
@@ -267,7 +313,7 @@ hand-picked:
 | Match rate | 80.8% | 71.2% |
 | Reconciliation precision / recall / F1 | 1.0 / 1.0 / 1.0 | 0.94 / 0.74 / 0.83 |
 | Exception detection precision / recall / F1 | 1.0 / 1.0 / 1.0 | 0.75 / 0.95 / 0.84 |
-| Auto-resolution precision | 1.0 (44/44 correct, 0 unsafe) | 0.85 (34/40 correct) |
+| Auto-resolution classification agreement | 1.0 (44/44 correct, 0 unsafe) | 0.85 (34/40 correct) |
 
 Match rate and precision/recall degrade meaningfully but the system
 keeps functioning — exception detection *recall* actually rises under
