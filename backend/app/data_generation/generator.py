@@ -74,8 +74,16 @@ def _condition_sequence(rng: random.Random, num_records: int, weights: dict) -> 
 
 
 def _build_payment(rng: random.Random, index: int, config: GeneratorConfig) -> Payment:
-    txn_id = f"TXN-{config.seed}-{index:06d}"
-    order_id = f"ORD-{config.seed}-{index:06d}"
+    # Namespaced by num_records (not just seed): Payment.transaction_id
+    # carries a table-wide UNIQUE DB constraint, but is otherwise a pure
+    # function of (seed, index) alone, so two datasets sharing a seed
+    # would always collide on their overlapping index range regardless
+    # of num_records (see DECISIONS.md). order_id has no DB uniqueness
+    # constraint, but is namespaced the same way for consistency -- two
+    # different real payments (from differently-sized same-seed
+    # datasets) should never display the same Order ID.
+    txn_id = f"TXN-{config.seed}-N{config.num_records}-{index:06d}"
+    order_id = f"ORD-{config.seed}-N{config.num_records}-{index:06d}"
     customer_ref = f"CUST-{rng.randint(100000, 999999)}"
     amount = _q2(Decimal(rng.randrange(*PAYMENT_AMOUNT_RANGE_PAISE)) / 100)
     currency = rng.choice(config.currencies)
@@ -101,11 +109,20 @@ def _make_settlement(
     fee: Decimal,
     tax: Decimal,
     settled_at,
+    num_records: int,
     status: SettlementStatus = SettlementStatus.SETTLED,
 ) -> Settlement:
+    # Namespaced by num_records: Settlement.settlement_id carries a
+    # table-wide UNIQUE DB constraint. Unlike transaction_id it isn't a
+    # clean function of (seed, index) -- it's an rng.randint() draw --
+    # but the draw sequence still depends on num_records (via the
+    # earlier condition-shuffle consuming a different number of rng
+    # calls per size), so two datasets sharing a seed were empirically
+    # confirmed to collide on ~10-20% of settlement_ids without this
+    # prefix (see DECISIONS.md).
     return Settlement(
         id=_deterministic_id(rng),
-        settlement_id=f"STL-{rng.randint(10**9, 10**10 - 1)}",
+        settlement_id=f"STL-N{num_records}-{rng.randint(10**9, 10**10 - 1)}",
         transaction_reference=transaction_reference,
         settled_amount=settled_amount,
         fee=fee,
@@ -122,15 +139,15 @@ def _build_for_condition(rng: random.Random, payment: Payment, condition: Ground
     normal_settled_at = payment.created_at + timedelta(hours=rng.randint(*NORMAL_SETTLEMENT_DELAY_HOURS))
 
     if condition == GroundTruthCondition.NORMAL_MATCH:
-        s = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at)
+        s = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at, config.num_records)
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), Decimal("0.00"), "normal matched settlement")
 
     if condition == GroundTruthCondition.MISSING_SETTLEMENT:
         return [], GroundTruthRecord(payment.transaction_id, condition, tuple(), payment.amount, "settlement never generated")
 
     if condition == GroundTruthCondition.DUPLICATE_SETTLEMENT:
-        s1 = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at)
-        s2 = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at + timedelta(hours=rng.randint(1, 6)))
+        s1 = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at, config.num_records)
+        s2 = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, normal_settled_at + timedelta(hours=rng.randint(1, 6)), config.num_records)
         return [s1, s2], GroundTruthRecord(payment.transaction_id, condition, (s1.settlement_id, s2.settlement_id), normal_settled, "settlement processed twice for the same transaction")
 
     if condition == GroundTruthCondition.AMOUNT_MISMATCH:
@@ -138,14 +155,14 @@ def _build_for_condition(rng: random.Random, payment: Payment, condition: Ground
         mismatched = _q2(normal_settled + delta)
         if mismatched <= 0:
             mismatched = _q2(normal_settled + abs(delta))
-        s = _make_settlement(rng, payment.transaction_id, mismatched, fee, tax, normal_settled_at)
+        s = _make_settlement(rng, payment.transaction_id, mismatched, fee, tax, normal_settled_at, config.num_records)
         diff = abs(_q2(mismatched - normal_settled))
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), diff, "settled amount does not match expected payout")
 
     if condition == GroundTruthCondition.PARTIAL_SETTLEMENT:
         fraction = Decimal(rng.randint(40, 80)) / Decimal(100)
         partial = _q2(normal_settled * fraction)
-        s = _make_settlement(rng, payment.transaction_id, partial, fee, tax, normal_settled_at)
+        s = _make_settlement(rng, payment.transaction_id, partial, fee, tax, normal_settled_at, config.num_records)
         diff = _q2(normal_settled - partial)
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), diff, "only part of the expected amount was settled")
 
@@ -154,18 +171,18 @@ def _build_for_condition(rng: random.Random, payment: Payment, condition: Ground
         wrong_fee = _q2(fee * multiplier)
         wrong_tax = _standard_tax(wrong_fee)
         settled = _q2(payment.amount - wrong_fee - wrong_tax)
-        s = _make_settlement(rng, payment.transaction_id, settled, wrong_fee, wrong_tax, normal_settled_at)
+        s = _make_settlement(rng, payment.transaction_id, settled, wrong_fee, wrong_tax, normal_settled_at, config.num_records)
         diff = abs(_q2(settled - normal_settled))
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), diff, "fee applied does not match the standard fee schedule")
 
     if condition == GroundTruthCondition.DELAYED_SETTLEMENT:
         delayed_at = payment.created_at + timedelta(days=rng.randint(*DELAYED_SETTLEMENT_DELAY_DAYS))
-        s = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, delayed_at)
+        s = _make_settlement(rng, payment.transaction_id, normal_settled, fee, tax, delayed_at, config.num_records)
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), Decimal("0.00"), "settlement arrived well outside the normal window")
 
     if condition == GroundTruthCondition.INVALID_REFERENCE:
         corrupted_ref = f"TXN-{config.seed}-{rng.randint(900000, 999999)}"
-        s = _make_settlement(rng, corrupted_ref, normal_settled, fee, tax, normal_settled_at)
+        s = _make_settlement(rng, corrupted_ref, normal_settled, fee, tax, normal_settled_at, config.num_records)
         return [s], GroundTruthRecord(payment.transaction_id, condition, (s.settlement_id,), Decimal("0.00"), "settlement reference does not correspond to any known payment")
 
     raise ValueError(f"unhandled condition: {condition}")
@@ -184,7 +201,22 @@ def _assert_uniqueness(payments: list, settlements: list) -> None:
 
 
 def generate_dataset(config: GeneratorConfig) -> DatasetBundle:
-    rng = random.Random(config.seed)
+    # Seeded by (seed, num_records), not seed alone: Payment.id and
+    # Settlement.id are drawn from this rng stream via
+    # _deterministic_id() (uuid from raw getrandbits), and empirically
+    # (not just in theory) two runs sharing a seed but different
+    # num_records produce a meaningful number of colliding ids -- e.g.
+    # 27-63 collisions per pair across n100/n250/n500 -- because
+    # _condition_sequence's rng.shuffle() consumes a different amount
+    # of Mersenne Twister state per num_records, occasionally
+    # realigning the underlying word stream. A different effective seed
+    # per num_records gives every (seed, num_records) pair its own,
+    # independent trajectory -- the same collision-avoidance guarantee
+    # already relied on for two genuinely different seeds never
+    # colliding -- while a *repeated* call with the identical
+    # (seed, num_records) still reseeds identically and stays fully
+    # reproducible (see DECISIONS.md).
+    rng = random.Random(f"{config.seed}:{config.num_records}")
     conditions = _condition_sequence(rng, config.num_records, config.anomaly_weights)
 
     payments = []

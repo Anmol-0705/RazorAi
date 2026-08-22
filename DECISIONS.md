@@ -382,3 +382,42 @@ dataset": it is the same function, not a second matching algorithm: no
 different decision was ever written for the stress case. Only the
 persistence boundary differs, and it differs for a reason (unique-key
 collision), documented here rather than silently worked around.
+
+## D025 — Demo dataset identifiers are namespaced by num_records, not just seed
+Following D021-D024's ConflictError safety net (which correctly turned
+a same-seed/different-num_records collision into a clean 409 instead
+of a crash), the actual production UX need was for the demo UI's
+100/250/500 options to coexist under one seed. Investigated why they
+collided: `_build_payment`'s `transaction_id`/`order_id` are pure
+functions of `(seed, index)` only (never `num_records`), so any two
+datasets sharing a seed always collide on their overlapping index
+range — globally true regardless of size. Less obviously,
+`Payment.id`/`Settlement.id`/`Settlement.settlement_id` (drawn from
+the single seeded `random.Random` stream) were *empirically* found to
+collide too (27-63 colliding ids per size-pair across n100/n250/n500)
+even though they're not literally `f(seed, index)` formulas — because
+`_condition_sequence`'s `rng.shuffle()` consumes a different amount of
+Mersenne Twister state per `num_records`, occasionally realigning the
+underlying word stream in a way far above pure 128-bit chance. Fixed
+at two levels: (1) `generate_dataset()` now seeds
+`random.Random(f"{seed}:{num_records}")` instead of `random.Random(seed)`,
+giving every `(seed, num_records)` pair its own independent RNG
+trajectory — the same collision-avoidance guarantee already relied on
+for two genuinely different seeds never colliding — while a *repeated*
+call with the identical `(seed, num_records)` still reseeds
+identically and stays fully reproducible; (2) `transaction_id`,
+`order_id`, and `settlement_id` additionally carry an explicit
+`N{num_records}` segment as a belt-and-suspenders, construction-level
+guarantee (not just statistical confidence) for the fields that
+actually carry a DB uniqueness constraint or are user-visible.
+`corrupted_ref` (the `invalid_reference` anomaly's deliberately-bogus
+settlement reference) was deliberately left unnamespaced — it has no
+uniqueness constraint and its `900000-999999` draw range already never
+overlaps any real index-based id regardless of `num_records`, so
+touching it would be an unrelated rename, not a fix. Already-persisted
+datasets (D021-D024's `demo-seed42-n100`/`n250`, and any pre-fix
+dataset in general) are never regenerated — `dataset_service`'s
+existing-`dataset_id` pre-check still returns them exactly as stored,
+so this change only affects *newly generated* datasets, verified with
+a legacy-format row inserted directly to simulate already-hosted data
+(`test_pre_existing_legacy_format_dataset_is_reused_not_regenerated`).

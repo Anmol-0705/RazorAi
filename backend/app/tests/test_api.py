@@ -161,31 +161,115 @@ class DemoDatasetTests(ApiTestCase):
         self.assertTrue(first.json()["created"])
         self.assertTrue(second.json()["created"])
 
-    def test_same_seed_different_num_records_is_a_clean_conflict_not_a_crash(self):
-        # The generator derives transaction_id from (seed, index) only,
-        # independent of num_records (app.data_generation.generator),
-        # so two datasets sharing a seed always collide on their
-        # overlapping index range's globally-unique transaction_id.
-        # This must surface as a clean 409, never a raw 500/IntegrityError,
-        # and must never leave partial rows behind for the rejected dataset.
+    def test_same_seed_different_num_records_now_coexist_safely(self):
+        # Identifiers derived from (seed, index) (transaction_id,
+        # order_id) or from the shared rng stream (payment.id,
+        # settlement.id, settlement_id) are namespaced/reseeded by
+        # num_records (app.data_generation.generator), so datasets
+        # sharing a seed no longer collide -- each size succeeds
+        # independently and all three coexist.
         first = client.post("/datasets/demo", json={"seed": 30, "num_records": 30})
-        self.assertEqual(first.status_code, 201)
-
         second = client.post("/datasets/demo", json={"seed": 30, "num_records": 60})
-        self.assertEqual(second.status_code, 409)
-        self.assertIn("collide", second.json()["detail"])
+        third = client.post("/datasets/demo", json={"seed": 30, "num_records": 90})
+
+        self.assertEqual([r.status_code for r in (first, second, third)], [201, 201, 201])
+        self.assertEqual(
+            {r.json()["dataset_id"] for r in (first, second, third)},
+            {"demo-seed30-n30", "demo-seed30-n60", "demo-seed30-n90"},
+        )
 
         db = _TestSessionLocal()
         try:
-            leftover = db.execute(
-                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed30-n60")
+            by_size = {}
+            for n in (30, 60, 90):
+                rows = db.execute(
+                    select(PaymentORM).where(PaymentORM.dataset_id == f"demo-seed30-n{n}")
+                ).scalars().all()
+                self.assertEqual(len(rows), n)
+                by_size[n] = rows
+
+            # No transaction_id, order_id, or payment.id collides
+            # across any pair of differently-sized same-seed datasets.
+            for field in ("transaction_id", "order_id", "id"):
+                for a, b in ((30, 60), (30, 90), (60, 90)):
+                    values_a = {getattr(r, field) for r in by_size[a]}
+                    values_b = {getattr(r, field) for r in by_size[b]}
+                    self.assertEqual(
+                        values_a & values_b, set(), f"{field} collided between n{a} and n{b}"
+                    )
+        finally:
+            db.close()
+
+    def test_repeated_request_for_one_of_several_coexisting_sizes_is_idempotent(self):
+        client.post("/datasets/demo", json={"seed": 31, "num_records": 30})
+        client.post("/datasets/demo", json={"seed": 31, "num_records": 60})
+
+        first_60 = client.post("/datasets/demo", json={"seed": 31, "num_records": 60})
+        second_60 = client.post("/datasets/demo", json={"seed": 31, "num_records": 60})
+
+        self.assertEqual(first_60.status_code, 200)  # already existed from the setup call above
+        self.assertEqual(second_60.status_code, 200)
+        self.assertFalse(second_60.json()["created"])
+        self.assertEqual(first_60.json()["payment_count"], second_60.json()["payment_count"])
+
+        db = _TestSessionLocal()
+        try:
+            rows = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed31-n60")
             ).scalars().all()
-            self.assertEqual(len(leftover), 0, "a rejected conflicting dataset must not leave partial rows")
-            # The original, successfully-created dataset must be untouched.
-            original = db.execute(
-                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed30-n30")
-            ).scalars().all()
-            self.assertEqual(len(original), 30)
+            self.assertEqual(len(rows), 60)
+        finally:
+            db.close()
+
+    def test_pre_existing_legacy_format_dataset_is_reused_not_regenerated(self):
+        # Simulates data already hosted before this fix: a dataset_id
+        # row set inserted directly (bypassing today's generator/
+        # namespacing entirely), matching what production already has
+        # persisted under the old, unnamespaced identifier format.
+        # Requesting this exact dataset_id again must reuse it exactly
+        # as stored -- never regenerate or alter it.
+        from app.data_generation.config import GeneratorConfig
+        from app.data_generation.generator import _build_payment
+        import random
+
+        legacy_rng = random.Random(99)
+        legacy_payment = _build_payment(legacy_rng, 0, GeneratorConfig(seed=99, num_records=1))
+        # Force the pre-fix (unnamespaced) shape regardless of what the
+        # current generator now produces, to faithfully model already-
+        # hosted legacy rows.
+        legacy_txn_id = "TXN-99-000000"
+
+        db = _TestSessionLocal()
+        try:
+            db.add(
+                PaymentORM(
+                    id=legacy_payment.id,
+                    dataset_id="demo-seed99-n1",
+                    transaction_id=legacy_txn_id,
+                    order_id="ORD-99-000000",
+                    customer_reference=legacy_payment.customer_reference,
+                    amount=legacy_payment.amount,
+                    currency=legacy_payment.currency.value,
+                    payment_method=legacy_payment.payment_method.value,
+                    payment_status=legacy_payment.payment_status.value,
+                    created_at=legacy_payment.created_at,
+                )
+            )
+            db.commit()
+        finally:
+            db.close()
+
+        resp = client.post("/datasets/demo", json={"seed": 99, "num_records": 1})
+        self.assertEqual(resp.status_code, 200)
+        self.assertFalse(resp.json()["created"])
+        self.assertEqual(resp.json()["payment_count"], 1)
+
+        db = _TestSessionLocal()
+        try:
+            row = db.execute(
+                select(PaymentORM).where(PaymentORM.dataset_id == "demo-seed99-n1")
+            ).scalar_one()
+            self.assertEqual(row.transaction_id, legacy_txn_id, "legacy row must not be regenerated/altered")
         finally:
             db.close()
 
