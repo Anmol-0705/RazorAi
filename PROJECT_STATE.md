@@ -555,18 +555,19 @@ Command is corrected, same failure mode as before.
 - API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`,
   `test_stress_evaluation.py`; needs `razorrecon_test` DB migrated —
   see docs/api.md): included in the same discover command
-- Result (Phase 8, this session): **156/157 passed**. The one failure
-  (`test_ai.ProviderUnavailableTests.test_real_provider_with_no_api_key_is_unavailable`)
-  is the same pre-existing, environment-only issue noted in the
-  deployment-prep pass below — a real `ANTHROPIC_API_KEY` in the local,
-  gitignored `.env` is picked up by `os.environ` fallback in a test
-  asserting "no key" behavior; not a code defect, not present in CI/a
-  clean environment, and not something Phase 8 introduced or should
-  fix by clearing the user's legitimate local key. 35 new tests added
-  this phase (12 `test_actions.py` + 6 `test_api.py` controller-action
-  tests + 9 `test_stress_evaluation.py` + 8 `test_evaluation.py`
-  stress-API tests), all passing; all 121 pre-existing tests
-  (excluding the one known env-coupled failure) still pass unmodified.
+- Result: **157/157 passed**. The previously-known environment-coupled
+  failure (`test_ai.ProviderUnavailableTests.test_real_provider_with_no_api_key_is_unavailable`
+  — a real local `ANTHROPIC_API_KEY` in the developer's gitignored
+  `.env` was picked up by `os.environ` fallback in a test asserting
+  "no key" behavior) is fixed: the test now explicitly clears
+  `ANTHROPIC_API_KEY` via `mock.patch.dict(os.environ, ...)` for its
+  own scope only, restored automatically afterward, so it's
+  deterministic regardless of whether a real key is configured
+  locally. No production AI behavior, architecture, reconciliation, or
+  evaluation logic touched. 35 new tests from Phase 8 (12
+  `test_actions.py` + 6 `test_api.py` controller-action tests + 9
+  `test_stress_evaluation.py` + 8 `test_evaluation.py` stress-API
+  tests) all still pass.
 - Frontend: `cd frontend && npm run build` passes cleanly (both after
   Part A and after Part B changes)
 - Frontend manual/E2E verification (headless Chrome via Playwright,

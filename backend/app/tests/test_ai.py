@@ -9,6 +9,7 @@ data-retrieval layer directly.
 import os
 import unittest
 from decimal import Decimal
+from unittest import mock
 
 os.environ["DATABASE_URL"] = "postgresql+psycopg://postgres:password@localhost:5432/razorrecon_test"
 os.environ.pop("ANTHROPIC_API_KEY", None)
@@ -143,11 +144,18 @@ class AiApiTestCase(unittest.TestCase):
 
 class ProviderUnavailableTests(AiApiTestCase):
     def test_real_provider_with_no_api_key_is_unavailable(self):
-        provider = AnthropicAIProvider(api_key=None)
-        self.assertFalse(provider.available)
-        result = provider.explain_exception({"exception_type": "amount_mismatch"})
-        self.assertFalse(result.available)
-        self.assertIn("not configured", result.error)
+        # Explicitly clear ANTHROPIC_API_KEY for this test regardless of
+        # what's set in the developer's real environment/.env — this
+        # test asserts "no key" behavior, so it must not depend on
+        # whether a real key happens to be configured locally. Restored
+        # automatically on exit via mock.patch.dict.
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("ANTHROPIC_API_KEY", None)
+            provider = AnthropicAIProvider(api_key=None)
+            self.assertFalse(provider.available)
+            result = provider.explain_exception({"exception_type": "amount_mismatch"})
+            self.assertFalse(result.available)
+            self.assertIn("not configured", result.error)
 
     def test_missing_api_key_across_all_methods(self):
         provider = AnthropicAIProvider(api_key=None)
