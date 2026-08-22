@@ -35,6 +35,12 @@ export default function ExceptionDetailPage() {
 
   const exc = detail.exception;
   const result = detail.result;
+  // Backend and frontend deploy independently (Render/Vercel) and are
+  // never guaranteed to update atomically, so a response can briefly
+  // (or, if a deploy is missed, indefinitely) come from a backend that
+  // predates this field. Default defensively rather than assume it's
+  // always present, same as `detail.controller_action` below.
+  const actionExecutions = detail.action_executions ?? [];
 
   async function runAction(actionKey) {
     setSubmitting(true);
@@ -283,11 +289,11 @@ export default function ExceptionDetailPage() {
           </div>
         )}
 
-        {detail.action_executions.length > 0 && (
+        {actionExecutions.length > 0 && (
           <div className="mt-4">
             <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Action history</p>
             <ul className="mt-2 space-y-2 text-sm">
-              {detail.action_executions.map((a) => (
+              {actionExecutions.map((a) => (
                 <li key={a.id} className="rounded-md bg-emerald-50 p-2">
                   <span className="font-medium text-emerald-800">{titleCase(a.action_type)}</span>
                   <span className="ml-2 text-xs text-slate-500">{formatDateTime(a.created_at)}</span>
