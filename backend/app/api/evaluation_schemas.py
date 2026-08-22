@@ -21,3 +21,20 @@ class EvaluationRunResponse(BaseModel):
     completed_at: Optional[datetime] = None
     metrics: Optional[dict] = None
     error: Optional[str] = None
+
+
+class RunStressEvaluationRequest(BaseModel):
+    dataset_name: str = Field(default="n250")
+
+
+class StressEvaluationRunResponse(BaseModel):
+    stress_evaluation_id: str
+    dataset_name: str
+    seed: int
+    record_count: int
+    status: str
+    started_at: datetime
+    completed_at: Optional[datetime] = None
+    noise_summary: Optional[dict] = None
+    metrics: Optional[dict] = None
+    error: Optional[str] = None

@@ -1,7 +1,11 @@
 # PROJECT_STATE.md
 
 ## Current Phase
-Phase 7 — Held-out ground-truth evaluation (COMPLETE)
+Phase 8 — Bounded Finance Controller Action + Stress/Dirty-Data
+Evaluation (COMPLETE). Adversarial-review response for the Razorpay AI
+Builder Buildathon, Track 04. Deployment prep (Render/Vercel) from the
+prior session is unaffected — no deployment config changed in this
+phase.
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -242,9 +246,105 @@ Phase 7 — Held-out ground-truth evaluation (COMPLETE)
     Evaluation page runs an evaluation and renders all four sections
     plus the D009 callout with zero console errors.
 
+## Phase 8 — Bounded Finance Controller Action + Stress Evaluation
+Adversarial-review response. Two additive, independent pieces; neither
+touched reconciliation, evaluation scoring, the AI architecture, or
+deployment config.
+
+**Part A — Bounded Finance Controller Action** (closes the finance-ops
+loop: detect → explain → decide → execute → audit)
+- `backend/app/actions/engine.py` — new, pure, deterministic engine
+  (no I/O, no AI import). `check_eligibility()` reuses
+  `app.auto_resolution.engine.policy_decision` (extracted from the
+  former private `_decide()` — a pure refactor, all 12
+  `test_auto_resolution.py` tests still pass unmodified, see
+  DECISIONS.md D021) plus one new guard: a human-`REJECTED` exception
+  is never eligible. Maps each of the three safe resolution types to
+  exactly one allowlisted `ActionType`:
+  `SETTLEMENT_ADJUSTMENT_INSTRUCTION`, `SETTLEMENT_FOLLOWUP_INSTRUCTION`,
+  `DUPLICATE_SETTLEMENT_REVIEW_INSTRUCTION`. Synthetic/test-mode only —
+  no network call, no banking API, no real money movement.
+- `backend/app/models/action_execution.py` /
+  `ActionExecutionORM` (new table, Alembic migration
+  `27a7bdf03233`) — id doubles as the deterministic idempotency key
+  (`uuid5(exception_id, action_type)`), so a retried execute-action
+  call is caught by primary-key lookup before any insert.
+- `backend/app/services/action_service.py` — persists the action,
+  moves a still-`PENDING` exception to `APPROVED` (a case already
+  `AUTO_RESOLVED`/`APPROVED` — the common path — keeps its status),
+  and writes one `ReviewAuditORM` row (`action="controller_action"`,
+  D022) into the *existing* audit table rather than a new one.
+- `POST /exceptions/{id}/execute-action` — no request body, so there
+  is nothing for client input to select; action type is 100%
+  server-derived. `GET /exceptions/{id}` additively gained
+  `controller_action` (read-only eligibility preview) and
+  `action_executions` (history).
+- Frontend: Exception Detail gained a "Controller Action" section
+  (eligibility/type/reason/rule/impact, an execute button gated on
+  server-computed `eligible: true`, resulting synthetic reference,
+  updated status, action history) between "AI explanation" and "Human
+  review", matching the demo story order.
+- Tests: 12 pure engine tests (`test_actions.py`) + 6 new API
+  integration tests in `test_api.py` (eligible execution + persistence,
+  non-eligible rejection, high-impact rejection, idempotent duplicate
+  execution, status transition, 404) — all passing. Verified live
+  against the local dev server via curl: real fee_mismatch exception
+  executed, real idempotent replay confirmed (same resulting
+  reference, no duplicate audit).
+
+**Part B — Stress / Dirty Data Evaluation** (second benchmark,
+baseline untouched)
+- `backend/app/evaluation/stress.py` — `apply_noise()`, seeded
+  (`random.Random(seed)`, default 9001), seven noise types (timestamp
+  offset, delayed-settlement timestamp, rounding diff, reference
+  truncation, missing reference prefix, case/whitespace,
+  duplicate/misaligned reference), applied **only to settlement-side
+  fields** — `Payment.transaction_id` is never touched, which is what
+  keeps ground-truth scoring alignment valid under noise (DECISIONS.md
+  D023). The committed dataset on disk is never modified/regenerated.
+- `backend/app/evaluation/stress_service.py` — calls
+  `app.reconciliation.engine.reconcile` /
+  `app.auto_resolution.engine.auto_resolve` directly (same unmodified
+  pure functions the baseline evaluation uses) against the noisy
+  in-memory dataset; run in memory rather than through
+  `reconciliation_service` because the noisy dataset intentionally
+  reuses the baseline eval dataset's globally-unique payment/settlement
+  identifiers, which would collide if persisted a second time
+  (DECISIONS.md D024).
+- `StressEvaluationRunORM` (new table, Alembic migration
+  `efe04f8abb3c`); `POST /evaluation/stress/run`,
+  `GET /evaluation/stress/latest`, `GET /evaluation/stress/{id}`.
+- Frontend: Evaluation page now has two clearly separated,
+  independently-run sections — the original Baseline Held-Out
+  Synthetic Evaluation (100% unchanged, its own "Run Evaluation"
+  button) and a new Stress / Dirty Data Evaluation section (noise
+  summary, baseline-vs-stress comparison cards, its own methodology
+  block).
+- Real numbers from this session (seed 9001, n=250): match rate 80.8%
+  → 71.2%, reconciliation F1 1.0 → 0.83, exception detection F1 1.0 →
+  0.84, auto-resolution precision 1.0 → 0.85 — meaningful, honest
+  degradation, not a claim of unaffected accuracy. Full table in
+  docs/evaluation.md.
+- Tests: 9 pure noise/reproducibility tests
+  (`test_stress_evaluation.py`) + 8 new API integration tests in
+  `test_evaluation.py` (real run, noise summary shape, degradation vs.
+  baseline is strictly worse, repeated-run byte-identical metrics,
+  latest/get-by-id/404s, non-interference with baseline eval/demo
+  workflows) — all passing. Verified live via curl against the local
+  dev server and via `apply_noise()` called twice with the same seed
+  (byte-identical noise log).
+
+**Documentation**: ARCHITECTURE.md gained "Bounded Finance Controller
+Action" and "Stress / Dirty Data Evaluation" sections plus an
+LLM-out-of-scope bullet; docs/ai-architecture.md gained "The AI cannot
+execute" explicitly diagramming
+`facts → AI interpretation → deterministic safety policy → bounded
+action → audit`; docs/evaluation.md gained the full Part B methodology
+section; DECISIONS.md gained D021-D024; docs/demo-script.md is new
+(didn't exist before this phase).
+
 ## Current Work
-- None. Phase 7 closed. Deployment-prep pass complete (below);
-  awaiting the next phase or an actual deploy.
+- None. Phase 8 closed, awaiting the next instruction.
 
 ## Deployment Readiness (prep pass, no live deployment performed)
 - **Security fix, found during this pass:** `.env.example` (tracked in
@@ -327,6 +427,14 @@ shell access to run `alembic upgrade head` by hand.
   → trigger a manual deploy (or push any commit, which redeploys and
   re-runs it).
 
+Phase 8 note: two new Alembic migrations were added this phase
+(`27a7bdf03233` action_executions, `efe04f8abb3c`
+stress_evaluation_runs). If the Render Start Command is already fixed
+to run `alembic upgrade head` before `uvicorn` (per the fix above),
+the next deploy applies them automatically — no separate manual step.
+If it isn't fixed yet, both new tables are missing until that Start
+Command is corrected, same failure mode as before.
+
 ## Remaining Manual Deployment Steps
 1. **Revoke/rotate the leaked Anthropic key** in the Anthropic console
    — required regardless of the git-side fix in this pass.
@@ -345,6 +453,18 @@ shell access to run `alembic upgrade head` by hand.
    this session; no public deployment has actually been tested.
 
 ## Known Issues
+- Phase 8: the stress benchmark only exercises the deterministic
+  reconciliation/auto-resolution engines under noise — it does not
+  exercise the AI layer or the Action Engine under noisy input. The
+  Action Engine's eligibility policy is intentionally identical to
+  Phase 3's auto-resolution caps (D021), so it is only ever as
+  permissive as an already-tested surface, but this specific
+  combination (noisy data → auto-resolution → action execution) has no
+  dedicated test.
+- Phase 8: `ActionExecutionORM.action_type` is a `String(50)` column
+  storing the `ActionType` enum's value; if a future phase adds a
+  longer action-type name, that column width (not the enum itself)
+  would need a migration.
 - D006's original constraint (no `pip install` in the Phase 1 sandbox)
   no longer applies now that this repo runs locally with network
   access — Phase 4 installed fastapi/sqlalchemy/alembic/psycopg
@@ -432,13 +552,23 @@ shell access to run `alembic upgrade head` by hand.
 
 ## Tests
 - Unit (no DB): `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
-- API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`;
-  needs `razorrecon_test` DB migrated — see docs/api.md): included in
-  the same discover command
-- Result: **122/122 passed**, 0 failures, 0 errors (run locally, this
-  session, against real PostgreSQL 18; 103 from Phase 4/5/6A + 19 new
-  `test_evaluation.py` tests)
-- Frontend: `cd frontend && npm run build` passes cleanly
+- API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`,
+  `test_stress_evaluation.py`; needs `razorrecon_test` DB migrated —
+  see docs/api.md): included in the same discover command
+- Result (Phase 8, this session): **156/157 passed**. The one failure
+  (`test_ai.ProviderUnavailableTests.test_real_provider_with_no_api_key_is_unavailable`)
+  is the same pre-existing, environment-only issue noted in the
+  deployment-prep pass below — a real `ANTHROPIC_API_KEY` in the local,
+  gitignored `.env` is picked up by `os.environ` fallback in a test
+  asserting "no key" behavior; not a code defect, not present in CI/a
+  clean environment, and not something Phase 8 introduced or should
+  fix by clearing the user's legitimate local key. 35 new tests added
+  this phase (12 `test_actions.py` + 6 `test_api.py` controller-action
+  tests + 9 `test_stress_evaluation.py` + 8 `test_evaluation.py`
+  stress-API tests), all passing; all 121 pre-existing tests
+  (excluding the one known env-coupled failure) still pass unmodified.
+- Frontend: `cd frontend && npm run build` passes cleanly (both after
+  Part A and after Part B changes)
 - Frontend manual/E2E verification (headless Chrome via Playwright,
   real backend + real held-out dataset, no mocking needed since
   evaluation has no AI dependency): Evaluation page runs an evaluation
@@ -456,9 +586,17 @@ shell access to run `alembic upgrade head` by hand.
   no reconciliation logic was modified in this phase.
 
 ## Latest Commit
-- `52ef09f` — feat: add AI finance controller (pre-Phase-7 HEAD)
+- Phase 8 lands as two commits: `feat: add bounded finance controller
+  actions` (Part A) then `feat: add stress evaluation benchmark`
+  (Part B) — see `git log` for exact hashes; both pushed to
+  `origin/main`.
 
 ## Next Task
+- Live-verify the deployed Render/Vercel stack end-to-end with the two
+  new Phase 8 features (execute-action, stress evaluation) — not yet
+  done against the public deployment, only against the local dev
+  server this session (see "Remaining Manual Deployment Steps" above,
+  which predates this phase and is still outstanding).
 - Docker/docker-compose for the full stack (Postgres + backend +
   frontend) remains the main pending item, deferred from Phase 5 and
   explicitly out of scope for Phase 7 too.

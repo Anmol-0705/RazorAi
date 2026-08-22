@@ -29,6 +29,7 @@ from app.db.models import (
     ReconciliationRunORM,
     ReviewAuditORM,
     SettlementORM,
+    StressEvaluationRunORM,
 )
 from app.evaluation import loader as eval_loader
 from app.evaluation.scoring import score
@@ -41,6 +42,7 @@ _TABLES = (
     ReviewAuditORM,
     AutoResolutionRecordORM,
     EvaluationRunORM,
+    StressEvaluationRunORM,
     ExceptionCaseORM,
     ReconciliationResultORM,
     ReconciliationRunORM,
@@ -301,6 +303,78 @@ class EvaluationApiTests(EvaluationApiTestCase):
 
     def test_evaluation_does_not_disturb_demo_dataset_workflow(self):
         self.client.post("/evaluation/run", json={"dataset_name": "n250"})
+        demo = self.client.post("/datasets/demo", json={"seed": 42, "num_records": 100}).json()
+        run = self.client.post("/reconciliation/runs", json={"dataset_id": demo["dataset_id"]}).json()
+        self.assertEqual(run["status"], "completed")
+        self.assertEqual(run["record_count"], 100)
+
+
+class StressEvaluationApiTests(EvaluationApiTestCase):
+    def test_run_stress_evaluation_against_noisy_dataset(self):
+        resp = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"})
+        self.assertEqual(resp.status_code, 200)
+        body = resp.json()
+
+        self.assertEqual(body["status"], "completed")
+        self.assertEqual(body["record_count"], 250)
+        self.assertEqual(body["dataset_name"], "n250-stress")
+
+        noise_summary = body["noise_summary"]
+        self.assertEqual(noise_summary["total_settlements"], 247)  # n250's orphan-free settlement count
+        self.assertGreater(noise_summary["affected_settlements"], 0)
+        self.assertGreater(sum(noise_summary["noise_type_counts"].values()), 0)
+
+        metrics = body["metrics"]
+        self.assertEqual(metrics["reconciliation"]["total_records"], 250)
+        self.assertGreater(Decimal(metrics["financial"]["total_amount_processed"]), 0)
+
+    def test_stress_metrics_degrade_relative_to_clean_baseline(self):
+        baseline = self.client.post("/evaluation/run", json={"dataset_name": "n250"}).json()
+        stress = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"}).json()
+
+        # Honest degradation, not fabricated: noisy match rate must be
+        # strictly worse than the clean baseline's, never equal/better.
+        self.assertLess(
+            stress["metrics"]["reconciliation"]["match_rate"],
+            baseline["metrics"]["reconciliation"]["match_rate"],
+        )
+
+    def test_repeated_stress_run_is_deterministic(self):
+        first = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"}).json()
+        second = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"}).json()
+
+        self.assertEqual(first["metrics"], second["metrics"])
+        self.assertEqual(first["noise_summary"], second["noise_summary"])
+
+    def test_get_latest_stress_evaluation(self):
+        run = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"}).json()
+        resp = self.client.get("/evaluation/stress/latest")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json()["stress_evaluation_id"], run["stress_evaluation_id"])
+
+    def test_get_stress_evaluation_by_id(self):
+        run = self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"}).json()
+        resp = self.client.get(f"/evaluation/stress/{run['stress_evaluation_id']}")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json()["metrics"], run["metrics"])
+
+    def test_get_stress_evaluation_not_found(self):
+        resp = self.client.get("/evaluation/stress/does-not-exist")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_stress_latest_not_found_when_none_exist(self):
+        resp = self.client.get("/evaluation/stress/latest")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_stress_run_does_not_touch_baseline_evaluation_or_demo_data(self):
+        self.client.post("/evaluation/stress/run", json={"dataset_name": "n250"})
+
+        # Baseline evaluation (a real persisted reconciliation run) is
+        # unaffected — the stress benchmark never persists a dataset
+        # or a reconciliation_runs row.
+        baseline = self.client.post("/evaluation/run", json={"dataset_name": "n250"}).json()
+        self.assertEqual(baseline["status"], "completed")
+
         demo = self.client.post("/datasets/demo", json={"seed": 42, "num_records": 100}).json()
         run = self.client.post("/reconciliation/runs", json={"dataset_id": demo["dataset_id"]}).json()
         self.assertEqual(run["status"], "completed")
