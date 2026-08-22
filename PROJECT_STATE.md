@@ -2,10 +2,15 @@
 
 ## Current Phase
 Phase 8 — Bounded Finance Controller Action + Stress/Dirty-Data
-Evaluation (COMPLETE). Adversarial-review response for the Razorpay AI
-Builder Buildathon, Track 04. Deployment prep (Render/Vercel) from the
-prior session is unaffected — no deployment config changed in this
-phase.
+Evaluation (COMPLETE), plus a subsequent hardening pass (COMPLETE):
+dataset-identifier namespacing (D025), demo dataset generation
+idempotency, an exception-detail crash fix, AI-provider test
+isolation, a production reconciliation request stabilization fix, and
+a stress-evaluation terminology clarification ("Auto-Resolution
+Classification Agreement," not a financial-action success rate).
+Razorpay AI Builder Buildathon, Track 04. Deployment prep (Render/
+Vercel) from the prior session is unaffected by the feature work
+above.
 
 ## Completed Work
 - Domain models (stdlib dataclasses, validated): Payment, Settlement,
@@ -343,8 +348,31 @@ action → audit`; docs/evaluation.md gained the full Part B methodology
 section; DECISIONS.md gained D021-D024; docs/demo-script.md is new
 (didn't exist before this phase).
 
+## Post-Phase-8 Hardening Pass (COMPLETE)
+Six additive commits after Phase 8 landed, none touching reconciliation,
+evaluation scoring, or the AI safety boundary:
+- Fixed an exception-detail crash and isolated the AI-provider tests
+  from a developer's local `.env` key so they're deterministic
+  regardless of local configuration.
+- Made demo dataset generation idempotent and namespaced demo dataset
+  identifiers by `num_records`, not just seed — see DECISIONS.md D025
+  for the root cause (RNG-stream collisions across dataset sizes
+  sharing a seed) and the fix.
+- Stabilized a production reconciliation request path.
+- Clarified stress-evaluation terminology: the auto-resolution metric
+  is labeled **"Auto-Resolution Classification Agreement"**, not
+  "precision" or a financial-action success rate, in both the API
+  response and docs/evaluation.md, to avoid implying the stress
+  benchmark executes or evaluates Controller Actions (it does not —
+  see docs/evaluation.md's three-layer distinction).
+- New test file `test_datasets.py`; total suite grew from 157 to 165
+  passing tests (verified this pass — see "Tests" below).
+
 ## Current Work
-- None. Phase 8 closed, awaiting the next instruction.
+- None. Feature development is at freeze. This documentation pass
+  (README.md created; ARCHITECTURE.md/PROJECT_STATE.md/DECISIONS.md
+  and docs/* audited and brought current) is the latest activity — no
+  application code was touched.
 
 ## Deployment Readiness (prep pass, no live deployment performed)
 - **Security fix, found during this pass:** `.env.example` (tracked in
@@ -553,9 +581,15 @@ Command is corrected, same failure mode as before.
 ## Tests
 - Unit (no DB): `PYTHONPATH=backend python3 -m unittest discover -s backend/app/tests -p "test_*.py" -v`
 - API/integration (`test_api.py`, `test_ai.py`, `test_evaluation.py`,
-  `test_stress_evaluation.py`; needs `razorrecon_test` DB migrated —
-  see docs/api.md): included in the same discover command
-- Result: **157/157 passed**. The previously-known environment-coupled
+  `test_stress_evaluation.py`, `test_datasets.py`; needs `razorrecon_test` DB
+  migrated — see docs/api.md): included in the same discover command
+- Current verified result (this documentation pass, re-run against a local
+  PostgreSQL instance): **165/165 passed**. The count grew from the
+  previously-recorded 157 with the post-Phase-8 fix commits (`test_datasets.py`
+  and additional coverage for dataset-identifier namespacing and dataset-
+  generation idempotency).
+- Result at the close of Phase 8 (superseded by the count above): **157/157
+  passed**. The previously-known environment-coupled
   failure (`test_ai.ProviderUnavailableTests.test_real_provider_with_no_api_key_is_unavailable`
   — a real local `ANTHROPIC_API_KEY` in the developer's gitignored
   `.env` was picked up by `os.environ` fallback in a test asserting
@@ -587,17 +621,28 @@ Command is corrected, same failure mode as before.
   no reconciliation logic was modified in this phase.
 
 ## Latest Commit
-- Phase 8 lands as two commits: `feat: add bounded finance controller
+- Phase 8 landed as two commits: `feat: add bounded finance controller
   actions` (Part A) then `feat: add stress evaluation benchmark`
-  (Part B) — see `git log` for exact hashes; both pushed to
-  `origin/main`.
+  (Part B). Six commits followed on `main`, in order: `fix: repair
+  exception detail crash`, `test: isolate AI provider environment
+  tests`, `fix: make demo dataset generation idempotent`, `fix:
+  namespace demo identifiers by dataset size` (D025), `fix: stabilize
+  production reconciliation request`, `docs: clarify stress
+  auto-resolution metric`. All pushed to `origin/main`; working tree
+  clean as of this documentation pass.
+
+## Deployment Status
+- No public deployment URL is recorded in this repository. The
+  "Remaining Manual Deployment Steps" section above (Render backend +
+  Postgres, Vercel frontend, key rotation, CORS wiring, live
+  verification) has not been confirmed complete from this session —
+  treat the app as **prepared for deployment, not yet verified live**.
 
 ## Next Task
-- Live-verify the deployed Render/Vercel stack end-to-end with the two
-  new Phase 8 features (execute-action, stress evaluation) — not yet
-  done against the public deployment, only against the local dev
-  server this session (see "Remaining Manual Deployment Steps" above,
-  which predates this phase and is still outstanding).
+- Live-verify the deployed Render/Vercel stack end-to-end, including
+  the Phase 8 features (execute-action, stress evaluation) — not yet
+  done against a public deployment, only against the local dev server.
+  See "Remaining Manual Deployment Steps" above.
 - Docker/docker-compose for the full stack (Postgres + backend +
-  frontend) remains the main pending item, deferred from Phase 5 and
-  explicitly out of scope for Phase 7 too.
+  frontend) remains the main pending item, deferred since Phase 5 and
+  still out of scope.

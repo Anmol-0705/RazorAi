@@ -421,3 +421,41 @@ existing-`dataset_id` pre-check still returns them exactly as stored,
 so this change only affects *newly generated* datasets, verified with
 a legacy-format row inserted directly to simulate already-hosted data
 (`test_pre_existing_legacy_format_dataset_is_reused_not_regenerated`).
+
+## D026 — Deployment target: Render + Vercel, no Docker
+Deployment prep needed one concrete target, not a menu of options. Chose
+**Render Web Service** (backend) + **Render PostgreSQL** (database) +
+**Vercel** (frontend), and deliberately did not add a Dockerfile or
+docker-compose for the deployed environment: Render's Python runtime
+runs `backend/requirements.txt` directly via `pip install` + `uvicorn`,
+and this project has no OS-level dependency that would require a
+container (consistent with D014's reasoning for local development —
+no Docker Compose was added there either, for the same "not necessary"
+threshold). This keeps the deploy path to two managed platforms with
+no container build/registry step to maintain. Documented in full in
+docs/deployment.md; the Render Blueprint-vs-manual-Web-Service start
+command gap (render.yaml only auto-applies via the Blueprint flow) is
+called out explicitly there since it caused a real live-deployment
+failure (migrations never ran, `/health` returned 200 while every
+DB-backed route 500'd — see PROJECT_STATE.md's "Deployment Fix").
+
+## D027 — Stress-benchmark auto-resolution metric renamed to avoid implying executed actions
+The Stress / Dirty Data evaluation page originally labeled its
+auto-resolution stat "Auto-Resolution Precision." Read next to the new
+Phase 8 Controller Action feature, that label could be misread as "85%
+of automated financial actions were correct" — the stress benchmark
+never calls `app.actions.engine` or persists an `ActionExecution`, so
+no action is executed or scored there at all (see docs/evaluation.md's
+three-layer distinction: classification → eligibility → execution).
+Relabeled to **"Auto-Resolution Classification Agreement"** in the API
+response, the frontend `EvaluationPage`, and docs/evaluation.md, with
+an explanatory note directly under the stat stating that zero
+Controller Actions are executed during this benchmark. Presentation-only
+— no scoring formula, dataset, action engine, auto-resolution behavior,
+reconciliation, or AI code changed. This is the canonical term for this
+metric in documentation going forward; the baseline evaluation's
+equivalent `StatCard` (`EvaluationPage.jsx`, "Auto Resolution" section)
+still reads "Precision" as of this commit — not yet relabeled in the
+UI, since the baseline section's own framing (no noise, no adjacent
+Controller Action comparison) carries less risk of the same
+misreading. Revisit if that changes.

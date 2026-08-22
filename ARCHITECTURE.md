@@ -10,9 +10,12 @@ on top of real backend data.
 ## Stack
 - **Frontend:** React + Vite + Tailwind CSS + Recharts + Axios
 - **Backend:** Python + FastAPI + SQLAlchemy + PostgreSQL + Pydantic
-- **Infra:** Docker + Docker Compose
+- **Infra:** local PostgreSQL directly, no Docker/Docker Compose (see
+  DECISIONS.md D014) — deployment targets Render (backend + Postgres)
+  and Vercel (frontend), also without Docker (see "Deployment
+  Architecture" below and docs/deployment.md)
 - **AI:** LLM provider behind a modular service abstraction (swappable,
-  optional at runtime)
+  optional at runtime); Anthropic is the only implemented provider
 
 ## Layers
 
@@ -369,6 +372,30 @@ held-out evaluation (Phase 7) — methodology in `docs/evaluation.md`.
   Data Evaluation section showing the noise summary and side-by-side
   stress-vs-baseline comparison cards, with its own explicit
   methodology/limitations block.
+
+## Deployment Architecture
+Full procedure: `docs/deployment.md`. Summary:
+- **Backend** — Render Web Service, root dir `backend`, running
+  `alembic upgrade head && uvicorn app.api.main:app --host 0.0.0.0
+  --port $PORT` directly against `backend/requirements.txt` — no
+  Docker image is built or required. `render.yaml` declares this
+  Blueprint-style, but only takes effect for a service created via
+  Render's Blueprint flow; a manually created Web Service needs the
+  same start command pasted into its dashboard settings.
+- **Database** — Render PostgreSQL. `app/db/base.py` normalizes
+  Render's raw `postgres://` connection string to
+  `postgresql+psycopg://` at startup (this project is pinned to
+  psycopg3).
+- **Frontend** — Vercel, root dir `frontend`, `npm run build` /
+  `dist`, with `vercel.json`'s SPA catch-all rewrite for
+  `react-router-dom`'s `BrowserRouter`.
+- **CORS** — `CORS_ALLOWED_ORIGINS` (comma-separated) on the backend;
+  falls back to the local Vite dev origins when unset.
+- **AI** — `ANTHROPIC_API_KEY`/`AI_MODEL` are optional backend-only
+  env vars; every other route is fully functional without them.
+- No public deployment URL has been confirmed live from this
+  repository as of this documentation pass — see PROJECT_STATE.md's
+  "Deployment Status" and "Remaining Manual Deployment Steps."
 
 ## Explicitly Out of Scope for the LLM
 - Computing/inventing financial totals or balances

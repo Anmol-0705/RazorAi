@@ -1,9 +1,11 @@
-# RazorRecon AI — Backend API (Phase 4)
+# RazorRecon AI — Backend API
 
-FastAPI + SQLAlchemy + PostgreSQL backend over the Phase 1-3 domain
-logic. Route handlers only orchestrate `app.services.*`, which call
-the unmodified `app.reconciliation` / `app.auto_resolution` /
-`app.review` engines and persist their output.
+FastAPI + SQLAlchemy + PostgreSQL backend over the deterministic
+reconciliation/auto-resolution/review/actions domain logic, plus the
+AI-assisted and evaluation layers added in later phases. Route
+handlers only orchestrate `app.services.*` (and `app.ai.service` /
+`app.evaluation.service` for their respective routers), which call the
+unmodified domain engines and persist their output.
 
 ## Running locally
 
@@ -64,9 +66,11 @@ DATABASE_URL=postgresql+psycopg://postgres:<password>@localhost:5432/razorrecon_
 cd ..
 PYTHONPATH=backend python -m unittest discover -s backend/app/tests -p "test_*.py"
 ```
-(`test_api.py` hard-codes the `razorrecon_test` connection string and
-truncates its tables before/after every test — it never reads dev
-data or the dev `.env`.)
+(`test_api.py`, along with `test_ai.py`, `test_evaluation.py`,
+`test_stress_evaluation.py`, and `test_datasets.py`, hard-code the
+`razorrecon_test` connection string and truncate their tables
+before/after every test — none of them read dev data or the dev
+`.env`.) The full suite currently reports 165/165 passing.
 
 ## Main endpoints
 
@@ -79,13 +83,30 @@ data or the dev `.env`.)
 | GET | `/reconciliation/runs/{run_id}` | Run detail/status |
 | GET | `/reconciliation/runs/{run_id}/results` | Persisted results (filter: `?status=matched`) |
 | GET | `/dashboard/summary` | Real, DB-computed metrics (optional `?run_id=`) |
-| GET | `/exceptions` | List exceptions (filters: `status`, `severity`, `exception_type`) |
-| GET | `/exceptions/{id}` | Exception detail + auto-resolution + review audit trail |
+| GET | `/exceptions` | List exceptions (filters: `status`, `severity`, `exception_type`, `run_id`) |
+| GET | `/exceptions/{id}` | Exception detail + auto-resolution + controller-action eligibility/history + review audit trail |
 | POST | `/exceptions/{id}/start-review` | Move PENDING → IN_REVIEW |
 | POST | `/exceptions/{id}/approve` | Approve a proposed resolution |
 | POST | `/exceptions/{id}/reject` | Reject a proposed resolution |
 | POST | `/exceptions/{id}/mark-resolved` | Human resolves outright |
 | POST | `/exceptions/{id}/add-note` | Note only, no status change |
+| POST | `/exceptions/{id}/execute-action` | Execute a bounded Controller Action if eligible (Phase 8, no request body — idempotent) |
+| POST | `/ai/exceptions/{id}/explain` | AI explanation of an exception, using backend-computed facts only |
+| POST | `/ai/exceptions/{id}/recommend` | AI advisory resolution recommendation |
+| POST | `/ai/query` | Natural-language question routed to an allowlisted fact function |
+| POST | `/ai/runs/{run_id}/summary` | AI summary of a completed reconciliation run |
+| POST | `/evaluation/run` | Run/replay the baseline held-out evaluation (250-record set) |
+| GET | `/evaluation/latest` | Latest baseline evaluation run |
+| GET | `/evaluation/{id}` | Baseline evaluation run by id |
+| POST | `/evaluation/stress/run` | Run/replay the stress/dirty-data evaluation |
+| GET | `/evaluation/stress/latest` | Latest stress evaluation run |
+| GET | `/evaluation/stress/{id}` | Stress evaluation run by id |
+
+All `/ai/*` endpoints return HTTP 200 with a structured `ai_available`
+flag whether or not the AI provider succeeded — see
+`docs/ai-architecture.md`. All `/evaluation/*` endpoints return only
+aggregate metrics (counts, rates, precision/recall/F1); no endpoint
+exposes raw ground-truth records.
 
 ### Example: generate a dataset and run reconciliation
 
